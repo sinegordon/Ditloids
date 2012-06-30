@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/fon_level"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:padding="8dip" >
+
+    <Button
+        android:id="@+id/arrowButton"
+        android:layout_width="33dp"
+        android:layout_height="23dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="550dp"
+        android:layout_marginLeft="5dp"
+        android:background="@drawable/arrow" />
+
+    <Button
+        android:id="@+id/level2button"
+        android:layout_width="266dp"
+        android:layout_height="264dp"
+        android:layout_alignTop="@+id/arrowButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="144dp"
+        android:background="@drawable/level2" />
+
+    <TextView
+        android:id="@+id/TextView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/level2button"
+        android:layout_alignLeft="@+id/level2button"
+        android:layout_marginBottom="45dp"
+        android:layout_marginLeft="81dp"
+        android:text="@string/count"
+        android:textSize="26dp" android:textColor="#d3dae0"/>
+
+</RelativeLayout>
