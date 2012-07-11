@@ -5,16 +5,13 @@
     android:layout_width="fill_parent"
     android:orientation="vertical"
     android:background="@drawable/fon_level"
-    android:gravity="top" >
+    android:gravity="top" >        
     
-    
-    <!-- Кнопка "назад", выдает ошибку при загрузке эмулятора
      <Button
         android:id="@+id/arrowButton"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
-        android:background="@drawable/arrow"/-->
-            
+        android:background="@drawable/arrow"/>
          
     <com.ditloids.HorizontalPager
         android:id="@+id/horizontal_pager"

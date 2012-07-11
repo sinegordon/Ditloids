@@ -49,7 +49,7 @@ public class MainActivity extends Activity implements OnClickListener, OnTouchLi
 	public void onClick(View view) {
 		switch (view.getId()) {
 	    case R.id.StartButton:
-	    	Intent intent = new Intent(this, TabbedHorizontalPagerDemo.class);
+	    	Intent intent = new Intent(this, LevelsActivity.class);
 	    	intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 	    	startActivity(intent);
 	    	break;
