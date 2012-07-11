@@ -4,7 +4,8 @@
     <string name="prefs_name">DitloidsSettings</string>
     <string name="arrow">Назад</string>
     <string name="start">Играть</string>
-    <string name="settings">Настройки</string>   
+    <string name="settings">Настройки</string>
+    <string name="rules">Как играть?</string> 
     <string name="level2">Уровень 2</string>
     <string name="countlv1">13</string>
     <string name="countlv2">7</string>
