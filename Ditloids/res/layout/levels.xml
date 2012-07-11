@@ -8,7 +8,7 @@
     android:gravity="top" >
     
     
-    <!-- Кнопка "назад", выдает ошибку при закгрузке эмулятора
+    <!-- Кнопка "назад", выдает ошибку при загрузке эмулятора
      <Button
         android:id="@+id/arrowButton"
         android:layout_height="wrap_content"
@@ -16,7 +16,7 @@
         android:background="@drawable/arrow"/-->
             
          
-    <com.github.ysamlan.horizontalpager.HorizontalPager
+    <com.ditloids.HorizontalPager
         android:id="@+id/horizontal_pager"
         android:layout_width="fill_parent"
         android:layout_height="0px"
@@ -82,7 +82,7 @@
 			android:text="@string/countlv4"/>   		
         </RelativeLayout>        
         
-    </com.github.ysamlan.horizontalpager.HorizontalPager>
+    </com.ditloids.HorizontalPager>
     
         <RadioGroup
         android:id="@+id/tabs"
