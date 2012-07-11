@@ -7,7 +7,7 @@
     android:background="@drawable/fon_level"
     android:gravity="top" >        
     
-     <Button
+    <Button
         android:id="@+id/arrowButton"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
@@ -81,7 +81,7 @@
         
     </com.ditloids.HorizontalPager>
     
-        <RadioGroup
+    <RadioGroup
         android:id="@+id/tabs"
         android:layout_height="wrap_content"
         android:layout_width="180dp"       
