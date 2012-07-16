@@ -18,6 +18,13 @@
         android:layout_height="47dp"
         android:background="@drawable/opt_btn" 
         android:layout_marginLeft="130dp" 
-        android:layout_marginBottom="280dp"/>
+        android:layout_marginBottom="20dp"/>
+    
+    <Button android:id="@+id/RulesButton"
+        android:layout_width="220dp"
+        android:layout_height="47dp"
+        android:background="@drawable/rules_btn" 
+        android:layout_marginLeft="130dp" 
+        android:layout_marginBottom="213dp"/>    
     
 </LinearLayout>
