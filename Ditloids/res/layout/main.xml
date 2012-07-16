@@ -4,17 +4,20 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:gravity="bottom"
-    android:background="@drawable/fon"
-    android:padding="8dip" >
+    android:background="@drawable/fon">
 
     <Button android:id="@+id/StartButton"
-        android:layout_width="168dp"
-        android:layout_height="36dp"
-        android:background="@drawable/play_btn" android:layout_marginLeft="96dp" android:layout_marginBottom="10dp"/>
+        android:layout_width="220dp"
+        android:layout_height="47dp"
+        android:background="@drawable/play_btn" 
+        android:layout_marginLeft="130dp" 
+        android:layout_marginBottom="20dp"/>
 
     <Button android:id="@+id/SettingsButton"
-        android:layout_width="168dp"
-        android:layout_height="36dp"
-        android:background="@drawable/opt_btn" android:layout_marginLeft="96dp" android:layout_marginBottom="210dp"/>
+        android:layout_width="220dp"
+        android:layout_height="47dp"
+        android:background="@drawable/opt_btn" 
+        android:layout_marginLeft="130dp" 
+        android:layout_marginBottom="280dp"/>
     
 </LinearLayout>
