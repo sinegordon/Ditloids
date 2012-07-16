@@ -14,9 +14,10 @@ import android.widget.TextView;
  */
 public class LevelsActivity extends Activity {
     private RadioGroup mRadioGroup;
-	private HorizontalPager mPager; 
+	private HorizontalPager mPager;
+	private Game game;
 
-    private final HorizontalPager.OnScreenSwitchListener onScreenSwitchListener =
+	private final HorizontalPager.OnScreenSwitchListener onScreenSwitchListener =
             new HorizontalPager.OnScreenSwitchListener() {
                 @Override
                 public void onScreenSwitched(final int screen) {
@@ -39,7 +40,6 @@ public class LevelsActivity extends Activity {
                     }
                 }
             };
-
 
     private final RadioGroup.OnCheckedChangeListener onCheckedChangedListener =
             new RadioGroup.OnCheckedChangeListener() {
@@ -65,7 +65,6 @@ public class LevelsActivity extends Activity {
                 }
             };
 
-
     @Override
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,24 +74,28 @@ public class LevelsActivity extends Activity {
         mPager = (HorizontalPager) findViewById(R.id.horizontal_pager);
         mPager.setOnScreenSwitchListener(onScreenSwitchListener);
         
+        game = new Game(getApplicationContext(), 4);
        
-        
         // узнать, можно ли объединить 4 кода для задания шрифта в один
         final TextView countView1 = (TextView)findViewById(R.id.TextView1);
         countView1.setTypeface(Typeface.createFromAsset(
-        		getAssets(), "fonts/Ukrainian-Play.ttf"));  
+        		getAssets(), "fonts/Ukrainian-Play.ttf"));
+        countView1.setText(Integer.toString(game.AnswersCount(1)));
         
         final TextView countView2 = (TextView)findViewById(R.id.TextView2);
         countView2.setTypeface(Typeface.createFromAsset(
         		getAssets(), "fonts/Ukrainian-Play.ttf")); 
+        countView2.setText(Integer.toString(game.AnswersCount(2)));
         
         final TextView countView3 = (TextView)findViewById(R.id.TextView3);
         countView3.setTypeface(Typeface.createFromAsset(
-        		getAssets(), "fonts/Ukrainian-Play.ttf")); 
+        		getAssets(), "fonts/Ukrainian-Play.ttf"));
+        countView3.setText(Integer.toString(game.AnswersCount(3)));
         
         final TextView countView4 = (TextView)findViewById(R.id.TextView4);
         countView4.setTypeface(Typeface.createFromAsset(
-        		getAssets(), "fonts/Ukrainian-Play.ttf"));         
+        		getAssets(), "fonts/Ukrainian-Play.ttf"));
+        countView4.setText(Integer.toString(game.AnswersCount(4)));
         
 //        TextView tvName = (TextView) findViewById(R.id.TextView1);
 //        Typeface digitalFont = Typeface.createFromAsset(this.getAssets(), "fonts/digital.ttf");
