@@ -9,6 +9,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class Game {
+	// Количество уровней
+	private int countLevels = 0;
+	
+	// Массив уровней
+	private Level[] levels = null;
+	
     // Текущий уровень
     private Level currentLevel = null;
 
@@ -22,15 +28,35 @@ public class Game {
     private Context context = null;
 
     // Конструктор
-    public Game(Context context){
+    public Game(Context context, int _countLevels){
         Resources res = context.getResources();
+        countLevels = _countLevels;
         String prefsName = res.getString(R.string.prefs_name);
         settings = context.getSharedPreferences(prefsName, 0);
+        levels = new Level[countLevels];
+        for (int i = 0; i < countLevels; ++i) {
+        	levels[i] = new Level(context, i);
+        }       
+    }
+    
+    // Количество правильных ответов на уровень levelIndex
+    public int AnswersCount(int levelIndex){
+    	if(levelIndex <= countLevels){
+    		String ans_str = settings.getString("level" + Integer.toString(levelIndex), "");
+    		if(ans_str.equals(""))
+    			return 0;
+    		else{
+    			String[] ans = settings.getString("level" + Integer.toString(levelIndex), "").split("_");
+    			return ans.length;
+    		}
+    	}
+    	else
+    		return 0;
     }
 
     // Загружаем уровень с индексом levelIndex
     public void LoadLevel(int levelIndex){
-        currentLevel = new Level(context, levelIndex);
+        currentLevel = levels[levelIndex];
         String[] ans = settings.getString("level" + Integer.toString(levelIndex), "").split("_");
         answers = new boolean[currentLevel.GetDitloidsCount()];
         for(int i = 0; i < answers.length; i++)
@@ -41,7 +67,7 @@ public class Game {
         }
     }
 
-    // Сохраняем уровень с индексом levelIndex
+    // Сохраняем текущий уровень
     public void SaveLevel(){
         String ans = "";
         for(int i=0; i < answers.length; i++){
