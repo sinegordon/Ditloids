@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 //import android.widget.Toast;
 
@@ -36,10 +37,13 @@ public class TasksActivity extends Activity implements OnClickListener, OnItemCl
 		String[] values = new String[currentLevel.GetDitloidsCount()];
 		for(int i = 0; i < values.length; i++){
 			values[i] = currentLevel.GetDitloid(i);
+			TextView tv = (TextView) findViewById(R.id.label);
+			//tv.setText(values[i]);
+			listView.addView(tv);
 		}
 		// Выставляем дитлоиды на экран
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				R.layout.task_item, R.id.label, values);
+		//ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+		//		R.layout.task_item, R.id.label, values);
 		// Устанавливаем обработчики событий
 		findViewById(R.id.arrowButton).setOnClickListener(this);
 		listView.setOnItemClickListener(this);
