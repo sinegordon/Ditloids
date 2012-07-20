@@ -4,6 +4,7 @@
  android:layout_width="fill_parent"
  android:layout_height="fill_parent"
  android:orientation="vertical"
+<<<<<<< HEAD
  android:background="@drawable/fon_tasks">
  			
 <Button
@@ -13,6 +14,17 @@
      android:layout_marginTop="16dp"
      android:layout_marginLeft="16dp"        
      android:background="@drawable/arrow"/> 			
+=======
+  android:background="@drawable/fon_tasks">
+ 			
+    <Button
+        android:id="@+id/arrowButton"
+        android:layout_width="33dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"        
+        android:background="@drawable/arrow"/> 			
+>>>>>>> refs/remotes/origin/master
 
 <TextView
     android:id="@+id/textView1"
