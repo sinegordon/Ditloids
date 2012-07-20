@@ -34,8 +34,8 @@ public class Game {
         String prefsName = res.getString(R.string.prefs_name);
         settings = context.getSharedPreferences(prefsName, 0);
         levels = new Level[countLevels];
-        for (int i = 0; i < countLevels; ++i) {
-        	levels[i] = new Level(context, i);
+        for (int i = 1; i <= countLevels; ++i) {
+        	levels[i-1] = new Level(context, i);
         }       
     }
     
@@ -56,15 +56,16 @@ public class Game {
 
     // Загружаем уровень с индексом levelIndex
     public void LoadLevel(int levelIndex){
-        currentLevel = levels[levelIndex];
-        String[] ans = settings.getString("level" + Integer.toString(levelIndex), "").split("_");
+        currentLevel = levels[levelIndex-1];
         answers = new boolean[currentLevel.GetDitloidsCount()];
-        for(int i = 0; i < answers.length; i++)
-            answers[i] = false;
-        for(int i = 0; i < ans.length; i++){
-            int ind = Integer.parseInt(ans[i]);
-            answers[ind] = true;
-        }
+        String ans_str = settings.getString("level" + Integer.toString(levelIndex), "");
+        if(!ans_str.equals("")){
+        	String[] ans = ans_str.split("_");
+        	for(int i = 0; i < ans.length; i++){
+                int ind = Integer.parseInt(ans[i]);
+                answers[ind] = true;
+            }
+        };
     }
 
     // Сохраняем текущий уровень
@@ -73,10 +74,17 @@ public class Game {
         for(int i=0; i < answers.length; i++){
             if(answers[i])
                 ans = ans + Integer.toString(i) + "_";
-            ans = ans.substring(0, ans.length()-2);
         }
+        if(!ans.equals(""))
+        	ans = ans.substring(0, ans.length()-2);
         SharedPreferences.Editor editor = settings.edit();
         editor.putString("level" + Integer.toString(currentLevel.GetLevelIndex()), ans);
         editor.commit();
     }
+    
+    public Level GetCurrentLevel(){
+    	return currentLevel;
+    }
+    
+    
 }
