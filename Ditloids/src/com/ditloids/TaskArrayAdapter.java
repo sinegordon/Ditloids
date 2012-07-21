@@ -17,6 +17,7 @@ public class TaskArrayAdapter extends ArrayAdapter<String> {
         super(context, R.layout.task_item, values);
         this.context = context;
         this.values = values;
+        //  оличество еще не отвеченных на этом уровне
         this.notanscount = notanscount;
     }
 
@@ -26,8 +27,9 @@ public class TaskArrayAdapter extends ArrayAdapter<String> {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.task_item, parent, false);
         TextView textView = (TextView) rowView.findViewById(R.id.label);
+        // ≈сли отвеченный, ставим другой фон
         if(position >= notanscount)
-        	textView.setBackgroundResource(R.drawable.bg_task2);
+        	textView.setBackgroundResource(R.drawable.bg_task_check);
         textView.setText(values[position]);
         return rowView;
     }

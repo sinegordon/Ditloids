@@ -14,19 +14,5 @@
         android:gravity="center"
         android:background="@drawable/bg_task" >
     </TextView>
-<<<<<<< HEAD
-=======
-    
-    <!--TextView
-        android:id="@+id/number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_marginLeft="38dp"        
-        android:text="@+id/number"
-        android:textSize="14dp"
-        android:textColor="#254566">
-    </TextView-->    
->>>>>>> refs/remotes/origin/master
 
 </RelativeLayout>
