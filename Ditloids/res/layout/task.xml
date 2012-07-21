@@ -34,52 +34,13 @@
     android:layout_marginRight="93dp"
     android:textColor="#254566"          
     android:text="12" />     
-    
-<ListView
- android:id="@+id/mylist"
- android:layout_width="match_parent"
- android:layout_height="wrap_content"
- android:layout_marginTop="58dp"
- android:divider="@drawable/divider" >
-</ListView>
+
+	<ListView
+	 android:id="@+id/mylist"
+	 android:layout_width="match_parent"
+	 android:layout_height="wrap_content"
+	 android:layout_marginTop="58dp"
+	 android:divider="@drawable/divider" >
+	</ListView>
 
 </RelativeLayout>
-
-
-
-<!--?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
- xmlns:android="http://schemas.android.com/apk/res/android"
- android:layout_width="fill_parent"
- android:layout_height="fill_parent"
- android:orientation="vertical"
- android:background="@drawable/fon_tasks">
- 			
- 			<ImageView
-			    android:id="@+id/imageView1"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:layout_gravity="top"
-			    android:src="@drawable/header"/>
-   			 <Button
-     		   android:id="@+id/arrowButton"
-    		    android:layout_width="33dp"
-    		    android:layout_height="23dp"
-				android:layout_alignBottom="@+id/imageView1"
-				android:layout_alignLeft="@+id/imageView1"
-     		   android:background="@drawable/arrow"/> 			
-	
-		<ScrollView
-			 android:layout_width="match_parent"
-			 android:layout_height="match_parent"
-			 android:layout_alignParentTop="true"
- 			android:id="@+id/scroll">
-		<LinearLayout
-			 android:id="@+id/linLayout"
- 			android:layout_width="match_parent"
- 			android:layout_height="match_parent"
- 			android:orientation="vertical">
-		</LinearLayout>
-		
-		</ScrollView>
-</RelativeLayout-->

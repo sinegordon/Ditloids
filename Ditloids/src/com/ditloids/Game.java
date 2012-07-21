@@ -86,5 +86,12 @@ public class Game {
     	return currentLevel;
     }
     
+    public boolean GetAnswer(int ditloidIndex){
+    	if(ditloidIndex > -1 || ditloidIndex < answers.length)
+    		return answers[ditloidIndex];
+    	else
+    		return false;
+    }
+    
     
 }

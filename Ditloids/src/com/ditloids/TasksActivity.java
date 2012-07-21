@@ -1,18 +1,14 @@
 package com.ditloids;
 
+import java.util.ArrayDeque;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-//import android.view.View;
-//import android.widget.AdapterView;
-//import android.widget.AdapterView.OnItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 //import android.widget.Toast;
 
@@ -34,21 +30,26 @@ public class TasksActivity extends Activity implements OnClickListener, OnItemCl
 		// Выставляем номер уровня в надписи
 		((TextView)findViewById(R.id.textView1)).setText("Уровень "+Integer.toString(currentLevel.GetLevelIndex()));
 		// Заполняем массив дитлоидов
-		String[] values = new String[currentLevel.GetDitloidsCount()];
-		for(int i = 0; i < values.length; i++){
-			values[i] = currentLevel.GetDitloid(i);
-			TextView tv = (TextView) findViewById(R.id.label);
-			//tv.setText(values[i]);
-			listView.addView(tv);
+		ArrayDeque<String> ans = new ArrayDeque<String>();
+		int notAnswered = 0;
+		for(int i = 0; i < currentLevel.GetDitloidsCount(); i++){
+			if(!game.GetAnswer(i)){
+				ans.addFirst(currentLevel.GetDitloid(i));
+				notAnswered += 1;
+			}
+			else
+				ans.addLast(currentLevel.GetDitloid(i));				
 		}
+		String[] values = new String[ans.size()];
+		ans.toArray(values);
 		// Выставляем дитлоиды на экран
-		//ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-		//		R.layout.task_item, R.id.label, values);
+		TaskArrayAdapter ansadapter = new TaskArrayAdapter(this, values, notAnswered);
+		listView.setAdapter(ansadapter);
 		// Устанавливаем обработчики событий
 		findViewById(R.id.arrowButton).setOnClickListener(this);
 		listView.setOnItemClickListener(this);
 	}
-
+	
 	@Override
 	public void onClick(View view) {
 		switch (view.getId()) {
