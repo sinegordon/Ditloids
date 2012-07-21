@@ -10,5 +10,6 @@
     <string name="countlv1">13</string>
     <string name="countlv2">7</string>
     <string name="countlv3">18</string>
-    <string name="countlv4">3</string>          
+    <string name="countlv4">3</string>
+    <string name="hint">Этот день бывает не каждый год, а лишь спустя определенный период времени</string>                 
 </resources>
