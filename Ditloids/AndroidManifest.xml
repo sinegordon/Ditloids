@@ -20,6 +20,7 @@
         </activity>
         <activity android:name="com.ditloids.LevelsActivity"></activity>
         <activity android:name="com.ditloids.TasksActivity"></activity>
+        <activity android:name="com.ditloids.TaskActivity"></activity>
     </application>
 
 </manifest>

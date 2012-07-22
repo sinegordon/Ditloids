@@ -17,6 +17,9 @@ public class Game {
 	
     // Текущий уровень
     private Level currentLevel = null;
+    
+    // Индекс текущего дитлоида
+    private int currentDitloidIndex = -1;
 
     // Массив флагов ответов на текущий уровень
     private boolean[] answers = null;
@@ -76,7 +79,7 @@ public class Game {
                 ans = ans + Integer.toString(i) + "_";
         }
         if(!ans.equals(""))
-        	ans = ans.substring(0, ans.length()-2);
+        	ans = ans.substring(0, ans.length()-1);
         SharedPreferences.Editor editor = settings.edit();
         editor.putString("level" + Integer.toString(currentLevel.GetLevelIndex()), ans);
         editor.commit();
@@ -86,12 +89,25 @@ public class Game {
     	return currentLevel;
     }
     
+    public int GetCurrentDitloidIndex(){
+    	return currentDitloidIndex;
+    } 
+    
+    public void SetCurrentDitloidIndex(int currentDitloidIndex){
+    	this.currentDitloidIndex = currentDitloidIndex;
+    }
+    
     public boolean GetAnswer(int ditloidIndex){
     	if(ditloidIndex > -1 || ditloidIndex < answers.length)
     		return answers[ditloidIndex];
     	else
     		return false;
     }
-    
+
+    public void SetAnswer(int ditloidIndex, boolean answer){
+    	if(ditloidIndex > -1 || ditloidIndex < answers.length)
+    		answers[ditloidIndex] = answer;
+    }
+
     
 }

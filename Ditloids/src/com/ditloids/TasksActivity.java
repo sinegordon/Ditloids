@@ -15,6 +15,7 @@ import android.widget.TextView;
 public class TasksActivity extends Activity implements OnClickListener, OnItemClickListener {
 	/** Called when the activity is first created. */
 	private static Game game = null;
+	private Integer[] ditloidIndexes = null;
 	
 	public static void SetGame(Game _game){
 		game = _game;
@@ -31,17 +32,23 @@ public class TasksActivity extends Activity implements OnClickListener, OnItemCl
 		((TextView)findViewById(R.id.textView1)).setText("Уровень "+Integer.toString(currentLevel.GetLevelIndex()));
 		// Заполняем массив дитлоидов
 		ArrayDeque<String> ans = new ArrayDeque<String>();
+		ArrayDeque<Integer> ansIndexes = new ArrayDeque<Integer>();
 		int notAnswered = 0;
 		for(int i = 0; i < currentLevel.GetDitloidsCount(); i++){
 			if(!game.GetAnswer(i)){
 				ans.addFirst(currentLevel.GetDitloid(i));
+				ansIndexes.addFirst(Integer.valueOf(i));
 				notAnswered += 1;
 			}
-			else
-				ans.addLast(currentLevel.GetDitloid(i));				
+			else{
+				ans.addLast(currentLevel.GetDitloid(i));
+				ansIndexes.addLast(Integer.valueOf(i));
+			}
 		}
 		String[] values = new String[ans.size()];
+		ditloidIndexes = new Integer[ansIndexes.size()];
 		ans.toArray(values);
+		ansIndexes.toArray(ditloidIndexes);
 		// Выставляем дитлоиды на экран
 		TaskArrayAdapter ansadapter = new TaskArrayAdapter(this, values, notAnswered);
 		listView.setAdapter(ansadapter);
@@ -66,6 +73,10 @@ public class TasksActivity extends Activity implements OnClickListener, OnItemCl
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		//((TextView)findViewById(R.id.textView1)).setText("Клик"+Integer.toString(arg2));
+		game.SetCurrentDitloidIndex(ditloidIndexes[arg2].intValue());
+		TaskActivity.SetGame(game);
+    	startActivity(new Intent(TasksActivity.this, TaskActivity.class));
+    	finish();
 	}
 	
 }

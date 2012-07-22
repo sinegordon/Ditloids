@@ -48,7 +48,7 @@
     android:text="29 Д в Ф в В Г"
     android:background="@drawable/bg_task_with_hint"/>
 
-<!--TextView
+<TextView
     android:id="@+id/textHint"
     android:layout_width="350dp"
     android:layout_height="wrap_content"
@@ -57,10 +57,10 @@
     android:layout_centerHorizontal="true"
     android:layout_marginBottom="35dp"
     android:textColor="#60778c"
-    android:text="@string/hint" /-->
+    android:text="@string/hint" />
 
 <Button
-    android:id="@+id/textView4"
+    android:id="@+id/buttonHint"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:gravity="center"      
