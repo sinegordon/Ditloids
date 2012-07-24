@@ -36,7 +36,7 @@ public class Level {
     // Проверяем ответ пользователя  probablyAnswer на дитлоид с индексом ditloidIndex
     public boolean Verify(int ditloidIndex, String probablyAnswer){
         if(ditloidIndex > ditloids.size() || ditloidIndex < 0 ) return false;
-        if(ditloids.get(ditloidIndex).equals(probablyAnswer)){
+        if(ditloids.get(ditloidIndex).toLowerCase().equals(probablyAnswer.toLowerCase())){
             return true;
         }else
             return false;
