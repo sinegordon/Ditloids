@@ -4,9 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
 
 public class Game {
 	// Количество уровней
@@ -18,11 +15,17 @@ public class Game {
     // Текущий уровень
     private Level currentLevel = null;
     
-    // Индекс текущего дитлоида
+    // Индекс текущего дитлоида на текущем уровне
     private int currentDitloidIndex = -1;
 
     // Массив флагов ответов на текущий уровень
     private boolean[] answers = null;
+    
+    // Имеющееся количество подсказок
+    private int countHints = 0;
+    
+    // Количество правильно отвеченных дитлоидов после получения предыдущей подсказки
+    private int countRight = 0; 
 
     // Объект настроек приложения
     private SharedPreferences settings = null;
@@ -36,13 +39,15 @@ public class Game {
         countLevels = _countLevels;
         String prefsName = res.getString(R.string.prefs_name);
         settings = context.getSharedPreferences(prefsName, 0);
+        countHints = settings.getInt("hints", 0);
+        countRight = settings.getInt("right", 0);
         levels = new Level[countLevels];
         for (int i = 1; i <= countLevels; ++i) {
         	levels[i-1] = new Level(context, i);
         }       
     }
     
-    // Количество правильных ответов на уровень levelIndex
+    // Количество правильных ответов на уровень levelIndex сохраненных в настройках
     public int AnswersCount(int levelIndex){
     	if(levelIndex <= countLevels){
     		String ans_str = settings.getString("level" + Integer.toString(levelIndex), "");
@@ -89,12 +94,33 @@ public class Game {
     	return currentLevel;
     }
     
+    public int GetCountHints(){
+    	return countHints;
+    }
+
+    public void IncrementCountHints(){
+    	countHints += 1;
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putInt("hints", countHints);
+        editor.commit();
+    }
+
+    public void DecrementCountHints(){
+    	if(countHints > 0){
+    		countHints -= 1;
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putInt("hints", countHints);
+            editor.commit();
+    	}
+    }
+
     public int GetCurrentDitloidIndex(){
     	return currentDitloidIndex;
     } 
     
     public void SetCurrentDitloidIndex(int currentDitloidIndex){
-    	this.currentDitloidIndex = currentDitloidIndex;
+    	if(currentDitloidIndex > -1 || currentDitloidIndex < answers.length)
+    		this.currentDitloidIndex = currentDitloidIndex;
     }
     
     public boolean GetAnswer(int ditloidIndex){
@@ -108,6 +134,16 @@ public class Game {
     	if(ditloidIndex > -1 || ditloidIndex < answers.length)
     		answers[ditloidIndex] = answer;
     }
-
+    
+    public int GetCountRight(){
+    	return countRight;
+    }
+    
+    public void IncrementCountRight(){
+    	countRight += 1;
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putInt("right", countRight);
+        editor.commit();
+    }
     
 }

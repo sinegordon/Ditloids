@@ -12,7 +12,7 @@ public class Level {
     private ArrayList<String> ditloids = null;
 
     // Список подсказок
-    private ArrayList<String> help = null;
+    private ArrayList<String> hints = null;
     
     private int levelIndex = 0;
 
@@ -30,6 +30,7 @@ public class Level {
                 ditloids.add(parts[0]);
             }
         }
+        // Здесь вставить загрузку подсказок
     }
 
     // Проверяем ответ пользователя  probablyAnswer на дитлоид с индексом ditloidIndex
@@ -56,12 +57,19 @@ public class Level {
             return "";
     }
 
-    // Получить ответ на дитлоид с индексом ditloidIndex, если он уже отгадан (иначе пустая строка)
+    // Получить ответ на дитлоид с индексом ditloidIndex, если он уже отгадан (иначе белиберда)
     public String GetDitloidAnswer(int ditloidIndex){
-        if(ditloidIndex > ditloids.size() || ditloidIndex < 0) return "";
+        if(ditloidIndex > ditloids.size() || ditloidIndex < 0) return "Подсказка пока не определена";
         return ditloids.get(ditloidIndex);
     }
 
+    // Получить подсказку на дитлоид с индексом ditloidIndex, если он уже отгадан (иначе пустая строка)
+    public String GetDitloidHint(int ditloidIndex){
+        if(ditloidIndex > hints.size() || ditloidIndex < 0) return "";
+        return hints.get(ditloidIndex);
+    }
+
+    
     // Общее количество дитлоидов
     public int GetDitloidsCount(){
         return ditloids.size();

@@ -30,11 +30,13 @@ public class TasksActivity extends Activity implements OnClickListener, OnItemCl
 		Level currentLevel = game.GetCurrentLevel();
 		// Выставляем номер уровня в надписи
 		((TextView)findViewById(R.id.textView1)).setText("Уровень "+Integer.toString(currentLevel.GetLevelIndex()));
+		// Вставляем количество подсказок в надписи
+		((TextView)findViewById(R.id.textView2)).setText(Integer.toString(game.GetCountHints()));
 		// Заполняем массив дитлоидов
 		ArrayDeque<String> ans = new ArrayDeque<String>();
 		ArrayDeque<Integer> ansIndexes = new ArrayDeque<Integer>();
 		int notAnswered = 0;
-		for(int i = 0; i < currentLevel.GetDitloidsCount(); i++){
+		for(int i = currentLevel.GetDitloidsCount()-1; i > -1; i--){
 			if(!game.GetAnswer(i)){
 				ans.addFirst(currentLevel.GetDitloid(i));
 				ansIndexes.addFirst(Integer.valueOf(i));
@@ -61,7 +63,9 @@ public class TasksActivity extends Activity implements OnClickListener, OnItemCl
 	public void onClick(View view) {
 		switch (view.getId()) {
 	    case R.id.arrowButton:
+	    	// Сохраняем уровень
 	    	game.SaveLevel();
+	    	// На экран выбора уровня
 	    	startActivity(new Intent(TasksActivity.this, LevelsActivity.class));
 	    	finish();
 	    	break;
@@ -72,9 +76,10 @@ public class TasksActivity extends Activity implements OnClickListener, OnItemCl
 
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-		//((TextView)findViewById(R.id.textView1)).setText("Клик"+Integer.toString(arg2));
+		// Устанавливаем индекс текущего дитлоида на текущем уровне
 		game.SetCurrentDitloidIndex(ditloidIndexes[arg2].intValue());
 		TaskActivity.SetGame(game);
+		// На экран ввода ответа
     	startActivity(new Intent(TasksActivity.this, TaskActivity.class));
     	finish();
 	}
