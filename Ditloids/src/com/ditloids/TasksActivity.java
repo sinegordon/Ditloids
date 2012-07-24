@@ -3,6 +3,7 @@ package com.ditloids;
 import java.util.ArrayDeque;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -82,6 +83,11 @@ public class TasksActivity extends Activity implements OnClickListener, OnItemCl
 		// На экран ввода ответа
     	startActivity(new Intent(TasksActivity.this, TaskActivity.class));
     	finish();
+	}
+    
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {  
+    	super.onConfigurationChanged(newConfig);  
 	}
 	
 }

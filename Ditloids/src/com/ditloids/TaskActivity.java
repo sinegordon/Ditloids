@@ -2,6 +2,7 @@ package com.ditloids;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -94,4 +95,8 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 		return false;
 	}
 
+    @Override
+	public void onConfigurationChanged(Configuration newConfig) {  
+    	super.onConfigurationChanged(newConfig);  
+	}
 }

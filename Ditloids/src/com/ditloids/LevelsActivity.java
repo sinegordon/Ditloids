@@ -2,6 +2,7 @@ package com.ditloids;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -140,4 +141,10 @@ public class LevelsActivity extends Activity implements OnClickListener {
 	    	break;
 	    }
 	}
+	
+    @Override
+	public void onConfigurationChanged(Configuration newConfig) {  
+    	super.onConfigurationChanged(newConfig);  
+	}
+
 }
