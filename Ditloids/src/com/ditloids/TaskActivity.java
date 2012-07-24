@@ -68,7 +68,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 	@Override
 	public boolean onKey(View v, int keyCode, KeyEvent event) {
 		// Если нажат Enter
-		if(keyCode == KeyEvent.KEYCODE_ENTER){
+		if(keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN){
 			// Если ответ верный
 			if(game.GetCurrentLevel().Verify(game.GetCurrentDitloidIndex(), ((EditText)findViewById(R.id.editText1)).getText().toString())){
 				// Показываем сообщение что верный ответ
