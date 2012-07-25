@@ -97,6 +97,14 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 			};
 			return true;
 		};
+		// Если нажата хардварная кнопка назад (вопрос будет ли работать ???)
+	    if (keyCode == KeyEvent.KEYCODE_BACK) {
+	    	// На экран уровня
+	    	startActivity(new Intent(TaskActivity.this, TasksActivity.class));
+	    	finish();       
+	    } else {
+	        return super.onKeyDown(keyCode, event);
+	    }
 		return false;
 	}
 
