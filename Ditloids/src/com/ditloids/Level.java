@@ -65,7 +65,7 @@ public class Level {
 
     // Получить подсказку на дитлоид с индексом ditloidIndex, если он уже отгадан (иначе пустая строка)
     public String GetDitloidHint(int ditloidIndex){
-        if(ditloidIndex > hints.size() || ditloidIndex < 0) return "";
+        if(ditloidIndex > hints.size() || ditloidIndex < 0 || hints == null) return "Подсказка где-то рядом ;)";
         return hints.get(ditloidIndex);
     }
 
