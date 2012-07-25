@@ -8,6 +8,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnKeyListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 import android.widget.EditText;
 import android.widget.Button;
@@ -38,6 +39,10 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 		((TextView)findViewById(R.id.textView2)).setText(Integer.toString(game.GetCountHints()));
 		// Заполняем поле дитлоида
 		((TextView)findViewById(R.id.textView3)).setText(currentLevel.GetDitloid(game.GetCurrentDitloidIndex()));
+		// Показываем клавиатуру
+		InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+		//imm.showSoftInput(findViewById(R.id.editText1), InputMethodManager.SHOW_FORCED);
+		imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
 		// Устанавливаем обработчики событий
 		findViewById(R.id.arrowButton).setOnClickListener(this);
 		findViewById(R.id.buttonHint).setOnClickListener(this);
