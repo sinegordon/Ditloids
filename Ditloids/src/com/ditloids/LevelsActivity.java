@@ -2,9 +2,12 @@ package com.ditloids;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnKeyListener;
 import android.graphics.Typeface;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -13,7 +16,7 @@ import android.widget.TextView;
  * A more complex demo including using a RadioGroup as "tabs" for the pager and showing the
  * dual-scrolling capabilities when a vertically scrollable element is nested inside the pager.
  */
-public class LevelsActivity extends Activity implements OnClickListener {
+public class LevelsActivity extends Activity implements OnClickListener, OnKeyListener {
     private RadioGroup radioGroup;
 	private HorizontalPager pager;
 	private Game game;
@@ -114,7 +117,8 @@ public class LevelsActivity extends Activity implements OnClickListener {
 	public void onClick(View view) {
 		switch (view.getId()) {
 	    case R.id.arrowButton:
-	    	startActivity(new Intent(LevelsActivity.this, MainActivity.class));    	
+	    	startActivity(new Intent(LevelsActivity.this, MainActivity.class));  
+	    	finish();
 	    	break;
 	    case R.id.level1button:
 	    	TasksActivity.SetGame(game);
@@ -140,4 +144,23 @@ public class LevelsActivity extends Activity implements OnClickListener {
 	    	break;
 	    }
 	}
+	
+    @Override
+	public void onConfigurationChanged(Configuration newConfig) {  
+    	super.onConfigurationChanged(newConfig);  
+	}
+
+	@Override
+	public boolean onKey(View v, int keyCode, KeyEvent event) {
+		// Если нажата хардварная кнопка назад (вопрос будет ли работать ???)
+	    if (keyCode == KeyEvent.KEYCODE_BACK) {
+	    	// На главный экран
+	    	startActivity(new Intent(LevelsActivity.this, MainActivity.class));
+	    	finish();       
+	    } else {
+	        return super.onKeyDown(keyCode, event);
+	    }
+		return false;
+	}
+
 }

@@ -3,16 +3,19 @@ package com.ditloids;
 import java.util.ArrayDeque;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnKeyListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 //import android.widget.Toast;
 
-public class TasksActivity extends Activity implements OnClickListener, OnItemClickListener {
+public class TasksActivity extends Activity implements OnClickListener, OnItemClickListener, OnKeyListener {
 	/** Called when the activity is first created. */
 	private static Game game = null;
 	private Integer[] ditloidIndexes = null;
@@ -82,6 +85,26 @@ public class TasksActivity extends Activity implements OnClickListener, OnItemCl
 		// На экран ввода ответа
     	startActivity(new Intent(TasksActivity.this, TaskActivity.class));
     	finish();
+	}
+    
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {  
+    	super.onConfigurationChanged(newConfig);  
+	}
+
+	@Override
+	public boolean onKey(View v, int keyCode, KeyEvent event) {
+		// Если нажата хардварная кнопка назад (вопрос будет ли работать ???)
+	    if (keyCode == KeyEvent.KEYCODE_BACK) {
+	    	// Сохраняем уровень
+	    	game.SaveLevel();
+	    	// На экран выбора уровня
+	    	startActivity(new Intent(TasksActivity.this, LevelsActivity.class));
+	    	finish();
+	    } else {
+	        return super.onKeyDown(keyCode, event);
+	    }
+		return false;
 	}
 	
 }

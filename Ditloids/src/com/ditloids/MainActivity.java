@@ -2,6 +2,8 @@ package com.ditloids;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.media.audiofx.AudioEffect.OnControlStatusChangeListener;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -35,4 +37,9 @@ public class MainActivity extends Activity implements OnClickListener {
 	    	break;
 	    }	
 	}
+	
+   @Override
+    public void onConfigurationChanged(Configuration newConfig) {  
+        super.onConfigurationChanged(newConfig); 
+   }
 }
