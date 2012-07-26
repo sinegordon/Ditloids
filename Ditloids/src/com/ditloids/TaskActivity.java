@@ -58,13 +58,15 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 	    	finish();
 	    	break;
 	    case R.id.buttonHint:
-	    	// Уменьшаем количество доступных подсказок
-	    	game.DecrementCountHints();
-	    	// Меняем виджеты
-	    	((Button)findViewById(R.id.buttonHint)).setVisibility(View.INVISIBLE);
-	    	((TextView)findViewById(R.id.textHint)).setVisibility(View.VISIBLE);
-	    	// Показываем подсказку
-	    	((TextView)findViewById(R.id.textHint)).setText(game.GetCurrentLevel().GetDitloidHint(game.GetCurrentDitloidIndex()));
+	    	if(game.GetCountHints() > 0){
+		    	// Уменьшаем количество доступных подсказок
+		    	game.DecrementCountHints();
+		    	// Меняем виджеты
+		    	((Button)findViewById(R.id.buttonHint)).setVisibility(View.INVISIBLE);
+		    	((TextView)findViewById(R.id.textHint)).setVisibility(View.VISIBLE);
+		    	// Показываем подсказку
+		    	((TextView)findViewById(R.id.textHint)).setText(game.GetCurrentLevel().GetDitloidHint(game.GetCurrentDitloidIndex()));
+	    	};
 	    	break;
 	    default:
 	    	break;

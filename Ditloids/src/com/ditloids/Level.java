@@ -22,7 +22,9 @@ public class Level {
         levelIndex = _levelIndex;
         Resources res = context.getResources();
         String[] levels = res.getStringArray(R.array.levels);
+        String[] mashints = res.getStringArray(R.array.hints);
         ditloids = new ArrayList<String>();
+        hints = new ArrayList<String>();
         String str = Integer.toString(levelIndex);
         for(int i = 0; i < levels.length; i++){
             String[] parts = levels[i].split("_");
@@ -30,7 +32,12 @@ public class Level {
                 ditloids.add(parts[0]);
             }
         }
-        // Здесь вставить загрузку подсказок
+        for(int i = 0; i < mashints.length; i++){
+            String[] parts = mashints[i].split("_");
+            if(parts[1].equals(str)){
+                hints.add(parts[0]);
+            }
+        }
     }
 
     // Проверяем ответ пользователя  probablyAnswer на дитлоид с индексом ditloidIndex

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="levels">
+    <string-array name="hints">
 		<item>Математическое ругательство_1</item>
 		<item>Для Лилы из м/ф «Футурама» ответ очевиден_1</item>
 		<item>Нелюбимая поговорка любого сапера_1</item>
