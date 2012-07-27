@@ -24,6 +24,9 @@ public class Game {
     // Имеющееся количество подсказок
     private int countHints = 0;
     
+    // За сколько ответов дается подсказка
+    private int divisor = 3;
+    
     // Количество правильно отвеченных дитлоидов после получения предыдущей подсказки
     private int countRight = 0; 
 
@@ -144,6 +147,10 @@ public class Game {
         SharedPreferences.Editor editor = settings.edit();
         editor.putInt("right", countRight);
         editor.commit();
+    }
+    
+    public int GetDivisor(){
+    	return divisor;
     }
     
 }

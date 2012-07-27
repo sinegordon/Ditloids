@@ -58,6 +58,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 	    	finish();
 	    	break;
 	    case R.id.buttonHint:
+	    	// Если есть подсказки
 	    	if(game.GetCountHints() > 0){
 		    	// Уменьшаем количество доступных подсказок
 		    	game.DecrementCountHints();
@@ -86,7 +87,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 				// Повышаем количество верных ответов
 				game.IncrementCountRight();
 				// Если это верный ответ кратный трем повышаем количество доступных подсказок
-				if(game.GetCountRight() % 3 == 0)
+				if(game.GetCountRight() % game.GetDivisor() == 0)
 					game.IncrementCountHints();
 				TasksActivity.SetGame(game);
 				// На экран уровня
