@@ -3,28 +3,19 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:gravity="bottom"
-    android:background="@drawable/fon">
+    android:background="@drawable/fon"
+    android:gravity="center">
 
     <Button android:id="@+id/StartButton"
-        android:layout_width="220dp"
-        android:layout_height="47dp"
-        android:background="@drawable/play_btn" 
-        android:layout_marginLeft="130dp" 
-        android:layout_marginBottom="20dp"/>
+		style="@style/startBtn"		 
+        android:background="@drawable/play_btn"
+        android:layout_marginTop="90dp" />
 
     <Button android:id="@+id/SettingsButton"
-        android:layout_width="220dp"
-        android:layout_height="47dp"
-        android:background="@drawable/opt_btn" 
-        android:layout_marginLeft="130dp" 
-        android:layout_marginBottom="20dp"/>
+		style="@style/startBtn" 
+        android:background="@drawable/opt_btn" />
     
     <Button android:id="@+id/RulesButton"
-        android:layout_width="220dp"
-        android:layout_height="47dp"
-        android:background="@drawable/rules_btn" 
-        android:layout_marginLeft="130dp" 
-        android:layout_marginBottom="213dp"/>    
-    
+		style="@style/startBtn" 
+        android:background="@drawable/rules_btn"  />        
 </LinearLayout>
