@@ -6,13 +6,13 @@
  android:orientation="vertical"
  android:background="@drawable/fon_tasks">
  			
-<Button
-     android:id="@+id/arrowButton"
-     android:layout_width="33dp"
-     android:layout_height="23dp"
-     android:layout_marginTop="16dp"
-     android:layout_marginLeft="16dp"        
-     android:background="@drawable/arrow"/> 			
+ <Button
+    android:id="@+id/arrowButton"
+    android:layout_width="50dp"
+    android:layout_height="35dp"
+    android:layout_marginTop="25dp"
+    android:layout_marginLeft="25dp"        
+    android:background="@drawable/arrow"/>			
 
 <TextView
     android:id="@+id/textView1"
@@ -22,24 +22,25 @@
     android:gravity="center"
     android:layout_marginTop="16dp"    
     android:text="Уровень 1"
-    android:textSize="20dp" />   
+    android:textSize="32dp" />   
     
 <TextView
     android:id="@+id/textView2"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
 	android:layout_alignParentRight="true"   
-    android:gravity="center"	 
-    android:layout_marginTop="16dp"
-    android:layout_marginRight="93dp"
-    android:textColor="#254566"          
+    android:gravity="center"
+    android:textSize="25dp"    	 
+    android:layout_marginTop="26dp"
+    android:layout_marginRight="145dp"
+    android:textColor="#00ff00"          
     android:text="12" />     
     
 <ListView
 	android:id="@+id/mylist"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
-	android:layout_marginTop="58dp"
+	android:layout_marginTop="87dp"
 	android:cacheColorHint="#00000000"
 	android:divider="@drawable/divider">
 </ListView>

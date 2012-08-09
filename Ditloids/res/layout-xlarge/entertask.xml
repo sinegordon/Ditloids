@@ -5,13 +5,13 @@
     android:orientation="vertical"
     android:background="@drawable/fon_tasks">
 
-<Button
-     android:id="@+id/arrowButton"
-     android:layout_width="33dp"
-     android:layout_height="23dp"
-     android:layout_marginTop="16dp"
-     android:layout_marginLeft="16dp"        
-     android:background="@drawable/arrow"/> 			
+ <Button
+    android:id="@+id/arrowButton"
+    android:layout_width="50dp"
+    android:layout_height="35dp"
+    android:layout_marginTop="25dp"
+    android:layout_marginLeft="25dp"        
+    android:background="@drawable/arrow"/>			
 
 <TextView
     android:id="@+id/textView1"
@@ -21,18 +21,19 @@
     android:gravity="center"
     android:layout_marginTop="16dp"    
     android:text="Уровень 1"
-    android:textSize="20dp" />   
+    android:textSize="32dp" />   
     
 <TextView
     android:id="@+id/textView2"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
 	android:layout_alignParentRight="true"   
-    android:gravity="center"	 
-    android:layout_marginTop="16dp"
-    android:layout_marginRight="93dp"
-    android:textColor="#254566"          
-    android:text="12" />
+    android:gravity="center"
+    android:textSize="25dp"    	 
+    android:layout_marginTop="26dp"
+    android:layout_marginRight="145dp"
+    android:textColor="#00ff00"          
+    android:text="12" />  
 
 <TextView
     android:id="@+id/textView3"
@@ -42,8 +43,8 @@
     android:layout_centerHorizontal="true"
     android:gravity="center_horizontal"
     android:paddingTop="15dp"
-    android:layout_marginTop="70dp"
-    android:textSize="50dp"
+    android:layout_marginTop="130dp"
+    android:textSize="70dp"
     android:textColor="#254566"    
     android:text="29 Д в Ф в В Г"
     android:background="@drawable/bg_task_with_hint"/>
@@ -55,7 +56,7 @@
     android:gravity="center"      
     android:layout_alignBottom="@+id/textView3"
     android:layout_centerHorizontal="true"
-    android:layout_marginBottom="35dp"
+    android:layout_marginBottom="45dp"
     android:textColor="#60778c"
     android:text="@string/hint" />
 
@@ -66,9 +67,20 @@
     android:gravity="center"      
     android:layout_alignBottom="@+id/textView3"
     android:layout_centerHorizontal="true"
-    android:layout_marginBottom="35dp"
+    android:layout_marginBottom="45dp"
     android:textColor="#60778c"
     android:background="@drawable/hint" />
+
+<Button
+    android:id="@+id/buttonCheck"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignLeft="@+id/editText1"
+    android:layout_below="@+id/editText1"
+    android:layout_marginTop="-15dp"
+    android:background="@drawable/check"
+    android:gravity="center"
+    android:textColor="#60778c" />
 
 <EditText
     android:id="@+id/editText1"
@@ -77,9 +89,9 @@
     android:layout_below="@+id/textView3"
     android:layout_centerHorizontal="true"
     android:gravity="left"
-    android:padding="12dp"
-    android:layout_marginTop="30dp"
-    android:textSize="16dp"
+    android:padding="20dp"
+    android:layout_marginTop="40dp"
+    android:textSize="28dp"
     android:textColor="#212a33"    
     android:ems="10"
     android:background="@drawable/bg_input" 
@@ -87,5 +99,7 @@
 
     <requestFocus />
 </EditText>
+
+
 
 </RelativeLayout>
