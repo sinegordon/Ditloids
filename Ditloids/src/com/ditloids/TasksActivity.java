@@ -4,6 +4,7 @@ import java.util.ArrayDeque;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -28,6 +29,7 @@ public class TasksActivity extends Activity implements OnClickListener, OnItemCl
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.task);
+        this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
 		ListView listView = (ListView) findViewById(R.id.mylist);
 		// Узнаем текущий уровень
 		Level currentLevel = game.GetCurrentLevel();

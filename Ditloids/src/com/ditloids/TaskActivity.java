@@ -3,6 +3,7 @@ package com.ditloids;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -27,6 +28,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.entertask);
+        this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
     	((Button)findViewById(R.id.buttonHint)).setVisibility(View.VISIBLE);
     	((TextView)findViewById(R.id.textHint)).setVisibility(View.INVISIBLE);
     	if(game.GetCountHints() == 0)
@@ -94,6 +96,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 	    case R.id.buttonCheck:
 			// Если ответ верный
 			if(game.GetCurrentLevel().Verify(game.GetCurrentDitloidIndex(), ((EditText)findViewById(R.id.editText1)).getText().toString())){
+				game.PlaySound(1);
 				// Перекрываем возможность редактирования поля ввода
 				((EditText)findViewById(R.id.editText1)).setKeyListener(null);
 				// Убираем клавиатуру
@@ -118,6 +121,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 		    	//finish();
 			}
 			else{
+				game.PlaySound(2);
 				// Меняем фон кнопки
 				findViewById(R.id.buttonCheck).setBackgroundResource(R.drawable.check_wrong);
 				// Показываем сообщение что неверный ответ

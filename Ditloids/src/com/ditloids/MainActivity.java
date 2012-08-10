@@ -3,6 +3,7 @@ package com.ditloids;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.media.AudioManager;
 import android.media.audiofx.AudioEffect.OnControlStatusChangeListener;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -19,6 +20,7 @@ public class MainActivity extends Activity implements OnClickListener {
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         setContentView(R.layout.main);
+        this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
         Button startButton = (Button)findViewById(R.id.StartButton);
         startButton.setOnClickListener(this);
         //DisplayMetrics metrics = new DisplayMetrics();

@@ -3,6 +3,7 @@ package com.ditloids;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -73,6 +74,7 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.levels);
+        this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
         radioGroup = (RadioGroup) findViewById(R.id.tabs);
         radioGroup.setOnCheckedChangeListener(onCheckedChangedListener);
         pager = (HorizontalPager) findViewById(R.id.horizontal_pager);
@@ -151,7 +153,7 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 
 	@Override
 	public boolean onKey(View v, int keyCode, KeyEvent event) {
-		// Если нажата хардварная кнопка назад (вопрос будет ли работать ???)
+		// Если нажата хардварная кнопка назад
 	    if (keyCode == KeyEvent.KEYCODE_BACK) {
 	    	// На главный экран
 	    	startActivity(new Intent(LevelsActivity.this, MainActivity.class));

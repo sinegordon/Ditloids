@@ -3,6 +3,10 @@ package com.ditloids;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.media.AudioManager;
+import android.media.SoundPool;
+import android.os.Bundle;
+import android.content.Intent;
 
 
 public class Game {
@@ -35,6 +39,12 @@ public class Game {
 
     // Объект контекста игры
     private Context context = null;
+    
+    // Пул мелодий
+    private SoundPool sounds = null;
+    
+    // Число звуков
+    private int countSounds = 2;
 
     // Конструктор
     public Game(Context context, int _countLevels){
@@ -47,7 +57,10 @@ public class Game {
         levels = new Level[countLevels];
         for (int i = 1; i <= countLevels; ++i) {
         	levels[i-1] = new Level(context, i);
-        }       
+        };
+        sounds = new SoundPool(countSounds, AudioManager.STREAM_MUSIC, 0);
+        sounds.load(context, R.raw.right, 1);
+        sounds.load(context, R.raw.wrong, 1);
     }
     
     // Количество правильных ответов на уровень levelIndex сохраненных в настройках
@@ -161,4 +174,14 @@ public class Game {
     	return divisor;
     }
     
+    public void PlaySound(int soundId){
+    	if(soundId < 0 || soundId > countSounds) return;
+        /*AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+        float actualVolume = (float) audioManager
+                .getStreamVolume(AudioManager.STREAM_MUSIC);
+        float maxVolume = (float) audioManager
+                .getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+        float volume = actualVolume / maxVolume;*/
+    	sounds.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f);
+    }
 }
