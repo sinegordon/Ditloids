@@ -47,9 +47,10 @@ public class Game {
     private int countSounds = 2;
 
     // Конструктор
-    public Game(Context context, int _countLevels){
+    public Game(Context context, int countLevels){
         Resources res = context.getResources();
-        countLevels = _countLevels;
+        this.context = context;
+        this.countLevels = countLevels;
         String prefsName = res.getString(R.string.prefs_name);
         settings = context.getSharedPreferences(prefsName, 0);
         countHints = settings.getInt("hints", 0);
@@ -176,12 +177,10 @@ public class Game {
     
     public void PlaySound(int soundId){
     	if(soundId < 0 || soundId > countSounds) return;
-        /*AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
-        float actualVolume = (float) audioManager
-                .getStreamVolume(AudioManager.STREAM_MUSIC);
-        float maxVolume = (float) audioManager
-                .getStreamMaxVolume(AudioManager.STREAM_MUSIC);
-        float volume = actualVolume / maxVolume;*/
-    	sounds.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f);
+        AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+        float actualVolume = (float) audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+        float maxVolume = (float) audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+        float volume = actualVolume / maxVolume;
+    	sounds.play(soundId, volume, volume, 1, 0, 1.0f);
     }
 }
