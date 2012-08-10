@@ -21,8 +21,8 @@ public class MainActivity extends Activity implements OnClickListener {
         setContentView(R.layout.main);
         Button startButton = (Button)findViewById(R.id.StartButton);
         startButton.setOnClickListener(this);
-        DisplayMetrics metrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        //DisplayMetrics metrics = new DisplayMetrics();
+        //getWindowManager().getDefaultDisplay().getMetrics(metrics);
     }
 
 	@Override

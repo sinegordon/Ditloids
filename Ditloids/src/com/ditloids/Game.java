@@ -65,6 +65,14 @@ public class Game {
     		return 0;
     }
 
+    // Возвращаем уровень с индексом levelIndex    
+    public Level GetLevel(int levelIndex){
+    	if(levelIndex > 0 && levelIndex <= countLevels && !levels.equals(null))
+    		return levels[levelIndex-1];
+    	else
+    		return null;
+    }
+    
     // Загружаем уровень с индексом levelIndex
     public void LoadLevel(int levelIndex){
         currentLevel = levels[levelIndex-1];

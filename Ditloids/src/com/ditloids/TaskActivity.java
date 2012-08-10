@@ -37,6 +37,11 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 		((TextView)findViewById(R.id.textView1)).setText("Уровень "+Integer.toString(currentLevel.GetLevelIndex()));
 		// Вставляем количество подсказок в надписи
 		((TextView)findViewById(R.id.textView2)).setText(Integer.toString(game.GetCountHints()));
+		// Устанавливаем обработчики событий
+		findViewById(R.id.buttonCheck).setOnClickListener(this);
+		findViewById(R.id.arrowButton).setOnClickListener(this);
+		findViewById(R.id.buttonHint).setOnClickListener(this);
+		findViewById(R.id.editText1).setOnKeyListener(this);
 		// Если дитлоид не отгадан
 		if(!game.GetAnswer(game.GetCurrentDitloidIndex())){
 			// Заполняем поле дитлоида
@@ -51,14 +56,9 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 			// Выставляем правильный ответ в поле ввода
 			((EditText)findViewById(R.id.editText1)).setText(currentLevel.GetDitloidAnswer(game.GetCurrentDitloidIndex()));
 			// Перекрываем возможность редактирования поля ввода
-			((EditText)findViewById(R.id.editText1)).setEnabled(false);
+			((EditText)findViewById(R.id.editText1)).setKeyListener(null);
 		}
 		//imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
-		// Устанавливаем обработчики событий
-		findViewById(R.id.buttonCheck).setOnClickListener(this);
-		findViewById(R.id.arrowButton).setOnClickListener(this);
-		findViewById(R.id.buttonHint).setOnClickListener(this);
-		findViewById(R.id.editText1).setOnKeyListener(this);
 	}
 	
 	@Override
@@ -73,7 +73,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 	    case R.id.buttonHint:
 	    	// Если есть подсказки
 	    	if(game.GetCountHints() > 0){
-		    	// Уменьшаем количество доступных подсказок
+		    	// Умен      ьшаем количество доступных подсказок
 		    	game.DecrementCountHints();
 		    	// Меняем виджеты
 		    	((Button)findViewById(R.id.buttonHint)).setVisibility(View.INVISIBLE);
@@ -86,7 +86,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 			// Если ответ верный
 			if(game.GetCurrentLevel().Verify(game.GetCurrentDitloidIndex(), ((EditText)findViewById(R.id.editText1)).getText().toString())){
 				// Перекрываем возможность редактирования поля ввода
-				((EditText)findViewById(R.id.editText1)).setEnabled(false);
+				((EditText)findViewById(R.id.editText1)).setKeyListener(null);
 				// Убираем клавиатуру
 				InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
 				imm.hideSoftInputFromWindow(findViewById(R.id.editText1).getWindowToken(), 0);
