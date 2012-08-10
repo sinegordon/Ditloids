@@ -94,7 +94,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 				((EditText)findViewById(R.id.editText1)).setKeyListener(null);
 				// Убираем клавиатуру
 				InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-				imm.hideSoftInputFromWindow(findViewById(R.id.editText1).getWindowToken(), 0);
+				imm.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 				// Меняем фон кнопки
 				findViewById(R.id.buttonCheck).setBackgroundResource(R.drawable.check_right);
 				// Убираем реакцию на нажатие кнопки
