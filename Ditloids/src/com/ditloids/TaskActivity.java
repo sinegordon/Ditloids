@@ -48,7 +48,8 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 			((TextView)findViewById(R.id.textView3)).setText(currentLevel.GetDitloid(game.GetCurrentDitloidIndex()));
 			// Показываем клавиатуру
 			InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-			imm.showSoftInput(findViewById(R.id.editText1), InputMethodManager.SHOW_FORCED);
+			//imm.showSoftInput(findViewById(R.id.editText1), InputMethodManager.SHOW_FORCED);
+			imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
 		}
 		else{
 			// Заполняем поле дитлоида
@@ -57,8 +58,12 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 			((EditText)findViewById(R.id.editText1)).setText(currentLevel.GetDitloidAnswer(game.GetCurrentDitloidIndex()));
 			// Перекрываем возможность редактирования поля ввода
 			((EditText)findViewById(R.id.editText1)).setKeyListener(null);
+			// Меняем фон кнопки
+			findViewById(R.id.buttonCheck).setBackgroundResource(R.drawable.check_right);
+			// Убираем реакцию на нажатие кнопки
+			findViewById(R.id.buttonCheck).setOnClickListener(null);
 		}
-		//imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+		
 	}
 	
 	@Override
@@ -73,7 +78,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 	    case R.id.buttonHint:
 	    	// Если есть подсказки
 	    	if(game.GetCountHints() > 0){
-		    	// Умен      ьшаем количество доступных подсказок
+		    	// Уменьшаем количество доступных подсказок
 		    	game.DecrementCountHints();
 		    	// Меняем виджеты
 		    	((Button)findViewById(R.id.buttonHint)).setVisibility(View.INVISIBLE);
@@ -92,8 +97,8 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 				imm.hideSoftInputFromWindow(findViewById(R.id.editText1).getWindowToken(), 0);
 				// Меняем фон кнопки
 				findViewById(R.id.buttonCheck).setBackgroundResource(R.drawable.check_right);
-				// Меняем надпись на кнопке
-				((Button)findViewById(R.id.buttonCheck)).setText("Верно!");
+				// Убираем реакцию на нажатие кнопки
+				findViewById(R.id.buttonCheck).setOnClickListener(null);
 				// Показываем сообщение что верный ответ
 				//Toast.makeText(this, "Верно", Toast.LENGTH_LONG).show();
 				// Устанавливаем флаг верного ответа
