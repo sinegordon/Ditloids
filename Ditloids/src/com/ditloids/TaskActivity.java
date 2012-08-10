@@ -48,7 +48,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 			((TextView)findViewById(R.id.textView3)).setText(currentLevel.GetDitloid(game.GetCurrentDitloidIndex()));
 			// Показываем клавиатуру
 			InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-			//imm.showSoftInput(findViewById(R.id.editText1), InputMethodManager.SHOW_FORCED);
+			//imm.showSoftInput(findViewById(R.id.editText1), InputMethodManager.SHOW_IMPLICIT);
 			imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
 		}
 		else{
@@ -68,8 +68,12 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 	
 	@Override
 	public void onClick(View view) {
+		InputMethodManager imm = null;
 		switch (view.getId()) {
 	    case R.id.arrowButton:
+			// Убираем клавиатуру
+			imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+			imm.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);
 	    	// На экран уровня
 	    	TasksActivity.SetGame(game);
 	    	startActivity(new Intent(TaskActivity.this, TasksActivity.class));
@@ -93,8 +97,8 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 				// Перекрываем возможность редактирования поля ввода
 				((EditText)findViewById(R.id.editText1)).setKeyListener(null);
 				// Убираем клавиатуру
-				InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-				imm.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+				imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+				imm.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);
 				// Меняем фон кнопки
 				findViewById(R.id.buttonCheck).setBackgroundResource(R.drawable.check_right);
 				// Убираем реакцию на нажатие кнопки
@@ -155,6 +159,9 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 		*/
 		// Если нажата хардварная кнопка назад
 	    if (keyCode == KeyEvent.KEYCODE_BACK) {
+			// Убираем клавиатуру
+			InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+			imm.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);
 	    	// На экран уровня
 	    	TasksActivity.SetGame(game);
 	    	startActivity(new Intent(TaskActivity.this, TasksActivity.class));
