@@ -82,31 +82,12 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
         
         game = new Game(getApplicationContext(), 4);
 
-        // узнать, можно ли объединить 4 кода для задания шрифта в один
-        final TextView countView1 = (TextView)findViewById(R.id.TextView1);
-        countView1.setTypeface(Typeface.createFromAsset(
-        		getAssets(), "fonts/Ukrainian-Play.ttf"));       
-        countView1.setText(Integer.toString(game.AnswersCount(1)) + " из " + Integer.toString(game.GetLevel(1).GetDitloidsCount()));
-        
-        final TextView countView2 = (TextView)findViewById(R.id.TextView2);
-        countView2.setTypeface(Typeface.createFromAsset(
-        		getAssets(), "fonts/Ukrainian-Play.ttf")); 
-        countView2.setText(Integer.toString(game.AnswersCount(2)) + " из " + Integer.toString(game.GetLevel(2).GetDitloidsCount()));
-        
-        final TextView countView3 = (TextView)findViewById(R.id.TextView3);
-        countView3.setTypeface(Typeface.createFromAsset(
-        		getAssets(), "fonts/Ukrainian-Play.ttf"));
-        countView3.setText(Integer.toString(game.AnswersCount(3)) + " из " + Integer.toString(game.GetLevel(3).GetDitloidsCount()));
-        
-        final TextView countView4 = (TextView)findViewById(R.id.TextView4);
-        countView4.setTypeface(Typeface.createFromAsset(
-        		getAssets(), "fonts/Ukrainian-Play.ttf"));
-        countView4.setText(Integer.toString(game.AnswersCount(4)) + " из " + Integer.toString(game.GetLevel(4).GetDitloidsCount()));
-        
-//        TextView tvName = (TextView) findViewById(R.id.TextView1);
-//        Typeface digitalFont = Typeface.createFromAsset(this.getAssets(), "fonts/digital.ttf");
-//        tvName.setTypeface(digitalFont);        
-
+        for(int i = 1; i < 5; i++){
+        	int id = getResources().getIdentifier("TextView" + Integer.toString(i), "id", getApplicationContext().getPackageName());
+        	final TextView countView = (TextView)findViewById(id);
+        	countView.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Ukrainian-Play.ttf"));
+        	countView.setText(Integer.toString(game.AnswersCount(i)) + " из " + Integer.toString(game.GetLevel(i).GetDitloidsCount()));
+        };
         findViewById(R.id.arrowButton).setOnClickListener(this);
         findViewById(R.id.level1button).setOnClickListener(this);
         findViewById(R.id.level2button).setOnClickListener(this);
