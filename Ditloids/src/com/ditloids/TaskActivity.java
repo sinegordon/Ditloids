@@ -96,6 +96,8 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 		    	((TextView)findViewById(R.id.textHint)).setVisibility(View.VISIBLE);
 		    	// Показываем подсказку
 		    	((TextView)findViewById(R.id.textHint)).setText(game.GetCurrentLevel().GetDitloidHint(game.GetCurrentDitloidIndex()));
+		    	// Показываем оставшееся количество подсказок
+				((TextView)findViewById(R.id.textView2)).setText(Integer.toString(game.GetCountHints()));
 	    	};
 	    	break;
 	    case R.id.buttonCheck:
