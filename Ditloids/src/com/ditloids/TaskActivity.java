@@ -50,9 +50,6 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 			InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
 			//imm.showSoftInput(findViewById(R.id.editText1), InputMethodManager.SHOW_IMPLICIT);
 			imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
-			// Закрываем подсказку
-	    	((Button)findViewById(R.id.buttonHint)).setVisibility(View.VISIBLE);
-	    	((TextView)findViewById(R.id.textHint)).setVisibility(View.INVISIBLE);
 		}
 		else{
 			// Заполняем поле дитлоида
@@ -65,12 +62,18 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 			findViewById(R.id.buttonCheck).setBackgroundResource(R.drawable.check_right);
 			// Убираем реакцию на нажатие кнопки
 			findViewById(R.id.buttonCheck).setOnClickListener(null);
+		};
+		// Если на этот дитлоид уже взята подсказка
+		if(game.GetHint(game.GetCurrentDitloidIndex())){
 			// Открываем подсказку
 	    	((Button)findViewById(R.id.buttonHint)).setVisibility(View.INVISIBLE);
 	    	((TextView)findViewById(R.id.textHint)).setVisibility(View.VISIBLE);
-	    	((TextView)findViewById(R.id.textHint)).setText(game.GetCurrentLevel().GetDitloidHint(game.GetCurrentDitloidIndex()));
-		}
-		
+	    	((TextView)findViewById(R.id.textHint)).setText(game.GetCurrentLevel().GetDitloidHint(game.GetCurrentDitloidIndex()));		
+		}else{
+			// Закрываем подсказку
+	    	((Button)findViewById(R.id.buttonHint)).setVisibility(View.VISIBLE);
+	    	((TextView)findViewById(R.id.textHint)).setVisibility(View.INVISIBLE);
+		};	
 	}
 	
 	@Override
@@ -91,6 +94,8 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 	    	if(game.GetCountHints() > 0){
 		    	// Уменьшаем количество доступных подсказок
 		    	game.DecrementCountHints();
+		    	// Отмечаем взятие подсказки на дитлоид
+		    	game.SetHint(game.GetCurrentDitloidIndex(), true);
 		    	// Меняем виджеты
 		    	((Button)findViewById(R.id.buttonHint)).setVisibility(View.INVISIBLE);
 		    	((TextView)findViewById(R.id.textHint)).setVisibility(View.VISIBLE);

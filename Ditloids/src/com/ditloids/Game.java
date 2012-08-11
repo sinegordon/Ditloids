@@ -22,12 +22,15 @@ public class Game {
     // Индекс текущего дитлоида на текущем уровне
     private int currentDitloidIndex = -1;
 
-    // Массив флагов ответов на текущий уровень
+    // Массив флагов отвеченных дитлоидов на текущий уровень
     private boolean[] answers = null;
     
     // Имеющееся количество подсказок
     private int countHints = 0;
-    
+
+    // Массив флагов взятых подсказок на текущий уровень
+    private boolean[] hints = null;
+
     // За сколько ответов дается подсказка
     private int divisor = 3;
     
@@ -91,12 +94,21 @@ public class Game {
     public void LoadLevel(int levelIndex){
         currentLevel = levels[levelIndex-1];
         answers = new boolean[currentLevel.GetDitloidsCount()];
+        hints = new boolean[currentLevel.GetDitloidsCount()];
         String ans_str = settings.getString("level" + Integer.toString(levelIndex), "");
+        String hints_str = settings.getString("hints" + Integer.toString(levelIndex), "");
         if(!ans_str.equals("")){
         	String[] ans = ans_str.split("_");
         	for(int i = 0; i < ans.length; i++){
                 int ind = Integer.parseInt(ans[i]);
                 answers[ind] = true;
+            }
+        };
+        if(!hints_str.equals("")){
+        	String[] hints_mas = hints_str.split("_");
+        	for(int i = 0; i < hints_mas.length; i++){
+                int ind = Integer.parseInt(hints_mas[i]);
+                hints[ind] = true;
             }
         };
     }
@@ -110,8 +122,16 @@ public class Game {
         }
         if(!ans.equals(""))
         	ans = ans.substring(0, ans.length()-1);
+        String hints_str = "";
+        for(int i=0; i < hints.length; i++){
+            if(hints[i])
+            	hints_str = hints_str + Integer.toString(i) + "_";
+        }
+        if(!hints_str.equals(""))
+        	hints_str = hints_str.substring(0, hints_str.length()-1);
         SharedPreferences.Editor editor = settings.edit();
         editor.putString("level" + Integer.toString(currentLevel.GetLevelIndex()), ans);
+        editor.putString("hints" + Integer.toString(currentLevel.GetLevelIndex()), hints_str);
         editor.commit();
     }
     
@@ -155,10 +175,23 @@ public class Game {
     		return false;
     }
 
+    public boolean GetHint(int ditloidIndex){
+    	if(ditloidIndex > -1 || ditloidIndex < hints.length)
+    		return hints[ditloidIndex];
+    	else
+    		return false;
+    }
+      
     public void SetAnswer(int ditloidIndex, boolean answer){
     	if(ditloidIndex > -1 || ditloidIndex < answers.length)
     		answers[ditloidIndex] = answer;
     }
+
+    public void SetHint(int ditloidIndex, boolean hint){
+    	if(ditloidIndex > -1 || ditloidIndex < hints.length)
+    		hints[ditloidIndex] = hint;
+    }
+   
     
     public int GetCountRight(){
     	return countRight;
