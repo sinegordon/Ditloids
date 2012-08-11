@@ -29,8 +29,6 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.entertask);
         this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
-    	((Button)findViewById(R.id.buttonHint)).setVisibility(View.VISIBLE);
-    	((TextView)findViewById(R.id.textHint)).setVisibility(View.INVISIBLE);
     	if(game.GetCountHints() == 0)
     		((Button)findViewById(R.id.buttonHint)).setEnabled(false);
 		// Узнаем текущий уровень
@@ -52,6 +50,9 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 			InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
 			//imm.showSoftInput(findViewById(R.id.editText1), InputMethodManager.SHOW_IMPLICIT);
 			imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+			// Закрываем подсказку
+	    	((Button)findViewById(R.id.buttonHint)).setVisibility(View.VISIBLE);
+	    	((TextView)findViewById(R.id.textHint)).setVisibility(View.INVISIBLE);
 		}
 		else{
 			// Заполняем поле дитлоида
@@ -64,6 +65,10 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 			findViewById(R.id.buttonCheck).setBackgroundResource(R.drawable.check_right);
 			// Убираем реакцию на нажатие кнопки
 			findViewById(R.id.buttonCheck).setOnClickListener(null);
+			// Открываем подсказку
+	    	((Button)findViewById(R.id.buttonHint)).setVisibility(View.INVISIBLE);
+	    	((TextView)findViewById(R.id.textHint)).setVisibility(View.VISIBLE);
+	    	((TextView)findViewById(R.id.textHint)).setText(game.GetCurrentLevel().GetDitloidHint(game.GetCurrentDitloidIndex()));
 		}
 		
 	}
