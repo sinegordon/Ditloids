@@ -239,4 +239,12 @@ public class Game {
     	editor.clear();
     	editor.commit();
     }
+    
+    public void SetMute(boolean isMute){
+    	this.isMute = isMute;
+    }
+
+    public boolean GetMute(){
+    	return isMute;
+    }
 }
