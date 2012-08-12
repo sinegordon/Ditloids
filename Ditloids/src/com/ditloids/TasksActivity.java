@@ -37,7 +37,7 @@ public class TasksActivity extends Activity implements OnClickListener, OnItemCl
 		((TextView)findViewById(R.id.textView1)).setText("Уровень "+Integer.toString(currentLevel.GetLevelIndex()));
 		// Вставляем количество подсказок в надписи
 		((TextView)findViewById(R.id.textView2)).setText(Integer.toString(game.GetCountHints()));
-		// Заполняем массив дитлоидов
+		// Заполняем массив дитлоидов и массив их индексов (в порядке "сначала неотвеченные - потом отвеченные")
 		ArrayDeque<String> ans = new ArrayDeque<String>();
 		ArrayDeque<Integer> ansIndexes = new ArrayDeque<Integer>();
 		int notAnswered = 0;
@@ -57,7 +57,7 @@ public class TasksActivity extends Activity implements OnClickListener, OnItemCl
 		ans.toArray(values);
 		ansIndexes.toArray(ditloidIndexes);
 		// Выставляем дитлоиды на экран
-		TaskArrayAdapter ansadapter = new TaskArrayAdapter(this, values, notAnswered);
+		TaskArrayAdapter ansadapter = new TaskArrayAdapter(this, values, ditloidIndexes, game, notAnswered);
 		listView.setAdapter(ansadapter);
 		// Устанавливаем обработчики событий
 		findViewById(R.id.arrowButton).setOnClickListener(this);
