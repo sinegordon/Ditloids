@@ -216,4 +216,15 @@ public class Game {
         float volume = actualVolume / maxVolume;
     	sounds.play(soundId, volume, volume, 1, 0, 1.0f);
     }
+    
+    public String GetLastWrongAnswer(int levelIndex, int ditloidIndex){
+        String wrong_ans = settings.getString("wrong_" + Integer.toString(levelIndex) + "_" + Integer.toString(ditloidIndex), "");
+        return wrong_ans;
+    }
+    
+    public void SetLastWrongAnswer(String answer, int levelIndex, int ditloidIndex){
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putString("wrong_" + Integer.toString(levelIndex) + "_" + Integer.toString(ditloidIndex), answer);
+        editor.commit();   	
+    }
 }

@@ -50,6 +50,10 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 			InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
 			//imm.showSoftInput(findViewById(R.id.editText1), InputMethodManager.SHOW_IMPLICIT);
 			imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+			// Показываем последний неправильный ответ, если он есть
+			String wrong_ans = game.GetLastWrongAnswer(game.GetCurrentLevel().GetLevelIndex(), game.GetCurrentDitloidIndex());
+			if(!wrong_ans.equals(""))
+				((EditText)findViewById(R.id.editText1)).setText(wrong_ans);			
 		}
 		else{
 			// Заполняем поле дитлоида
@@ -134,6 +138,8 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 			}
 			else{
 				game.PlaySound(2);
+				// Сохраняем последний неверный ответ
+				game.SetLastWrongAnswer(((EditText)findViewById(R.id.editText1)).getText().toString(), game.GetCurrentLevel().GetLevelIndex(), game.GetCurrentDitloidIndex());
 				// Меняем фон кнопки
 				findViewById(R.id.buttonCheck).setBackgroundResource(R.drawable.check_wrong);
 				// Показываем сообщение что неверный ответ
