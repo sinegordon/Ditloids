@@ -48,6 +48,9 @@ public class Game {
     
     // Число звуков
     private int countSounds = 2;
+    
+    // Есть ли звук в игре
+    private boolean isMute = false;
 
     // Конструктор
     public Game(Context context, int countLevels){
@@ -58,13 +61,16 @@ public class Game {
         settings = context.getSharedPreferences(prefsName, 0);
         countHints = settings.getInt("hints", 0);
         countRight = settings.getInt("right", 0);
+        isMute = settings.getBoolean("isMute", false);
         levels = new Level[countLevels];
         for (int i = 1; i <= countLevels; ++i) {
         	levels[i-1] = new Level(context, i);
         };
-        sounds = new SoundPool(countSounds, AudioManager.STREAM_MUSIC, 0);
-        sounds.load(context, R.raw.right, 1);
-        sounds.load(context, R.raw.wrong, 1);
+        if(!isMute){
+	        sounds = new SoundPool(countSounds, AudioManager.STREAM_MUSIC, 0);
+	        sounds.load(context, R.raw.right, 1);
+	        sounds.load(context, R.raw.wrong, 1);
+        }
     }
     
     // Количество правильных ответов на уровень levelIndex сохраненных в настройках
@@ -209,7 +215,7 @@ public class Game {
     }
     
     public void PlaySound(int soundId){
-    	if(soundId < 0 || soundId > countSounds) return;
+    	if(soundId < 0 || soundId > countSounds || sounds.equals(null)) return;
         AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
         float actualVolume = (float) audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
         float maxVolume = (float) audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
@@ -226,5 +232,11 @@ public class Game {
         SharedPreferences.Editor editor = settings.edit();
         editor.putString("wrong_" + Integer.toString(levelIndex) + "_" + Integer.toString(ditloidIndex), answer);
         editor.commit();   	
+    }
+    
+    public void ClearAllSettings(){
+    	SharedPreferences.Editor editor = settings.edit();
+    	editor.clear();
+    	editor.commit();
     }
 }

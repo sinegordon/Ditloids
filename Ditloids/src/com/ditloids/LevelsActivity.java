@@ -20,7 +20,7 @@ import android.widget.TextView;
 public class LevelsActivity extends Activity implements OnClickListener, OnKeyListener {
     private RadioGroup radioGroup;
 	private HorizontalPager pager;
-	private Game game;
+	static private Game game = null;
 
 	private final HorizontalPager.OnScreenSwitchListener onScreenSwitchListener =
             new HorizontalPager.OnScreenSwitchListener() {
@@ -80,8 +80,6 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
         pager = (HorizontalPager) findViewById(R.id.horizontal_pager);
         pager.setOnScreenSwitchListener(onScreenSwitchListener);
         
-        game = new Game(getApplicationContext(), 4);
-
         for(int i = 1; i < 5; i++){
         	int id = getResources().getIdentifier("TextView" + Integer.toString(i), "id", getApplicationContext().getPackageName());
         	final TextView countView = (TextView)findViewById(id);
@@ -144,5 +142,8 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 	    }
 		return false;
 	}
-
+	
+	static public void SetGame(Game _game){
+		game = _game;
+	}
 }
