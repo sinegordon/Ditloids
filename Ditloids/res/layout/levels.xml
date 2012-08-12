@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent"
+    android:orientation="vertical"
+    android:background="@drawable/fon_level480"
+    android:gravity="top" >        
+    
+    <Button
+        android:id="@+id/arrowButton"
+        android:layout_width="30px"
+        android:layout_height="21px"
+        android:layout_marginTop="10px"
+        android:layout_marginLeft="10px"        
+        android:background="@drawable/arrow"/>
+         
+    <com.ditloids.HorizontalPager
+        android:id="@+id/horizontal_pager"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1">
+        
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+   			android:gravity="center">
+   		<Button   		     		    
+     	  	android:id="@+id/level1button"			
+			android:background="@drawable/level1"
+            android:layout_width="230px"
+            android:layout_height="230px"
+    	    android:layout_marginTop="20px"/>           
+  	
+   			<TextView		    
+			android:id="@+id/TextView1"
+   			android:gravity="center"
+			android:text="@string/countlv1"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:textSize="22px"
+			android:textColor="#d3dae0"
+    	    android:layout_marginTop="185px"
+    	    android:layout_marginLeft="75px"/>
+        </RelativeLayout>
+        
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+   			android:gravity="center">     
+   		<Button     		    
+     	  	android:id="@+id/level2button"			
+			android:background="@drawable/level2"
+            android:layout_width="230px"
+            android:layout_height="230px"
+    	    android:layout_marginTop="20px"/> 	
+   			<TextView		    
+			android:id="@+id/TextView2"
+   			android:gravity="center"
+			android:text="@string/countlv2"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:textSize="22px"
+			android:textColor="#d3dae0"
+    	    android:layout_marginTop="185px"
+    	    android:layout_marginLeft="75px"/>  		
+        </RelativeLayout>
+        
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+   			android:gravity="center">
+   		<Button    		    
+     	  	android:id="@+id/level3button"			
+			android:background="@drawable/level3"
+            android:layout_width="230px"
+            android:layout_height="230px"
+    	    android:layout_marginTop="20px"/>
+   			<TextView		    
+			android:id="@+id/TextView3"
+   			android:gravity="center"
+			android:text="@string/countlv3"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:textSize="22px"
+			android:textColor="#d3dae0"
+    	    android:layout_marginTop="185px"
+    	    android:layout_marginLeft="75px"/>   		
+        </RelativeLayout>
+        
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+   			android:gravity="center">
+   		<Button     		    
+     	  	android:id="@+id/level4button"			
+			android:background="@drawable/level4"
+            android:layout_width="230px"
+            android:layout_height="230px"
+    	    android:layout_marginTop="20px"/>
+   			<TextView		    
+			android:id="@+id/TextView4"
+   			android:gravity="center"
+			android:text="@string/countlv4"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:textSize="22px"
+			android:textColor="#d3dae0"
+    	    android:layout_marginTop="185px"
+    	    android:layout_marginLeft="75px"/>   		
+        </RelativeLayout>        
+        
+    </com.ditloids.HorizontalPager>
+    
+    <RadioGroup
+        android:id="@+id/tabs"
+        android:layout_height="wrap_content"
+        android:layout_width="100px"       
+        android:orientation="horizontal"
+        android:layout_marginLeft="100px"
+        android:layout_marginBottom="20px">
+        <RadioButton           
+            android:id="@+id/radio_btn_0"
+            android:checked="true"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content" />
+        <RadioButton              
+            android:id="@+id/radio_btn_1"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"/>
+        <RadioButton              
+            android:id="@+id/radio_btn_2"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"/>
+        <RadioButton           
+            android:id="@+id/radio_btn_3"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"/>        
+    </RadioGroup>      
+    
+</LinearLayout>

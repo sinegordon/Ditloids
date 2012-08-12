@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/fon480"
+    android:gravity="center">
+
+    <Button android:id="@+id/StartButton"
+        android:layout_height="36px" 
+        android:layout_width="167px" 
+        android:layout_marginBottom="15px"	 
+        android:background="@drawable/play_btn"
+        android:layout_marginTop="200dp" />
+
+    <Button android:id="@+id/SettingsButton"
+        android:layout_height="36px" 
+        android:layout_width="167px" 
+        android:layout_marginBottom="15px"		
+        android:background="@drawable/opt_btn" />
+    
+    <Button android:id="@+id/RulesButton"
+        android:layout_height="36px" 
+        android:layout_width="167px" 
+        android:layout_marginBottom="75px"		
+        android:background="@drawable/rules_btn"  />        
+</LinearLayout>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@drawable/fon_tasks480">
+
+    <Button
+        android:id="@+id/arrowButton"
+        android:layout_width="28px"
+        android:layout_height="20px"
+        android:layout_marginTop="7px"
+        android:layout_marginLeft="10px"        
+        android:background="@drawable/arrow"/>	
+
+<TextView
+    android:id="@+id/textView1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:gravity="center"
+    android:layout_marginTop="7px"    
+    android:text="Уровень 1"
+    android:textSize="16px" />     
+    
+<TextView
+    android:id="@+id/textView2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+	android:layout_alignParentRight="true"   
+    android:gravity="center"
+    android:textSize="18px"    	 
+    android:layout_marginTop="16px"
+    android:layout_marginRight="105px"
+    android:textColor="#254566"          
+    android:text="12" />  
+
+<TextView
+    android:id="@+id/textView3"
+    android:layout_width="300px"
+    android:layout_height="90px"
+    android:layout_below="@+id/textView1"
+    android:layout_centerHorizontal="true"
+    android:gravity="center_horizontal"
+    android:paddingTop="0px"
+    android:layout_marginTop="15px"
+    android:textSize="40px"
+    android:textColor="#254566"    
+    android:text="29 Д в Ф в В Г"
+    android:background="@drawable/bg_task_with_hint"/>
+
+<TextView
+    android:id="@+id/textHint"
+    android:layout_width="150px"
+    android:layout_height="25px"
+    android:gravity="center"      
+    android:layout_alignBottom="@+id/textView3"
+    android:layout_centerHorizontal="true"
+    android:layout_marginBottom="15px"
+    android:textColor="#60778c"
+    android:text="@string/hint" />
+
+<Button
+    android:id="@+id/buttonHint"
+    android:layout_width="150px"
+    android:layout_height="25px"
+    android:gravity="center"      
+    android:layout_alignBottom="@+id/textView3"
+    android:layout_centerHorizontal="true"
+    android:layout_marginBottom="15px"
+    android:textColor="#60778c"
+    android:background="@drawable/hint" />
+
+<Button
+    android:id="@+id/buttonCheck"
+    android:layout_width="265px"
+    android:layout_height="43px"
+    android:layout_alignLeft="@+id/editText1"
+    android:layout_below="@+id/editText1"
+    android:layout_marginTop="-10px"
+    android:background="@drawable/check"
+    android:gravity="center"
+    android:textColor="#60778c" />
+
+<EditText
+    android:id="@+id/editText1"
+    android:layout_width="265px"
+    android:layout_height="29px"
+    android:layout_below="@+id/textView3"
+    android:layout_centerHorizontal="true"
+    android:gravity="left"
+    android:padding="5px"
+    android:layout_marginTop="0px"
+    android:textSize="10px"
+    android:textColor="#212a33"    
+    android:ems="10"
+    android:background="@drawable/bg_input" 
+    android:hint="Введите ответ...">
+
+    <requestFocus />
+</EditText>
+
+</RelativeLayout>
