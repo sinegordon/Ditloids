@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/fon_options"
+    android:gravity="top">
+    
+    <Button
+        android:id="@+id/arrowButton"
+        android:layout_width="50dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="25dp"        
+        android:background="@drawable/arrow"/>    
+
+    <Button android:id="@+id/sfxButton"
+        android:layout_height="wrap_content" 
+        android:layout_width="wrap_content" 
+        android:layout_marginBottom="25dp"	 
+        android:background="@drawable/sfx_on"
+        android:layout_marginTop="300dp"
+		android:layout_marginLeft="150px"/>
+
+    <Button android:id="@+id/musicButton"
+        android:layout_height="wrap_content" 
+        android:layout_width="wrap_content" 
+        android:layout_marginBottom="25dp"	
+        android:background="@drawable/music_on"
+		android:layout_marginLeft="150px"         />
+    
+    <Button android:id="@+id/resetButton"
+        android:layout_height="wrap_content" 
+        android:layout_width="wrap_content" 
+        android:layout_marginBottom="25dp"	
+        android:background="@drawable/reset" 
+		android:layout_marginLeft="150px"         />        
+</LinearLayout>
