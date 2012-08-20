@@ -12,6 +12,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class MainActivity extends Activity implements OnClickListener {
+	private Game game;
 	
     /** Called when the activity is first created. */
     @Override
@@ -23,6 +24,7 @@ public class MainActivity extends Activity implements OnClickListener {
         this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
         Button startButton = (Button)findViewById(R.id.StartButton);
         startButton.setOnClickListener(this);
+        game = new Game(getApplicationContext(), 4);
         //DisplayMetrics metrics = new DisplayMetrics();
         //getWindowManager().getDefaultDisplay().getMetrics(metrics);
     }
