@@ -4,7 +4,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/fon_faq800"
-    android:gravity="center">
+    android:gravity="top">
         
     <Button
         android:id="@+id/arrowButton"
