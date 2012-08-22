@@ -96,7 +96,7 @@ public class TasksActivity extends Activity implements OnClickListener, OnItemCl
 
 	@Override
 	public boolean onKey(View v, int keyCode, KeyEvent event) {
-		// Если нажата хардварная кнопка назад (вопрос будет ли работать ???)
+		// Если нажата хардварная кнопка назад
 	    if (keyCode == KeyEvent.KEYCODE_BACK) {
 	    	// Сохраняем уровень
 	    	game.SaveLevel();

@@ -31,6 +31,8 @@
             android:name="com.ditloids.TaskActivity"
             android:configChanges="keyboardHidden|orientation">
         </activity>
+        <activity android:name="com.ditloids.OptionsActivity"></activity>
+        <activity android:name="com.ditloids.FaqActivity"></activity>
     </application>
 
 </manifest>

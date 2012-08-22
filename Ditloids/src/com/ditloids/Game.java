@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.content.Intent;
@@ -43,14 +44,20 @@ public class Game {
     // Объект контекста игры
     private Context context = null;
     
-    // Пул мелодий
+    // Пул звуков
     private SoundPool sounds = null;
     
     // Число звуков
     private int countSounds = 2;
     
     // Есть ли звук в игре
-    private boolean isMute = false;
+    private boolean isMuteSound = false;
+    
+    // Проигрыватель
+    private MediaPlayer mediaPlayer = null;
+    
+    // Есть ли музыка в игре
+    private boolean isMuteMusic = false;
 
     // Конструктор
     public Game(Context context, int countLevels){
@@ -61,16 +68,28 @@ public class Game {
         settings = context.getSharedPreferences(prefsName, 0);
         countHints = settings.getInt("hints", 0);
         countRight = settings.getInt("right", 0);
-        isMute = settings.getBoolean("isMute", false);
+        isMuteSound = settings.getBoolean("isMuteSound", true);
+        isMuteMusic = settings.getBoolean("isMuteMusic", true);
         levels = new Level[countLevels];
         for (int i = 1; i <= countLevels; ++i) {
         	levels[i-1] = new Level(context, i);
         };
-        if(!isMute){
-	        sounds = new SoundPool(countSounds, AudioManager.STREAM_MUSIC, 0);
-	        sounds.load(context, R.raw.right, 1);
-	        sounds.load(context, R.raw.wrong, 1);
-        }
+        sounds = new SoundPool(countSounds, AudioManager.STREAM_MUSIC, 0);
+        sounds.load(context, R.raw.right, 1);
+        sounds.load(context, R.raw.wrong, 1);
+        
+        mediaPlayer = MediaPlayer.create(context, R.raw.music);
+        if(isMuteMusic)
+        	mediaPlayer.pause();
+        else
+        	mediaPlayer.start();
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+			@Override
+			public void onCompletion(MediaPlayer mp) {
+				mp.start();				
+			}
+		});
+		
     }
     
     // Количество правильных ответов на уровень levelIndex сохраненных в настройках
@@ -215,7 +234,7 @@ public class Game {
     }
     
     public void PlaySound(int soundId){
-    	if(soundId < 0 || soundId > countSounds || sounds.equals(null)) return;
+    	if(soundId < 0 || soundId > countSounds || isMuteSound) return;
         AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
         float actualVolume = (float) audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
         float maxVolume = (float) audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
@@ -240,11 +259,35 @@ public class Game {
     	editor.commit();
     }
     
-    public void SetMute(boolean isMute){
-    	this.isMute = isMute;
+    public void SetMuteSound(boolean isMute){
+    	this.isMuteSound = isMute;
     }
 
-    public boolean GetMute(){
-    	return isMute;
+    public boolean GetMuteSound(){
+    	return isMuteSound;
+    }
+    
+    public void SetMuteMusic(boolean isMute){
+    	this.isMuteMusic = isMute;
+        if(isMuteMusic)
+        	mediaPlayer.pause();
+        else
+        	mediaPlayer.start();
+    }
+
+    public boolean GetMuteMusic(){
+    	return isMuteMusic;
+    }
+    
+    public void SaveMuteSound(){
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putBoolean("isMuteSound", isMuteSound);
+        editor.commit();   	   	
+    }
+    
+    public void SaveMuteMusic(){
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putBoolean("isMuteMusic", isMuteMusic);
+        editor.commit();   	   	
     }
 }
