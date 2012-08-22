@@ -18,7 +18,7 @@
         android:layout_height="wrap_content" 
         android:layout_width="wrap_content" 
         android:layout_marginBottom="25dp"	 
-        android:background="@drawable/sfx_on"
+        android:background="@drawable/sfx_off"
         android:layout_marginTop="300dp"
 		android:layout_marginLeft="150px"/>
 
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content" 
         android:layout_width="wrap_content" 
         android:layout_marginBottom="25dp"	
-        android:background="@drawable/music_on"
+        android:background="@drawable/music_off"
 		android:layout_marginLeft="150px"         />
     
     <Button android:id="@+id/resetButton"

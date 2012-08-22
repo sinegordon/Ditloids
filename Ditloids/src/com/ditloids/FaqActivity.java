@@ -21,6 +21,8 @@ public class FaqActivity extends Activity implements OnClickListener, OnKeyListe
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.faq);
         this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
+		findViewById(R.id.arrowButton).setOnClickListener(this);
+		findViewById(R.id.arrowButton).setOnKeyListener(this);
 	}
 	
 	@Override

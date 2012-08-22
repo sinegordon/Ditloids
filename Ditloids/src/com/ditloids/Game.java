@@ -1,5 +1,7 @@
 package com.ditloids;
 
+import java.io.IOException;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -60,7 +62,7 @@ public class Game {
     private boolean isMuteMusic = false;
 
     // Конструктор
-    public Game(Context context, int countLevels){
+    public Game(Context context, int countLevels) throws IllegalStateException, IOException{
         Resources res = context.getResources();
         this.context = context;
         this.countLevels = countLevels;
@@ -68,8 +70,8 @@ public class Game {
         settings = context.getSharedPreferences(prefsName, 0);
         countHints = settings.getInt("hints", 0);
         countRight = settings.getInt("right", 0);
-        isMuteSound = settings.getBoolean("isMuteSound", true);
-        isMuteMusic = settings.getBoolean("isMuteMusic", true);
+        isMuteSound = settings.getBoolean("isMuteSound", false);
+        isMuteMusic = settings.getBoolean("isMuteMusic", false);
         levels = new Level[countLevels];
         for (int i = 1; i <= countLevels; ++i) {
         	levels[i-1] = new Level(context, i);
@@ -79,6 +81,7 @@ public class Game {
         sounds.load(context, R.raw.wrong, 1);
         
         mediaPlayer = MediaPlayer.create(context, R.raw.music);
+//        mediaPlayer.prepare();
         if(isMuteMusic)
         	mediaPlayer.pause();
         else
@@ -253,10 +256,18 @@ public class Game {
         editor.commit();   	
     }
     
-    public void ClearAllSettings(){
+    public void ClearAllSettings(){ 	
     	SharedPreferences.Editor editor = settings.edit();
     	editor.clear();
     	editor.commit();
+        Resources res = context.getResources();
+        String prefsName = res.getString(R.string.prefs_name);
+        settings = context.getSharedPreferences(prefsName, 0);
+        countHints = settings.getInt("hints", 0);
+        countRight = settings.getInt("right", 0);
+        isMuteSound = settings.getBoolean("isMuteSound", false);
+        isMuteMusic = settings.getBoolean("isMuteMusic", false);
+       	mediaPlayer.start();
     }
     
     public void SetMuteSound(boolean isMute){

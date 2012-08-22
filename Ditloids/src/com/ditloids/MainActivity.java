@@ -1,5 +1,7 @@
 package com.ditloids;
 
+import java.io.IOException;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -15,8 +17,10 @@ public class MainActivity extends Activity implements OnClickListener {
 	/** Called when the activity is first created. */
 	private static Game game = null;
 	
+	public static void SetGame(Game _game){
+		game = _game;
+	}
 
-    /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +31,14 @@ public class MainActivity extends Activity implements OnClickListener {
         findViewById(R.id.StartButton).setOnClickListener(this);
         findViewById(R.id.RulesButton).setOnClickListener(this);
         findViewById(R.id.SettingsButton).setOnClickListener(this);
-       	game = new Game(getApplicationContext(), 4);
+        if(game == null)
+	       	try {
+				game = new Game(getApplicationContext(), 4);
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
     }
 
 	@Override

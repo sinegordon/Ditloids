@@ -2,6 +2,9 @@ package com.ditloids;
 
 import android.R.drawable;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.media.AudioManager;
@@ -13,9 +16,51 @@ import android.view.View.OnKeyListener;
 import android.widget.Button;
 
 public class OptionsActivity extends Activity implements OnClickListener, OnKeyListener {
-	/** Called when the activity is first created. */
-	private static Game game = null;
+	// Секция диалога
+	final int DIALOG_EXIT = 1;
 	
+	protected Dialog onCreateDialog(int id) {
+	    if (id == DIALOG_EXIT) {
+	      AlertDialog.Builder adb = new AlertDialog.Builder(this);
+	      // Заголовок
+	      adb.setTitle(R.string.reset_title);
+	      // Сообщение
+	      adb.setMessage(R.string.reset_message);
+	      // Иконка
+	      adb.setIcon(android.R.drawable.ic_dialog_info);
+	      // Кнопка положительного ответа
+	      adb.setPositiveButton(R.string.yes, resetClickListener);
+	      // Кнопка нейтрального ответа
+	      adb.setNeutralButton(R.string.cancel, resetClickListener);
+	      // Создаем диалог
+	      return adb.create();
+	   }
+	   return super.onCreateDialog(id);
+	}
+	
+	android.content.DialogInterface.OnClickListener resetClickListener = new android.content.DialogInterface.OnClickListener(){
+		public void onClick(DialogInterface dialog, int which){
+			switch (which) {
+		    // положительная кнопка
+		    case Dialog.BUTTON_POSITIVE:
+		    	// Очищаем все настройки
+		    	game.ClearAllSettings();
+		    	// Устанавливаем фоны кнопок на экране
+		    	Button sfxButton = (Button)findViewById(R.id.sfxButton);
+		    	Button musicButton = (Button)findViewById(R.id.musicButton);
+		    	sfxButton.setBackgroundResource(R.drawable.sfx_off);
+		    	musicButton.setBackgroundResource(R.drawable.music_off);
+		    	break;
+		    // нейтральная кнопка  
+		    case Dialog.BUTTON_NEUTRAL:
+		    	break;
+		    }
+		}
+	};
+	// Конец секции диалога
+	
+	private static Game game = null;
+		
 	public static void SetGame(Game _game){
 		game = _game;
 	}
@@ -25,7 +70,7 @@ public class OptionsActivity extends Activity implements OnClickListener, OnKeyL
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.options);
         this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
-        // Устанавливаем фон
+        // Устанавливаем фоны кнопок на экране
     	Button sfxButton = (Button)findViewById(R.id.sfxButton);
     	Button musicButton = (Button)findViewById(R.id.musicButton);
         if(game.GetMuteSound()){
@@ -40,6 +85,7 @@ public class OptionsActivity extends Activity implements OnClickListener, OnKeyL
     	}
 		// Устанавливаем обработчики событий
 		findViewById(R.id.arrowButton).setOnClickListener(this);
+		findViewById(R.id.arrowButton).setOnKeyListener(this);
 		findViewById(R.id.sfxButton).setOnClickListener(this);
 		findViewById(R.id.resetButton).setOnClickListener(this);
 		findViewById(R.id.musicButton).setOnClickListener(this);
@@ -47,16 +93,19 @@ public class OptionsActivity extends Activity implements OnClickListener, OnKeyL
 	
 	@Override
 	public void onClick(View view) {
+		Button sfxButton = null;
+		Button musicButton = null;
 		switch (view.getId()) {
 	    case R.id.arrowButton:
-	    	// На экран уровня
+	    	// На главный экран
 	    	game.SaveMuteSound();
 	    	game.SaveMuteMusic();
+	    	MainActivity.SetGame(game);
 	    	startActivity(new Intent(OptionsActivity.this, MainActivity.class));
 	    	finish();
 	    	break;
 	    case R.id.sfxButton:
-	    	Button sfxButton = (Button)findViewById(R.id.sfxButton);
+	    	sfxButton = (Button)findViewById(R.id.sfxButton);
 	    	if(game.GetMuteSound()){
 	    		game.SetMuteSound(false);
 	    		sfxButton.setBackgroundResource(R.drawable.sfx_off);
@@ -66,7 +115,7 @@ public class OptionsActivity extends Activity implements OnClickListener, OnKeyL
 	    	}
 	    	break;
 	    case R.id.musicButton:
-	    	Button musicButton = (Button)findViewById(R.id.musicButton);
+	    	musicButton = (Button)findViewById(R.id.musicButton);
 	    	if(game.GetMuteMusic()){
 	    		game.SetMuteMusic(false);
 	    		musicButton.setBackgroundResource(R.drawable.music_off);
@@ -76,7 +125,7 @@ public class OptionsActivity extends Activity implements OnClickListener, OnKeyL
 	    	}
 	    	break;
 	    case R.id.resetButton:
-	    	game.ClearAllSettings();
+	    	showDialog(DIALOG_EXIT);
 	    	break;
 	    default:
 	    	break;
@@ -87,7 +136,7 @@ public class OptionsActivity extends Activity implements OnClickListener, OnKeyL
 	public boolean onKey(View v, int keyCode, KeyEvent event) {
 		// Если нажата хардварная кнопка назад
 	    if (keyCode == KeyEvent.KEYCODE_BACK) {
-	    	// На экран уровня
+	    	// На главный экран
 	    	game.SaveMuteSound();
 	    	game.SaveMuteMusic();
 	    	startActivity(new Intent(OptionsActivity.this, MainActivity.class));
