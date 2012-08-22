@@ -137,6 +137,7 @@ public class OptionsActivity extends Activity implements OnClickListener, OnKeyL
 		// Если нажата хардварная кнопка назад
 	    if (keyCode == KeyEvent.KEYCODE_BACK) {
 	    	// На главный экран
+	    	MainActivity.SetGame(game);
 	    	game.SaveMuteSound();
 	    	game.SaveMuteMusic();
 	    	startActivity(new Intent(OptionsActivity.this, MainActivity.class));

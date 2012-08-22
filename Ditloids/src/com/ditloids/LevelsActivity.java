@@ -97,6 +97,7 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 	public void onClick(View view) {
 		switch (view.getId()) {
 	    case R.id.arrowButton:
+	    	MainActivity.SetGame(game);
 	    	startActivity(new Intent(LevelsActivity.this, MainActivity.class));  
 	    	finish();
 	    	break;
@@ -135,6 +136,7 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 		// Если нажата хардварная кнопка назад
 	    if (keyCode == KeyEvent.KEYCODE_BACK) {
 	    	// На главный экран
+	    	MainActivity.SetGame(game);
 	    	startActivity(new Intent(LevelsActivity.this, MainActivity.class));
 	    	finish();       
 	    } else {
