@@ -1,6 +1,8 @@
 package com.ditloids;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.media.AudioManager;
@@ -20,7 +22,12 @@ import android.widget.TextView;
 public class LevelsActivity extends Activity implements OnClickListener, OnKeyListener {
     private RadioGroup radioGroup;
 	private HorizontalPager pager;
+	// Индекс текущего уровня на экране
+	private int checkedLevelIndex = -1;
+	int totalDitloidsCount = 0;
 	static private Game game = null;
+	// Диалог
+	AlertDialog.Builder adb = null;
 
 	private final HorizontalPager.OnScreenSwitchListener onScreenSwitchListener =
             new HorizontalPager.OnScreenSwitchListener() {
@@ -30,15 +37,19 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
                     switch (screen) {
                         case 0:
                             radioGroup.check(R.id.radio_btn_0);
+                            checkedLevelIndex = 1;
                             break;
                         case 1:
                             radioGroup.check(R.id.radio_btn_1);
+                            checkedLevelIndex = 2;
                             break;
                         case 2:
                             radioGroup.check(R.id.radio_btn_2);
+                            checkedLevelIndex = 3;
                             break;
                         case 3:
                             radioGroup.check(R.id.radio_btn_3);
+                            checkedLevelIndex = 4;
                             break;                            
                         default:
                             break;
@@ -50,19 +61,22 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
             new RadioGroup.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(final RadioGroup group, final int checkedId) {
-                    // Slide to the appropriate screen when the user checks a button.
                     switch (checkedId) {
                         case R.id.radio_btn_0:
                             pager.setCurrentScreen(0, true);
+                            checkedLevelIndex = 1;
                             break;
                         case R.id.radio_btn_1:
                             pager.setCurrentScreen(1, true);
+                            checkedLevelIndex = 2;
                             break;
                         case R.id.radio_btn_2:
                             pager.setCurrentScreen(2, true);
+                            checkedLevelIndex = 3;
                             break;
                         case R.id.radio_btn_3:
                             pager.setCurrentScreen(3, true);
+                            checkedLevelIndex = 4;
                             break;                            
                         default:
                             break;
@@ -79,12 +93,23 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
         radioGroup.setOnCheckedChangeListener(onCheckedChangedListener);
         pager = (HorizontalPager) findViewById(R.id.horizontal_pager);
         pager.setOnScreenSwitchListener(onScreenSwitchListener);
+        // Построение диалога
+        adb = new AlertDialog.Builder(this);
+        // Иконка диалога
+        adb.setIcon(android.R.drawable.ic_dialog_info);
+        // Кнопка положительного ответа диалога
+        adb.setPositiveButton(R.string.yes, null);
+        // Создаем диалог
+        adb.create();
         
         for(int i = 1; i < 5; i++){
         	int id = getResources().getIdentifier("TextView" + Integer.toString(i), "id", getApplicationContext().getPackageName());
         	final TextView countView = (TextView)findViewById(id);
         	countView.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Ukrainian-Play.ttf"));
         	countView.setText(Integer.toString(game.AnswersCount(i)) + " из " + Integer.toString(game.GetLevel(i).GetDitloidsCount()));
+        	if(!game.GetLevelAccess(i))
+        		countView.setBackgroundResource(R.drawable.level_lock);
+        	totalDitloidsCount += game.GetLevel(i).GetDitloidsCount();
         };
         findViewById(R.id.arrowButton).setOnClickListener(this);
         findViewById(R.id.level1button).setOnClickListener(this);
@@ -102,25 +127,51 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 	    	finish();
 	    	break;
 	    case R.id.level1button:
-	    	TasksActivity.SetGame(game);
-	    	game.LoadLevel(1);
-	    	startActivity(new Intent(LevelsActivity.this, TasksActivity.class));    	
+	    	if(game.GetLevelAccess(1)){
+	    		TasksActivity.SetGame(game);
+		    	game.LoadLevel(1);
+		    	startActivity(new Intent(LevelsActivity.this, TasksActivity.class));
+		    	finish();
+	    	};
 	    	break;
 	    case R.id.level2button:
-	    	TasksActivity.SetGame(game);
-	    	game.LoadLevel(2);
-	    	startActivity(new Intent(LevelsActivity.this, TasksActivity.class));    	
+	    	if(game.GetLevelAccess(2)){
+	    		TasksActivity.SetGame(game);
+		    	game.LoadLevel(2);
+		    	startActivity(new Intent(LevelsActivity.this, TasksActivity.class));
+		    	finish();
+	    	}
+	    	else{
+	    		adb.setMessage("Для доступа к этому уровню осталось ответить на " + 
+		    		  Integer.toString(game.GetLevelsDivisor()*(checkedLevelIndex - 1) - game.GetCountRight()) + " дитлоид(а,ов).");
+	    		adb.show();
+	    	};
 	    	break;
 	    case R.id.level3button:
-	    	TasksActivity.SetGame(game);
-	    	game.LoadLevel(3);
-	    	startActivity(new Intent(LevelsActivity.this, TasksActivity.class));    	
+	    	if(game.GetLevelAccess(3)){
+	    		TasksActivity.SetGame(game);
+		    	game.LoadLevel(4);
+		    	startActivity(new Intent(LevelsActivity.this, TasksActivity.class));
+		    	finish();
+	    	}
+	    	else{
+	    		adb.setMessage("Для доступа к этому уровню осталось ответить на " + 
+			    		  Integer.toString(game.GetLevelsDivisor()*(checkedLevelIndex - 1) - game.GetCountRight()) + " дитлоид(а,ов).");
+		    	adb.show();
+	    	}
 	    	break;
 	    case R.id.level4button:
-	    	TasksActivity.SetGame(game);
-	    	game.LoadLevel(4);
-	    	startActivity(new Intent(LevelsActivity.this, TasksActivity.class));    	
-	    	break;
+	    	if(game.GetLevelAccess(4)){
+	    		TasksActivity.SetGame(game);
+		    	game.LoadLevel(4);
+		    	startActivity(new Intent(LevelsActivity.this, TasksActivity.class));
+		    	finish();
+	    	}
+	    	else{
+	    		adb.setMessage("Для доступа к этому уровню осталось ответить на " + 
+			    		  Integer.toString(game.GetLevelsDivisor()*(checkedLevelIndex - 1) - game.GetCountRight()) + " дитлоид(а,ов).");
+		    	adb.show();
+	    	}
 	    default:
 	    	break;
 	    }
