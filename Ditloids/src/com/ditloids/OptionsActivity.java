@@ -147,7 +147,8 @@ public class OptionsActivity extends Activity implements OnClickListener, OnKeyL
 	    }
 		return false;
 	}
-	
+
+	// Запрет поворота экрана
 	@Override
     public void onConfigurationChanged(Configuration newConfig) {  
         super.onConfigurationChanged(newConfig); 

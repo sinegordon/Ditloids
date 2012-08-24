@@ -69,9 +69,10 @@ public class MainActivity extends Activity implements OnClickListener {
 	    	break;
 	    }	
 	}
-	
-   @Override
-    public void onConfigurationChanged(Configuration newConfig) {  
-        super.onConfigurationChanged(newConfig); 
-   }
+
+	// Запрет поворота экрана
+    @Override
+     public void onConfigurationChanged(Configuration newConfig) {  
+         super.onConfigurationChanged(newConfig); 
+    }
 }

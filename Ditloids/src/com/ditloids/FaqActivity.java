@@ -51,10 +51,11 @@ public class FaqActivity extends Activity implements OnClickListener, OnKeyListe
 		return false;
 	}
 	
-   @Override
-   public void onConfigurationChanged(Configuration newConfig) {  
-       super.onConfigurationChanged(newConfig); 
-   }
+    // Запрет поворота экрана
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {  
+        super.onConfigurationChanged(newConfig); 
+    }
 
 
 }

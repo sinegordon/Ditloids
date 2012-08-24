@@ -196,6 +196,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 		return false;
 	}
 
+	// Запрет поворота экрана
     @Override
 	public void onConfigurationChanged(Configuration newConfig) {  
     	super.onConfigurationChanged(newConfig);  

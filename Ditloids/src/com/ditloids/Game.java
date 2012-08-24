@@ -98,6 +98,11 @@ public class Game {
 		
     }
     
+    // Возвращает количество уровней в игре
+    public int GetCountLevels(){
+    	return countLevels;
+    }
+    
     // Количество правильных ответов на уровень levelIndex сохраненных в настройках
     public int AnswersCount(int levelIndex){
     	if(levelIndex <= countLevels){

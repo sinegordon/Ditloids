@@ -88,7 +88,8 @@ public class TasksActivity extends Activity implements OnClickListener, OnItemCl
     	startActivity(new Intent(TasksActivity.this, TaskActivity.class));
     	finish();
 	}
-    
+
+	// Запрет поворота экрана
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {  
     	super.onConfigurationChanged(newConfig);  
