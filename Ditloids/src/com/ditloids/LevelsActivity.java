@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnKeyListener;
 import android.graphics.Typeface;
+import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -76,11 +77,14 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
         
         for(int i = 1; i < game.GetCountLevels() + 1; i++){
         	int id = getResources().getIdentifier("TextView" + Integer.toString(i), "id", getApplicationContext().getPackageName());
-        	final TextView countView = (TextView)findViewById(id);
+        	TextView countView = (TextView)findViewById(id);
         	countView.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Ukrainian-Play.ttf"));
         	countView.setText(Integer.toString(game.AnswersCount(i)) + " из " + Integer.toString(game.GetLevel(i).GetDitloidsCount()));
-        	if(!game.GetLevelAccess(i))
-        		countView.setBackgroundResource(R.drawable.level_lock);
+        	if(!game.GetLevelAccess(i)){
+            	int idb = getResources().getIdentifier("level" + Integer.toString(i) + "button", "id", getApplicationContext().getPackageName());
+            	Button but = (Button)findViewById(idb);
+            	but.setBackgroundResource(R.drawable.level_lock);
+        	}
         	totalDitloidsCount += game.GetLevel(i).GetDitloidsCount();
         };
         findViewById(R.id.arrowButton).setOnClickListener(this);
