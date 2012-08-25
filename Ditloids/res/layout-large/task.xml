@@ -8,8 +8,8 @@
  			
     <Button
         android:id="@+id/arrowButton"
-        android:layout_width="50px"
-        android:layout_height="35px"
+        android:layout_width="45px"
+        android:layout_height="32px"
         android:layout_marginTop="15px"
         android:layout_marginLeft="18px"        
         android:background="@drawable/arrow"/>		
@@ -40,7 +40,7 @@
 	android:id="@+id/mylist"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
-	android:layout_marginTop="55dp"
+	android:layout_marginTop="55px"
 	android:cacheColorHint="#00000000"
 	android:divider="@drawable/divider">
 </ListView>

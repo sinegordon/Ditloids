@@ -8,8 +8,8 @@
         
     <Button
         android:id="@+id/arrowButton"
-        android:layout_width="50px"
-        android:layout_height="35px"
+        android:layout_width="45px"
+        android:layout_height="32px"
         android:layout_marginTop="15px"
         android:layout_marginLeft="15px"        
         android:background="@drawable/arrow"/>

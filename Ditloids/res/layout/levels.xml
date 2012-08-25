@@ -11,7 +11,7 @@
         android:id="@+id/arrowButton"
         android:layout_width="30px"
         android:layout_height="21px"
-        android:layout_marginTop="10px"
+        android:layout_marginTop="7px"
         android:layout_marginLeft="10px"        
         android:background="@drawable/arrow"/>
          

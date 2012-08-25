@@ -7,8 +7,8 @@
 
     <Button
         android:id="@+id/arrowButton"
-        android:layout_width="50px"
-        android:layout_height="35px"
+        android:layout_width="45px"
+        android:layout_height="32px"
         android:layout_marginTop="15px"
         android:layout_marginLeft="18px"        
         android:background="@drawable/arrow"/>			
@@ -77,7 +77,7 @@
     android:layout_height="70px"
     android:layout_alignLeft="@+id/editText1"
     android:layout_below="@+id/editText1"
-    android:layout_marginTop="-15dp"
+    android:layout_marginTop="-15px"
     android:background="@drawable/check"
     android:gravity="center"
     android:textColor="#60778c" />
@@ -90,7 +90,7 @@
     android:layout_centerHorizontal="true"
     android:gravity="left"
     android:padding="20px"
-    android:layout_marginTop="20dp"
+    android:layout_marginTop="20px"
     android:textSize="10px"
     android:textColor="#212a33"    
     android:ems="10"

@@ -9,8 +9,8 @@
     
     <Button
         android:id="@+id/arrowButton"
-        android:layout_width="50px"
-        android:layout_height="35px"
+        android:layout_width="45px"
+        android:layout_height="32px"
         android:layout_marginTop="15px"
         android:layout_marginLeft="15px"        
         android:background="@drawable/arrow"/>
@@ -115,7 +115,7 @@
     <RadioGroup
         android:id="@+id/tabs"
         android:layout_height="wrap_content"
-        android:layout_width="200dp"       
+        android:layout_width="200px"       
         android:orientation="horizontal"
         android:layout_marginLeft="145px"
         android:layout_marginBottom="100px">

@@ -9,19 +9,19 @@
     <Button android:id="@+id/StartButton"
         android:layout_height="wrap_content" 
         android:layout_width="wrap_content" 
-        android:layout_marginBottom="25dp"	 
+        android:layout_marginBottom="25px"	 
         android:background="@drawable/play_btn"
         android:layout_marginTop="230dp" />
 
     <Button android:id="@+id/SettingsButton"
         android:layout_height="wrap_content" 
         android:layout_width="wrap_content" 
-        android:layout_marginBottom="25dp"	
+        android:layout_marginBottom="25px"	
         android:background="@drawable/opt_btn" />
     
     <Button android:id="@+id/RulesButton"
         android:layout_height="wrap_content" 
         android:layout_width="wrap_content" 
-        android:layout_marginBottom="25dp"	
+        android:layout_marginBottom="25px"	
         android:background="@drawable/rules_btn"  />        
 </LinearLayout>
