@@ -122,20 +122,20 @@
         <RadioButton           
             android:id="@+id/radio_btn_0"
             android:checked="true"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content" />
+			android:width="10px"
+			android:height="10px"  />
         <RadioButton              
             android:id="@+id/radio_btn_1"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"/>
+			android:width="10px"
+			android:height="10px" />
         <RadioButton              
             android:id="@+id/radio_btn_2"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"/>
+			android:width="10px"
+			android:height="10px" />
         <RadioButton           
             android:id="@+id/radio_btn_3"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"/>        
+			android:width="10px"
+			android:height="10px" />        
     </RadioGroup>      
     
 </LinearLayout>
