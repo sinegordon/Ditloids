@@ -131,7 +131,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 				// Повышаем количество верных ответов
 				game.IncrementCountRight();
 				// Если это верный ответ кратный трем повышаем количество доступных подсказок
-				if(game.GetCountRight() % game.GetDivisor() == 0)
+				if(game.GetCountRight() % game.GetHintsDivisor() == 0)
 					game.IncrementCountHints();
 				//TasksActivity.SetGame(game);
 				// На экран уровня
@@ -196,6 +196,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 		return false;
 	}
 
+	// Запрет поворота экрана
     @Override
 	public void onConfigurationChanged(Configuration newConfig) {  
     	super.onConfigurationChanged(newConfig);  

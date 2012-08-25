@@ -35,9 +35,12 @@ public class Game {
     private boolean[] hints = null;
 
     // За сколько ответов дается подсказка
-    private int divisor = 3;
-    
-    // Количество правильно отвеченных дитлоидов после получения предыдущей подсказки
+    private int hintsDivisor = 3;
+
+    // За сколько ответов дается следующий уровень
+    private int levelsDivisor = 15;
+
+    // Общее количество правильно отвеченных дитлоидов
     private int countRight = 0; 
 
     // Объект настроек приложения
@@ -93,6 +96,11 @@ public class Game {
 			}
 		});
 		
+    }
+    
+    // Возвращает количество уровней в игре
+    public int GetCountLevels(){
+    	return countLevels;
     }
     
     // Количество правильных ответов на уровень levelIndex сохраненных в настройках
@@ -232,10 +240,15 @@ public class Game {
         editor.commit();
     }
     
-    public int GetDivisor(){
-    	return divisor;
+    public int GetHintsDivisor(){
+    	return hintsDivisor;
+    }
+
+    public int GetLevelsDivisor(){
+    	return levelsDivisor;
     }
     
+    // Проигрываем звук с индексом id
     public void PlaySound(int soundId){
     	if(soundId < 0 || soundId > countSounds || isMuteSound) return;
         AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
@@ -245,17 +258,20 @@ public class Game {
     	sounds.play(soundId, volume, volume, 1, 0, 1.0f);
     }
     
+    // Получаем последний неверный ответ на дитлоид ditloidIndex на уровне levelIndex
     public String GetLastWrongAnswer(int levelIndex, int ditloidIndex){
         String wrong_ans = settings.getString("wrong_" + Integer.toString(levelIndex) + "_" + Integer.toString(ditloidIndex), "");
         return wrong_ans;
     }
     
+    // Записываем последний неверный ответ на дитлоид ditloidIndex на уровне levelIndex
     public void SetLastWrongAnswer(String answer, int levelIndex, int ditloidIndex){
         SharedPreferences.Editor editor = settings.edit();
         editor.putString("wrong_" + Integer.toString(levelIndex) + "_" + Integer.toString(ditloidIndex), answer);
         editor.commit();   	
     }
     
+    // Очищаем все настройки
     public void ClearAllSettings(){ 	
     	SharedPreferences.Editor editor = settings.edit();
     	editor.clear();
@@ -300,5 +316,17 @@ public class Game {
         SharedPreferences.Editor editor = settings.edit();
         editor.putBoolean("isMuteMusic", isMuteMusic);
         editor.commit();   	   	
+    }
+    
+    // Возвращаем доступен ли сейчас уровень с индексом levelIndex 
+    // (напомним, что при использовании класса уровни нумеруются с единицы, а внутри класса с нуля)
+    public boolean GetLevelAccess(int levelIndex){
+    	if(levelIndex < 0 || levelIndex >= levels.length)
+    		return false;
+    	int i = countRight / levelsDivisor;
+    	if(i >= (levelIndex - 1))
+    		return true;
+    	else
+    		return false;
     }
 }

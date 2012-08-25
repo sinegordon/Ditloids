@@ -1,6 +1,8 @@
 package com.ditloids;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.media.AudioManager;
@@ -18,55 +20,39 @@ import android.widget.TextView;
  * dual-scrolling capabilities when a vertically scrollable element is nested inside the pager.
  */
 public class LevelsActivity extends Activity implements OnClickListener, OnKeyListener {
-    private RadioGroup radioGroup;
-	private HorizontalPager pager;
-	static private Game game = null;
-
+    private RadioGroup radioGroup = null;
+	private HorizontalPager pager = null;
+	// Индекс текущего уровня на экране
+	private int checkedLevelIndex = -1;
+	private int totalDitloidsCount = 0;
+	private static Game game = null;
+	// Диалог
+	AlertDialog.Builder adb = null;
+	
+	// Обработчик листания экрана
 	private final HorizontalPager.OnScreenSwitchListener onScreenSwitchListener =
             new HorizontalPager.OnScreenSwitchListener() {
                 @Override
                 public void onScreenSwitched(final int screen) {
-                    // Check the appropriate button when the user swipes screens.
-                    switch (screen) {
-                        case 0:
-                            radioGroup.check(R.id.radio_btn_0);
-                            break;
-                        case 1:
-                            radioGroup.check(R.id.radio_btn_1);
-                            break;
-                        case 2:
-                            radioGroup.check(R.id.radio_btn_2);
-                            break;
-                        case 3:
-                            radioGroup.check(R.id.radio_btn_3);
-                            break;                            
-                        default:
-                            break;
-                    }
+                	int id = getResources().getIdentifier("radio_btn_" + Integer.toString(screen), "id", getApplicationContext().getPackageName());
+                	radioGroup.check(id);
+                	checkedLevelIndex = screen + 1;
                 }
             };
-
+    
+    // Обработчик клика по радиобуттонам
     private final RadioGroup.OnCheckedChangeListener onCheckedChangedListener =
             new RadioGroup.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(final RadioGroup group, final int checkedId) {
-                    // Slide to the appropriate screen when the user checks a button.
-                    switch (checkedId) {
-                        case R.id.radio_btn_0:
-                            pager.setCurrentScreen(0, true);
-                            break;
-                        case R.id.radio_btn_1:
-                            pager.setCurrentScreen(1, true);
-                            break;
-                        case R.id.radio_btn_2:
-                            pager.setCurrentScreen(2, true);
-                            break;
-                        case R.id.radio_btn_3:
-                            pager.setCurrentScreen(3, true);
-                            break;                            
-                        default:
-                            break;
-                    }
+                	for(int i = 0; i < game.GetCountLevels(); i++){
+                		int id = getResources().getIdentifier("radio_btn_" + Integer.toString(i), "id", getApplicationContext().getPackageName());
+                		if (id == checkedId){
+                			pager.setCurrentScreen(i, true);
+                			checkedLevelIndex = i + 1;
+                			break;
+                		}
+                	}
                 }
             };
 
@@ -79,52 +65,67 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
         radioGroup.setOnCheckedChangeListener(onCheckedChangedListener);
         pager = (HorizontalPager) findViewById(R.id.horizontal_pager);
         pager.setOnScreenSwitchListener(onScreenSwitchListener);
+        // Построение диалога
+        adb = new AlertDialog.Builder(this);
+        // Иконка диалога
+        adb.setIcon(android.R.drawable.ic_dialog_info);
+        // Кнопка положительного ответа диалога
+        adb.setPositiveButton(R.string.yes, null);
+        // Создаем диалог
+        adb.create();
         
-        for(int i = 1; i < 5; i++){
+        for(int i = 1; i < game.GetCountLevels() + 1; i++){
         	int id = getResources().getIdentifier("TextView" + Integer.toString(i), "id", getApplicationContext().getPackageName());
         	final TextView countView = (TextView)findViewById(id);
         	countView.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Ukrainian-Play.ttf"));
         	countView.setText(Integer.toString(game.AnswersCount(i)) + " из " + Integer.toString(game.GetLevel(i).GetDitloidsCount()));
+        	if(!game.GetLevelAccess(i))
+        		countView.setBackgroundResource(R.drawable.level_lock);
+        	totalDitloidsCount += game.GetLevel(i).GetDitloidsCount();
         };
         findViewById(R.id.arrowButton).setOnClickListener(this);
-        findViewById(R.id.level1button).setOnClickListener(this);
-        findViewById(R.id.level2button).setOnClickListener(this);
-        findViewById(R.id.level3button).setOnClickListener(this);
-        findViewById(R.id.level4button).setOnClickListener(this);
+    	for(int i = 1; i < game.GetCountLevels() + 1; i++){
+    		int id = getResources().getIdentifier("level" + Integer.toString(i) +"button", "id", getApplicationContext().getPackageName());
+    		findViewById(id).setOnClickListener(this);
+    	}
     }
     
 	@Override
 	public void onClick(View view) {
 		switch (view.getId()) {
+		// Если кнопка назад
 	    case R.id.arrowButton:
+	    	MainActivity.SetGame(game);
 	    	startActivity(new Intent(LevelsActivity.this, MainActivity.class));  
 	    	finish();
 	    	break;
-	    case R.id.level1button:
-	    	TasksActivity.SetGame(game);
-	    	game.LoadLevel(1);
-	    	startActivity(new Intent(LevelsActivity.this, TasksActivity.class));    	
-	    	break;
-	    case R.id.level2button:
-	    	TasksActivity.SetGame(game);
-	    	game.LoadLevel(2);
-	    	startActivity(new Intent(LevelsActivity.this, TasksActivity.class));    	
-	    	break;
-	    case R.id.level3button:
-	    	TasksActivity.SetGame(game);
-	    	game.LoadLevel(3);
-	    	startActivity(new Intent(LevelsActivity.this, TasksActivity.class));    	
-	    	break;
-	    case R.id.level4button:
-	    	TasksActivity.SetGame(game);
-	    	game.LoadLevel(4);
-	    	startActivity(new Intent(LevelsActivity.this, TasksActivity.class));    	
-	    	break;
 	    default:
+	    	// Если что-то другое (проверяем не нажата ли кнопка перехода на уровень)
+	    	for(int i = 1; i < game.GetCountLevels() + 1; i++){
+	    		int id = getResources().getIdentifier("level" + Integer.toString(i) +"button", "id", getApplicationContext().getPackageName());
+	    		// Емли нажата
+	    		if (id == view.getId()){
+	    			// Проверяем доступность уровня
+	    	    	if(game.GetLevelAccess(i)){
+	    	    		// Если доступен - переходим
+	    	    		TasksActivity.SetGame(game);
+	    		    	game.LoadLevel(i);
+	    		    	startActivity(new Intent(LevelsActivity.this, TasksActivity.class));
+	    		    	finish();
+	    	    	}
+	    	    	else{
+	    	    		// Если недоступен - сообщаем пользователю сколько нужно еще решить для его открытия
+	    	    		adb.setMessage("Для доступа к этому уровню осталось ответить на " + 
+	    			    		  Integer.toString(game.GetLevelsDivisor()*(checkedLevelIndex - 1) - game.GetCountRight()) + " дитлоид(а,ов).");
+	    		    	adb.show();
+	    	    	}
+	    		}
+	    	}
 	    	break;
 	    }
 	}
 	
+	// Запрет поворота экрана
     @Override
 	public void onConfigurationChanged(Configuration newConfig) {  
     	super.onConfigurationChanged(newConfig);  
@@ -135,6 +136,7 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 		// Если нажата хардварная кнопка назад
 	    if (keyCode == KeyEvent.KEYCODE_BACK) {
 	    	// На главный экран
+	    	MainActivity.SetGame(game);
 	    	startActivity(new Intent(LevelsActivity.this, MainActivity.class));
 	    	finish();       
 	    } else {
