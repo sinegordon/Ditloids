@@ -100,7 +100,7 @@ public class OptionsActivity extends Activity implements OnClickListener, OnKeyL
 	    	// На главный экран
 	    	game.SaveMuteSound();
 	    	game.SaveMuteMusic();
-	    	MainActivity.SetGame(game);
+	    	//MainActivity.SetGame(game);
 	    	startActivity(new Intent(OptionsActivity.this, MainActivity.class));
 	    	finish();
 	    	break;
@@ -131,21 +131,21 @@ public class OptionsActivity extends Activity implements OnClickListener, OnKeyL
 	    	break;
 	    }
 	}
-	
+		
 	@Override
 	public boolean onKey(View v, int keyCode, KeyEvent event) {
 		// Если нажата хардварная кнопка назад
-	    if (keyCode == KeyEvent.KEYCODE_BACK) {
+	    if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && event.getAction()==KeyEvent.ACTION_DOWN) {
 	    	// На главный экран
-	    	MainActivity.SetGame(game);
+	    	//MainActivity.SetGame(game);
 	    	game.SaveMuteSound();
 	    	game.SaveMuteMusic();
 	    	startActivity(new Intent(OptionsActivity.this, MainActivity.class));
 	    	finish();
+			return true;
 	    } else {
-	        return super.onKeyDown(keyCode, event);
+	        return false;
 	    }
-		return false;
 	}
 
 	// Запрет поворота экрана

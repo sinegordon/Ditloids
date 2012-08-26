@@ -13,6 +13,12 @@ import android.content.Intent;
 
 
 public class Game {
+	// Режим разрешения
+	// 320 X 480 = 1
+	// 480 X 800 = 2
+	// 720 X 1280 = 3
+	private int resolutionMode = -1;
+	
 	// Количество уровней
 	private int countLevels = 0;
 	
@@ -85,9 +91,7 @@ public class Game {
         
         mediaPlayer = MediaPlayer.create(context, R.raw.music);
 //        mediaPlayer.prepare();
-        if(isMuteMusic)
-        	mediaPlayer.pause();
-        else
+        if(!isMuteMusic)
         	mediaPlayer.start();
         mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
 			@Override

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.media.AudioManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -22,7 +23,6 @@ public class FaqActivity extends Activity implements OnClickListener, OnKeyListe
 		setContentView(R.layout.faq);
         this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
 		findViewById(R.id.arrowButton).setOnClickListener(this);
-		findViewById(R.id.arrowButton).setOnKeyListener(this);
 	}
 	
 	@Override
@@ -41,21 +41,20 @@ public class FaqActivity extends Activity implements OnClickListener, OnKeyListe
 	@Override
 	public boolean onKey(View v, int keyCode, KeyEvent event) {
 		// Если нажата хардварная кнопка назад
-	    if (keyCode == KeyEvent.KEYCODE_BACK) {
-	    	// На экран уровня
+	    if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && event.getAction()==KeyEvent.ACTION_DOWN) {
+	    	// На главный экран
 	    	startActivity(new Intent(FaqActivity.this, MainActivity.class));
-	    	finish();
+	    	finish();   
+			return true;
 	    } else {
-	        return super.onKeyDown(keyCode, event);
+	        return false;
 	    }
-		return false;
 	}
+
 	
     // Запрет поворота экрана
     @Override
     public void onConfigurationChanged(Configuration newConfig) {  
         super.onConfigurationChanged(newConfig); 
     }
-
-
 }

@@ -91,7 +91,6 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 			imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
 			imm.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);
 	    	// На экран уровня
-	    	TasksActivity.SetGame(game);
 	    	startActivity(new Intent(TaskActivity.this, TasksActivity.class));
 	    	finish();
 	    	break;
@@ -133,10 +132,6 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 				// Если это верный ответ кратный трем повышаем количество доступных подсказок
 				if(game.GetCountRight() % game.GetHintsDivisor() == 0)
 					game.IncrementCountHints();
-				//TasksActivity.SetGame(game);
-				// На экран уровня
-		    	//startActivity(new Intent(TaskActivity.this, TasksActivity.class));
-		    	//finish();
 			}
 			else{
 				game.PlaySound(2);
@@ -144,8 +139,6 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 				game.SetLastWrongAnswer(((EditText)findViewById(R.id.editText1)).getText().toString(), game.GetCurrentLevel().GetLevelIndex(), game.GetCurrentDitloidIndex());
 				// Меняем фон кнопки
 				findViewById(R.id.buttonCheck).setBackgroundResource(R.drawable.check_wrong);
-				// Показываем сообщение что неверный ответ
-				//Toast.makeText(this, "Не верно", Toast.LENGTH_LONG).show();
 			};
 	    	break;
 	    default:
@@ -182,18 +175,18 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 		};
 		*/
 		// Если нажата хардварная кнопка назад
-	    if (keyCode == KeyEvent.KEYCODE_BACK) {
+	    if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && event.getAction()==KeyEvent.ACTION_DOWN) {
 			// Убираем клавиатуру
 			InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
 			imm.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);
 	    	// На экран уровня
-	    	TasksActivity.SetGame(game);
 	    	startActivity(new Intent(TaskActivity.this, TasksActivity.class));
-	    	finish();       
+	    	finish();     
+			return true;
 	    } else {
-	        return super.onKeyDown(keyCode, event);
+	        return false;
 	    }
-		return false;
+
 	}
 
 	// Запрет поворота экрана

@@ -18,10 +18,11 @@ import android.widget.TextView;
 
 public class TasksActivity extends Activity implements OnClickListener, OnItemClickListener, OnKeyListener {
 	/** Called when the activity is first created. */
-	private static Game game = null;
+	static private Game game = null;
+	// Индексы отвеченных дитлоидов в порядке их расположения в списке
 	private Integer[] ditloidIndexes = null;
 	
-	public static void SetGame(Game _game){
+	static public void SetGame(Game _game){
 		game = _game;
 	}
 	
@@ -83,31 +84,28 @@ public class TasksActivity extends Activity implements OnClickListener, OnItemCl
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		// Устанавливаем индекс текущего дитлоида на текущем уровне
 		game.SetCurrentDitloidIndex(ditloidIndexes[arg2].intValue());
-		TaskActivity.SetGame(game);
 		// На экран ввода ответа
     	startActivity(new Intent(TasksActivity.this, TaskActivity.class));
-    	finish();
-	}
-
-	// Запрет поворота экрана
-	@Override
-	public void onConfigurationChanged(Configuration newConfig) {  
-    	super.onConfigurationChanged(newConfig);  
 	}
 
 	@Override
 	public boolean onKey(View v, int keyCode, KeyEvent event) {
 		// Если нажата хардварная кнопка назад
-	    if (keyCode == KeyEvent.KEYCODE_BACK) {
+	    if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && event.getAction()==KeyEvent.ACTION_DOWN) {
 	    	// Сохраняем уровень
 	    	game.SaveLevel();
 	    	// На экран выбора уровня
 	    	startActivity(new Intent(TasksActivity.this, LevelsActivity.class));
 	    	finish();
+	    	return true;
 	    } else {
-	        return super.onKeyDown(keyCode, event);
+	        return false;
 	    }
-		return false;
 	}
 	
+	// Запрет поворота экрана
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {  
+    	super.onConfigurationChanged(newConfig);  
+	}
 }

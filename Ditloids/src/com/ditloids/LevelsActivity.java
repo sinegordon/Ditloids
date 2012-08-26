@@ -88,6 +88,7 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
         	totalDitloidsCount += game.GetLevel(i).GetDitloidsCount();
         };
         findViewById(R.id.arrowButton).setOnClickListener(this);
+        findViewById(R.id.arrowButton).setOnKeyListener(this);
     	for(int i = 1; i < game.GetCountLevels() + 1; i++){
     		int id = getResources().getIdentifier("level" + Integer.toString(i) +"button", "id", getApplicationContext().getPackageName());
     		findViewById(id).setOnClickListener(this);
@@ -99,7 +100,7 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 		switch (view.getId()) {
 		// Если кнопка назад
 	    case R.id.arrowButton:
-	    	MainActivity.SetGame(game);
+	    	//MainActivity.SetGame(game);
 	    	startActivity(new Intent(LevelsActivity.this, MainActivity.class));  
 	    	finish();
 	    	break;
@@ -107,15 +108,14 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 	    	// Если что-то другое (проверяем не нажата ли кнопка перехода на уровень)
 	    	for(int i = 1; i < game.GetCountLevels() + 1; i++){
 	    		int id = getResources().getIdentifier("level" + Integer.toString(i) +"button", "id", getApplicationContext().getPackageName());
-	    		// Емли нажата
+	    		// Еcли нажата
 	    		if (id == view.getId()){
 	    			// Проверяем доступность уровня
 	    	    	if(game.GetLevelAccess(i)){
 	    	    		// Если доступен - переходим
-	    	    		TasksActivity.SetGame(game);
+	    	    		//TasksActivity.SetGame(game);
 	    		    	game.LoadLevel(i);
 	    		    	startActivity(new Intent(LevelsActivity.this, TasksActivity.class));
-	    		    	finish();
 	    	    	}
 	    	    	else{
 	    	    		// Если недоступен - сообщаем пользователю сколько нужно еще решить для его открытия
@@ -138,15 +138,15 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 	@Override
 	public boolean onKey(View v, int keyCode, KeyEvent event) {
 		// Если нажата хардварная кнопка назад
-	    if (keyCode == KeyEvent.KEYCODE_BACK) {
+	    if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && event.getAction()==KeyEvent.ACTION_DOWN) {
 	    	// На главный экран
-	    	MainActivity.SetGame(game);
 	    	startActivity(new Intent(LevelsActivity.this, MainActivity.class));
-	    	finish();       
+	    	finish();   
+			return true;
 	    } else {
-	        return super.onKeyDown(keyCode, event);
+	        return false;
 	    }
-		return false;
+
 	}
 	
 	static public void SetGame(Game _game){

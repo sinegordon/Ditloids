@@ -17,10 +17,6 @@ public class MainActivity extends Activity implements OnClickListener {
 	/** Called when the activity is first created. */
 	private static Game game = null;
 	
-	public static void SetGame(Game _game){
-		game = _game;
-	}
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +35,10 @@ public class MainActivity extends Activity implements OnClickListener {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+        TasksActivity.SetGame(game);
+        LevelsActivity.SetGame(game);
+        OptionsActivity.SetGame(game);
+        TaskActivity.SetGame(game);
     }
 
 	@Override
@@ -46,24 +46,19 @@ public class MainActivity extends Activity implements OnClickListener {
 		Intent intent = null;
 		switch (view.getId()) {
 	    case R.id.StartButton:
-	    	LevelsActivity.SetGame(game);
 	    	intent = new Intent(this, LevelsActivity.class);
 	    	intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 	    	startActivity(intent);
-	    	finish();
 	    	break;
 	    case R.id.RulesButton:
 	    	intent = new Intent(this, FaqActivity.class);
 	    	intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 	    	startActivity(intent);
-	    	finish();
 	    	break;
 	    case R.id.SettingsButton:
-	    	OptionsActivity.SetGame(game);
 	    	intent = new Intent(this, OptionsActivity.class);
 	    	intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 	    	startActivity(intent);
-	    	finish();
 	    	break;
 	    default:
 	    	break;
