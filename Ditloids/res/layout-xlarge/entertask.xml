@@ -7,10 +7,10 @@
 
  <Button
     android:id="@+id/arrowButton"
-    android:layout_width="50px"
-    android:layout_height="35px"
-    android:layout_marginTop="25px"
-    android:layout_marginLeft="25px"        
+    android:layout_width="50dp"
+    android:layout_height="35dp"
+    android:layout_marginTop="25dp"
+    android:layout_marginLeft="25dp"        
     android:background="@drawable/arrow"/>			
 
 <TextView
@@ -19,9 +19,9 @@
     android:layout_height="wrap_content"
     android:layout_centerHorizontal="true"
     android:gravity="center"
-    android:layout_marginTop="16px"    
+    android:layout_marginTop="16dp"    
     android:text="Уровень 1"
-    android:textSize="32px" />   
+    android:textSize="32dp" />   
     
 <TextView
     android:id="@+id/textView2"
@@ -29,9 +29,9 @@
     android:layout_height="wrap_content"
 	android:layout_alignParentRight="true"   
     android:gravity="center"
-    android:textSize="25px"    	 
-    android:layout_marginTop="26px"
-    android:layout_marginRight="145px"
+    android:textSize="25dp"    	 
+    android:layout_marginTop="26dp"
+    android:layout_marginRight="145dp"
     android:textColor="#254566"          
     android:text="12" />  
 
@@ -42,21 +42,21 @@
     android:layout_below="@+id/textView1"
     android:layout_centerHorizontal="true"
     android:gravity="center_horizontal"
-    android:paddingTop="15px"
-    android:layout_marginTop="130px"
-    android:textSize="70px"
+    android:paddingTop="15dp"
+    android:layout_marginTop="130dp"
+    android:textSize="70dp"
     android:textColor="#254566"    
     android:text="29 Д в Ф в В Г"
     android:background="@drawable/bg_task_with_hint"/>
 
 <TextView
     android:id="@+id/textHint"
-    android:layout_width="350px"
+    android:layout_width="350dp"
     android:layout_height="wrap_content"
     android:gravity="center"      
     android:layout_alignBottom="@+id/textView3"
     android:layout_centerHorizontal="true"
-    android:layout_marginBottom="45px"
+    android:layout_marginBottom="45dp"
     android:textColor="#60778c"
     android:text="@string/hint" />
 
@@ -67,7 +67,7 @@
     android:gravity="center"      
     android:layout_alignBottom="@+id/textView3"
     android:layout_centerHorizontal="true"
-    android:layout_marginBottom="45px"
+    android:layout_marginBottom="45dp"
     android:textColor="#60778c"
     android:background="@drawable/hint" />
 
@@ -77,7 +77,7 @@
     android:layout_height="wrap_content"
     android:layout_alignLeft="@+id/editText1"
     android:layout_below="@+id/editText1"
-    android:layout_marginTop="-15px"
+    android:layout_marginTop="-15dp"
     android:background="@drawable/check"
     android:gravity="center"
     android:textColor="#60778c" />
@@ -89,9 +89,9 @@
     android:layout_below="@+id/textView3"
     android:layout_centerHorizontal="true"
     android:gravity="left"
-    android:padding="20px"
-    android:layout_marginTop="40px"
-    android:textSize="28px"
+    android:padding="20dp"
+    android:layout_marginTop="40dp"
+    android:textSize="28dp"
     android:textColor="#212a33"    
     android:ems="10"
     android:background="@drawable/bg_input" 

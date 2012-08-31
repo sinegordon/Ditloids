@@ -9,10 +9,10 @@
     
     <Button
         android:id="@+id/arrowButton"
-        android:layout_width="45px"
-        android:layout_height="32px"
-        android:layout_marginTop="15px"
-        android:layout_marginLeft="15px"        
+        android:layout_width="45dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"        
         android:background="@drawable/arrow"/>
          
     <com.ditloids.HorizontalPager
@@ -28,9 +28,9 @@
    		<Button   		     		    
      	  	android:id="@+id/level1button"			
 			android:background="@drawable/level1"
-            android:layout_width="400px"
-            android:layout_height="400px"
-    	    android:layout_marginTop="50px"/>           
+            android:layout_width="400dp"
+            android:layout_height="400dp"
+    	    android:layout_marginTop="50dp"/>           
   	
    			<TextView		    
 			android:id="@+id/TextView1"
@@ -38,10 +38,10 @@
 			android:text="@string/countlv1"
         	android:layout_width="wrap_content"
         	android:layout_height="wrap_content"
-        	android:textSize="42px"
+        	android:textSize="42dp"
 			android:textColor="#d3dae0"
-    	    android:layout_marginTop="350px"
-    	    android:layout_marginLeft="130px"/>
+    	    android:layout_marginTop="350dp"
+    	    android:layout_marginLeft="130dp"/>
         </RelativeLayout>
         
         <RelativeLayout
@@ -51,19 +51,19 @@
    		<Button     		    
      	  	android:id="@+id/level2button"			
 			android:background="@drawable/level2"
-            android:layout_width="400px"
-            android:layout_height="400px"
-    	    android:layout_marginTop="50px"/> 	
+            android:layout_width="400dp"
+            android:layout_height="400dp"
+    	    android:layout_marginTop="50dp"/> 	
    			<TextView		    
 			android:id="@+id/TextView2"
    			android:gravity="center"
 			android:text="@string/countlv2"
         	android:layout_width="wrap_content"
         	android:layout_height="wrap_content"
-        	android:textSize="42px"
+        	android:textSize="42dp"
 			android:textColor="#d3dae0"
-    	    android:layout_marginTop="350px"
-    	    android:layout_marginLeft="130px"/>  		
+    	    android:layout_marginTop="350dp"
+    	    android:layout_marginLeft="130dp"/>  		
         </RelativeLayout>
         
         <RelativeLayout
@@ -73,19 +73,19 @@
    		<Button    		    
      	  	android:id="@+id/level3button"			
 			android:background="@drawable/level3"
-            android:layout_width="400px"
-            android:layout_height="400px"
-    	    android:layout_marginTop="50px"/>
+            android:layout_width="400dp"
+            android:layout_height="400dp"
+    	    android:layout_marginTop="50dp"/>
    			<TextView		    
 			android:id="@+id/TextView3"
    			android:gravity="center"
 			android:text="@string/countlv3"
         	android:layout_width="wrap_content"
         	android:layout_height="wrap_content"
-        	android:textSize="42px"
+        	android:textSize="42dp"
 			android:textColor="#d3dae0"
-    	    android:layout_marginTop="350px"
-    	    android:layout_marginLeft="130px"/>   		
+    	    android:layout_marginTop="350dp"
+    	    android:layout_marginLeft="130dp"/>   		
         </RelativeLayout>
         
         <RelativeLayout
@@ -95,19 +95,19 @@
    		<Button     		    
      	  	android:id="@+id/level4button"			
 			android:background="@drawable/level4"
-            android:layout_width="400px"
-            android:layout_height="400px"
-    	    android:layout_marginTop="50px"/>
+            android:layout_width="400dp"
+            android:layout_height="400dp"
+    	    android:layout_marginTop="50dp"/>
    			<TextView		    
 			android:id="@+id/TextView4"
    			android:gravity="center"
 			android:text="@string/countlv4"
         	android:layout_width="wrap_content"
         	android:layout_height="wrap_content"
-        	android:textSize="42px"
+        	android:textSize="42dp"
 			android:textColor="#d3dae0"
-    	    android:layout_marginTop="350px"
-    	    android:layout_marginLeft="130px"/>   		
+    	    android:layout_marginTop="350dp"
+    	    android:layout_marginLeft="130dp"/>   		
         </RelativeLayout>        
         
     </com.ditloids.HorizontalPager>
@@ -115,30 +115,30 @@
     <RadioGroup
         android:id="@+id/tabs"
         android:layout_height="wrap_content"
-        android:layout_width="200px"       
+        android:layout_width="200dp"       
         android:orientation="horizontal"
-        android:layout_marginLeft="145px"
-        android:layout_marginBottom="100px">
+        android:layout_marginLeft="145dp"
+        android:layout_marginBottom="100dp">
         <RadioButton           
             android:id="@+id/radio_btn_0"
             android:checked="true"
-			android:width="25px"
-			android:height="25px" 
+			android:width="25dp"
+			android:height="25dp" 
             android:layout_weight="1" />
         <RadioButton              
             android:id="@+id/radio_btn_1"
-			android:width="25px"
-			android:height="25px" 
+			android:width="25dp"
+			android:height="25dp" 
             android:layout_weight="1"/>
         <RadioButton              
             android:id="@+id/radio_btn_2"
-			android:width="25px"
-			android:height="25px" 
+			android:width="25dp"
+			android:height="25dp" 
             android:layout_weight="1"/>
         <RadioButton           
             android:id="@+id/radio_btn_3"
-			android:width="25px"
-			android:height="25px" 
+			android:width="25dp"
+			android:height="25dp" 
             android:layout_weight="1"/>        
     </RadioGroup>      
     

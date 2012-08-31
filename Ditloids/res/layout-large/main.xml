@@ -7,21 +7,21 @@
     android:gravity="center">
 
     <Button android:id="@+id/StartButton"
-        android:layout_height="54px" 
-        android:layout_width="250px" 
-        android:layout_marginBottom="25px"	 
+        android:layout_height="54dp" 
+        android:layout_width="250dp" 
+        android:layout_marginBottom="25dp"	 
         android:background="@drawable/play_btn"
         android:layout_marginTop="200dp" />
 
     <Button android:id="@+id/SettingsButton"
-        android:layout_height="54px" 
-        android:layout_width="250px"
-        android:layout_marginBottom="25px"	
+        android:layout_height="54dp" 
+        android:layout_width="250dp"
+        android:layout_marginBottom="25dp"	
         android:background="@drawable/opt_btn" />
     
     <Button android:id="@+id/RulesButton"
-        android:layout_height="54px" 
-        android:layout_width="250px"
-        android:layout_marginBottom="25px"	
+        android:layout_height="54dp" 
+        android:layout_width="250dp"
+        android:layout_marginBottom="25dp"	
         android:background="@drawable/rules_btn"  />        
 </LinearLayout>

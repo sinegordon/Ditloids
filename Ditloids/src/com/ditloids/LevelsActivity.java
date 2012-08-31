@@ -116,6 +116,7 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 	    	    		//TasksActivity.SetGame(game);
 	    		    	game.LoadLevel(i);
 	    		    	startActivity(new Intent(LevelsActivity.this, TasksActivity.class));
+	    		    	break;
 	    	    	}
 	    	    	else{
 	    	    		// Если недоступен - сообщаем пользователю сколько нужно еще решить для его открытия

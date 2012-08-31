@@ -8,10 +8,10 @@
  			
  <Button
     android:id="@+id/arrowButton"
-    android:layout_width="50px"
-    android:layout_height="35px"
-    android:layout_marginTop="25px"
-    android:layout_marginLeft="25px"        
+    android:layout_width="50dp"
+    android:layout_height="35dp"
+    android:layout_marginTop="25dp"
+    android:layout_marginLeft="25dp"        
     android:background="@drawable/arrow"/>			
 
 <TextView
@@ -20,9 +20,9 @@
     android:layout_height="wrap_content"
     android:layout_centerHorizontal="true"
     android:gravity="center"
-    android:layout_marginTop="16px"    
+    android:layout_marginTop="16dp"    
     android:text="Уровень 1"
-    android:textSize="32px" />   
+    android:textSize="32dp" />   
     
 <TextView
     android:id="@+id/textView2"
@@ -30,9 +30,9 @@
     android:layout_height="wrap_content"
 	android:layout_alignParentRight="true"   
     android:gravity="center"
-    android:textSize="25px"    	 
-    android:layout_marginTop="26px"
-    android:layout_marginRight="145px"
+    android:textSize="25dp"    	 
+    android:layout_marginTop="26dp"
+    android:layout_marginRight="145dp"
     android:textColor="#254566"          
     android:text="12" />     
     
@@ -40,7 +40,7 @@
 	android:id="@+id/mylist"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
-	android:layout_marginTop="87px"
+	android:layout_marginTop="87dp"
 	android:cacheColorHint="#00000000"
 	android:divider="@drawable/divider">
 </ListView>

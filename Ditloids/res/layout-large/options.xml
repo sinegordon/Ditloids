@@ -15,24 +15,24 @@
         android:background="@drawable/arrow"/>   
 
     <Button android:id="@+id/sfxButton"
-        android:layout_height="57px" 
-        android:layout_width="334px" 
-        android:layout_marginBottom="25px"	 
+        android:layout_height="57dp" 
+        android:layout_width="334dp" 
+        android:layout_marginBottom="25dp"	 
         android:background="@drawable/sfx_off"
-        android:layout_marginTop="150px"
-		android:layout_marginLeft="70px"/>
+        android:layout_marginTop="150dp"
+		android:layout_marginLeft="70dp"/>
 
     <Button android:id="@+id/musicButton"
-        android:layout_height="57px" 
-        android:layout_width="334px" 
-        android:layout_marginBottom="25px"	
+        android:layout_height="57dp" 
+        android:layout_width="334dp" 
+        android:layout_marginBottom="25dp"	
         android:background="@drawable/music_off"
-		android:layout_marginLeft="70px"         />
+		android:layout_marginLeft="70dp"         />
     
     <Button android:id="@+id/resetButton"
-        android:layout_height="57px" 
-        android:layout_width="334px" 
-        android:layout_marginBottom="25px"	
+        android:layout_height="57dp" 
+        android:layout_width="334dp" 
+        android:layout_marginBottom="25dp"	
         android:background="@drawable/reset" 
-		android:layout_marginLeft="70px"         />        
+		android:layout_marginLeft="70dp"         />        
 </LinearLayout>

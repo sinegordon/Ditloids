@@ -73,7 +73,6 @@ public class TasksActivity extends Activity implements OnClickListener, OnItemCl
 	    	game.SaveLevel();
 	    	// На экран выбора уровня
 	    	startActivity(new Intent(TasksActivity.this, LevelsActivity.class));
-	    	finish();
 	    	break;
 	    default:
 	    	break;
