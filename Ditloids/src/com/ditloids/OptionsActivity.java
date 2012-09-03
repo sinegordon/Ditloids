@@ -102,7 +102,6 @@ public class OptionsActivity extends Activity implements OnClickListener, OnKeyL
 	    	game.SaveMuteMusic();
 	    	//MainActivity.SetGame(game);
 	    	startActivity(new Intent(OptionsActivity.this, MainActivity.class));
-	    	finish();
 	    	break;
 	    case R.id.sfxButton:
 	    	sfxButton = (Button)findViewById(R.id.sfxButton);
@@ -141,7 +140,6 @@ public class OptionsActivity extends Activity implements OnClickListener, OnKeyL
 	    	game.SaveMuteSound();
 	    	game.SaveMuteMusic();
 	    	startActivity(new Intent(OptionsActivity.this, MainActivity.class));
-	    	finish();
 			return true;
 	    } else {
 	        return false;

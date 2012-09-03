@@ -102,7 +102,6 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 	    case R.id.arrowButton:
 	    	//MainActivity.SetGame(game);
 	    	startActivity(new Intent(LevelsActivity.this, MainActivity.class));  
-	    	finish();
 	    	break;
 	    default:
 	    	// Если что-то другое (проверяем не нажата ли кнопка перехода на уровень)
@@ -142,7 +141,6 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 	    if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && event.getAction()==KeyEvent.ACTION_DOWN) {
 	    	// На главный экран
 	    	startActivity(new Intent(LevelsActivity.this, MainActivity.class));
-	    	finish();   
 			return true;
 	    } else {
 	        return false;

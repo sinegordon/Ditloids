@@ -92,7 +92,6 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 			imm.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);
 	    	// На экран уровня
 	    	startActivity(new Intent(TaskActivity.this, TasksActivity.class));
-	    	finish();
 	    	break;
 	    case R.id.buttonHint:
 	    	// Если есть подсказки
@@ -181,7 +180,6 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 			imm.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);
 	    	// На экран уровня
 	    	startActivity(new Intent(TaskActivity.this, TasksActivity.class));
-	    	finish();     
 			return true;
 	    } else {
 	        return false;
