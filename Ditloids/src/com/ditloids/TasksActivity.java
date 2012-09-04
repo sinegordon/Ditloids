@@ -73,6 +73,7 @@ public class TasksActivity extends Activity implements OnClickListener, OnItemCl
 	    	game.SaveLevel();
 	    	// На экран выбора уровня
 	    	startActivity(new Intent(TasksActivity.this, LevelsActivity.class));
+	    	finish();
 	    	break;
 	    default:
 	    	break;
@@ -85,6 +86,7 @@ public class TasksActivity extends Activity implements OnClickListener, OnItemCl
 		game.SetCurrentDitloidIndex(ditloidIndexes[arg2].intValue());
 		// На экран ввода ответа
     	startActivity(new Intent(TasksActivity.this, TaskActivity.class));
+    	finish();
 	}
 
 	@Override
@@ -95,7 +97,8 @@ public class TasksActivity extends Activity implements OnClickListener, OnItemCl
 	    	game.SaveLevel();
 	    	// На экран выбора уровня
 	    	startActivity(new Intent(TasksActivity.this, LevelsActivity.class));
-	    	return true;
+	    	finish();
+	    	return super.onKeyDown(keyCode, event);
 	    } else {
 	        return false;
 	    }

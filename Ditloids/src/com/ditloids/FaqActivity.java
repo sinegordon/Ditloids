@@ -31,6 +31,7 @@ public class FaqActivity extends Activity implements OnClickListener, OnKeyListe
 	    case R.id.arrowButton:
 	    	// На экран уровня
 	    	startActivity(new Intent(FaqActivity.this, MainActivity.class));
+	    	finish();
 	    	break;
 	    default:
 	    	break;
@@ -43,6 +44,7 @@ public class FaqActivity extends Activity implements OnClickListener, OnKeyListe
 	    if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && event.getAction()==KeyEvent.ACTION_DOWN) {
 	    	// На главный экран
 	    	startActivity(new Intent(FaqActivity.this, MainActivity.class));
+	    	finish();
 			return true;
 	    } else {
 	        return false;
