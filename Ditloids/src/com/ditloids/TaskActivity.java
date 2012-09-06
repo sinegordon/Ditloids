@@ -124,7 +124,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 				// Убираем реакцию на нажатие кнопки
 				findViewById(R.id.buttonCheck).setOnClickListener(null);
 				// Показываем сообщение что верный ответ
-				//Toast.makeText(this, "Верно", Toast.LENGTH_LONG).show();
+				Toast.makeText(this, "Верно", Toast.LENGTH_LONG).show();
 				// Устанавливаем флаг верного ответа
 				game.SetAnswer(game.GetCurrentDitloidIndex(), true);
 				// Повышаем количество верных ответов
@@ -132,6 +132,8 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 				// Если это верный ответ кратный трем повышаем количество доступных подсказок
 				if(game.GetCountRight() % game.GetHintsDivisor() == 0)
 					game.IncrementCountHints();
+		    	startActivity(new Intent(TaskActivity.this, TasksActivity.class));
+		    	finish();
 			}
 			else{
 				game.PlaySound(2);
