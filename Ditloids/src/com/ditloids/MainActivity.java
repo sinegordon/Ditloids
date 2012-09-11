@@ -74,8 +74,8 @@ public class MainActivity extends Activity implements OnClickListener {
     
     // ѕауза медиа-плеера при сворачивании приложени€
     @Override
-    protected void onPause() {
-   		super.onPause();
+    protected void onStop() {
+   		super.onStop();
         game.SetPauseMusic(true);
     }
     

@@ -150,8 +150,8 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 	
     // ѕауза медиа-плеера при сворачивании приложени€
     @Override
-    protected void onPause() {
-        super.onPause();
+    protected void onStop() {
+        super.onStop();
         game.SetPauseMusic(true);
     }
     
