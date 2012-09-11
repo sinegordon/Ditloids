@@ -16,7 +16,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class FaqActivity extends Activity implements OnClickListener, OnKeyListener {
+	private static Game game = null;
 	
+	public static void SetGame(Game _game){
+		game = _game;
+	}
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -57,4 +62,19 @@ public class FaqActivity extends Activity implements OnClickListener, OnKeyListe
     public void onConfigurationChanged(Configuration newConfig) {  
         super.onConfigurationChanged(newConfig); 
     }
+    
+    // Пауза медиа-плеера при сворачивании приложения
+    @Override
+    protected void onPause() {
+        super.onPause();
+        game.SetPauseMusic(true);
+    }
+    
+    // Снять паузу медиа-плеера при разворачивании приложения
+    @Override
+    protected void onResume() {
+        super.onResume();
+        game.SetPauseMusic(false);
+    }
+
 }

@@ -109,4 +109,19 @@ public class TasksActivity extends Activity implements OnClickListener, OnItemCl
 	public void onConfigurationChanged(Configuration newConfig) {  
     	super.onConfigurationChanged(newConfig);  
 	}
+	
+    // Пауза медиа-плеера при сворачивании приложения
+    @Override
+    protected void onPause() {
+        super.onPause();
+        game.SetPauseMusic(true);
+    }
+    
+    // Снять паузу медиа-плеера при разворачивании приложения
+    @Override
+    protected void onResume() {
+        super.onResume();
+        game.SetPauseMusic(false);
+    }
+
 }

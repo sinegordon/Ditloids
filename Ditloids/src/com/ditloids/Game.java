@@ -333,4 +333,15 @@ public class Game {
     	else
     		return false;
     }
+    
+    // Устанавливаем и снимаем музыку с паузы
+    public void SetPauseMusic(boolean isPause){
+    	if(isMuteMusic)
+    		return;
+    	if(isPause)
+    		mediaPlayer.pause();
+    	if(!isPause)
+    		mediaPlayer.start();
+    }
+    
 }

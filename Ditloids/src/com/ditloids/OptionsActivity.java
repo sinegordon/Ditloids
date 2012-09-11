@@ -85,7 +85,6 @@ public class OptionsActivity extends Activity implements OnClickListener, OnKeyL
     	}
 		// Устанавливаем обработчики событий
 		findViewById(R.id.arrowButton).setOnClickListener(this);
-		findViewById(R.id.arrowButton).setOnKeyListener(this);
 		findViewById(R.id.sfxButton).setOnClickListener(this);
 		findViewById(R.id.resetButton).setOnClickListener(this);
 		findViewById(R.id.musicButton).setOnClickListener(this);
@@ -151,5 +150,20 @@ public class OptionsActivity extends Activity implements OnClickListener, OnKeyL
     public void onConfigurationChanged(Configuration newConfig) {  
         super.onConfigurationChanged(newConfig); 
    }
+	
+    // Пауза медиа-плеера при сворачивании приложения
+    @Override
+    protected void onPause() {
+        super.onPause();
+        game.SetPauseMusic(true);
+    }
+    
+    // Снять паузу медиа-плеера при разворачивании приложения
+    @Override
+    protected void onResume() {
+        super.onResume();
+        game.SetPauseMusic(false);
+    }
+
 
 }

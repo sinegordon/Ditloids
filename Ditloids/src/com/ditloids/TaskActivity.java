@@ -132,6 +132,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 				// ≈сли это верный ответ кратный трем повышаем количество доступных подсказок
 				if(game.GetCountRight() % game.GetHintsDivisor() == 0)
 					game.IncrementCountHints();
+				// Ќа экран уровн€
 		    	startActivity(new Intent(TaskActivity.this, TasksActivity.class));
 		    	finish();
 			}
@@ -196,4 +197,19 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 	public void onConfigurationChanged(Configuration newConfig) {  
     	super.onConfigurationChanged(newConfig);  
 	}
+    
+    // ѕауза медиа-плеера при сворачивании приложени€
+    @Override
+    protected void onPause() {
+        super.onPause();
+        game.SetPauseMusic(true);
+    }
+    
+    // —н€ть паузу медиа-плеера при разворачивании приложени€
+    @Override
+    protected void onResume() {
+        super.onResume();
+        game.SetPauseMusic(false);
+    }
+
 }

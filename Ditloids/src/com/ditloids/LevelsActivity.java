@@ -87,12 +87,12 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
         	}
         	totalDitloidsCount += game.GetLevel(i).GetDitloidsCount();
         };
-        findViewById(R.id.arrowButton).setOnClickListener(this);
-        findViewById(R.id.arrowButton).setOnKeyListener(this);
     	for(int i = 1; i < game.GetCountLevels() + 1; i++){
     		int id = getResources().getIdentifier("level" + Integer.toString(i) +"button", "id", getApplicationContext().getPackageName());
     		findViewById(id).setOnClickListener(this);
     	}
+        findViewById(R.id.arrowButton).setOnClickListener(this);
+        findViewById(R.id.arrowButton).bringToFront();
     }
     
 	@Override
@@ -100,7 +100,6 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 		switch (view.getId()) {
 		// Если кнопка назад
 	    case R.id.arrowButton:
-	    	//MainActivity.SetGame(game);
 	    	startActivity(new Intent(LevelsActivity.this, MainActivity.class)); 
 	    	finish();
 	    	break;
@@ -113,10 +112,9 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 	    			// Проверяем доступность уровня
 	    	    	if(game.GetLevelAccess(i)){
 	    	    		// Если доступен - переходим
-	    	    		//TasksActivity.SetGame(game);
 	    		    	game.LoadLevel(i);
 	    		    	startActivity(new Intent(LevelsActivity.this, TasksActivity.class));
-	    		    	finish();
+	    		    	//finish();
 	    		    	break;
 	    	    	}
 	    	    	else{
@@ -149,6 +147,21 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 	        return false;
 	    }
 	}
+	
+    // Пауза медиа-плеера при сворачивании приложения
+    @Override
+    protected void onPause() {
+        super.onPause();
+        game.SetPauseMusic(true);
+    }
+    
+    // Снять паузу медиа-плеера при разворачивании приложения
+    @Override
+    protected void onResume() {
+        super.onResume();
+        game.SetPauseMusic(false);
+    }
+
 	
 	static public void SetGame(Game _game){
 		game = _game;
