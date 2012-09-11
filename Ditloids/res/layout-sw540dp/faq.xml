@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/fon_faq"
+    android:gravity="top">
+        
+    <Button
+        android:id="@+id/arrowButton"
+        android:layout_width="50dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="25dp"        
+        android:background="@drawable/arrow"/>
+        
+</LinearLayout>
