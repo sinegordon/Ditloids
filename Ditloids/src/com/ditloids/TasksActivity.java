@@ -112,8 +112,8 @@ public class TasksActivity extends Activity implements OnClickListener, OnItemCl
 	
     // ѕауза медиа-плеера при сворачивании приложени€
     @Override
-    protected void onStop() {
-        super.onStop();
+    protected void onPause() {
+        super.onPause();
         game.SetPauseMusic(true);
     }
     

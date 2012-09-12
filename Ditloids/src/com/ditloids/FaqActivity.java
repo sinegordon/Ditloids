@@ -65,8 +65,8 @@ public class FaqActivity extends Activity implements OnClickListener, OnKeyListe
     
     // ѕауза медиа-плеера при сворачивании приложени€
     @Override
-    protected void onStop() {
-        super.onStop();
+    protected void onPause() {
+        super.onPause();
         game.SetPauseMusic(true);
     }
     

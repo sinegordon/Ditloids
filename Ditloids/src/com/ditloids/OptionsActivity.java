@@ -153,8 +153,8 @@ public class OptionsActivity extends Activity implements OnClickListener, OnKeyL
 	
     // ѕауза медиа-плеера при сворачивании приложени€
     @Override
-    protected void onStop() {
-        super.onStop();
+    protected void onPause() {
+        super.onPause();
         game.SetPauseMusic(true);
     }
     
