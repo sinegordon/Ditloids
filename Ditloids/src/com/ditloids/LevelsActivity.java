@@ -100,7 +100,7 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 		switch (view.getId()) {
 		// Если кнопка назад
 	    case R.id.arrowButton:
-	    	startActivity(new Intent(LevelsActivity.this, MainActivity.class)); 
+	    	//startActivity(new Intent(LevelsActivity.this, MainActivity.class)); 
 	    	finish();
 	    	break;
 	    default:
@@ -140,7 +140,7 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 		// Если нажата хардварная кнопка назад
 	    if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && event.getAction()==KeyEvent.ACTION_DOWN) {
 	    	// На главный экран
-	    	startActivity(new Intent(LevelsActivity.this, MainActivity.class));
+	    	//startActivity(new Intent(LevelsActivity.this, MainActivity.class));
 	    	finish();
 			return super.onKeyDown(keyCode, event);
 	    } else {

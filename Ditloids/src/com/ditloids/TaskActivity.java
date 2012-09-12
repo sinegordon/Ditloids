@@ -133,7 +133,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 				if(game.GetCountRight() % game.GetHintsDivisor() == 0)
 					game.IncrementCountHints();
 				// На экран уровня
-		    	startActivity(new Intent(TaskActivity.this, TasksActivity.class));
+		    	//startActivity(new Intent(TaskActivity.this, TasksActivity.class));
 		    	finish();
 			}
 			else{
@@ -183,7 +183,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 			InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
 			imm.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);
 	    	// На экран уровня
-	    	startActivity(new Intent(TaskActivity.this, TasksActivity.class));
+	    	//startActivity(new Intent(TaskActivity.this, TasksActivity.class));
 	    	finish();
 			return super.onKeyDown(keyCode, event);
 	    } else {
