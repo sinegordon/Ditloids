@@ -8,8 +8,8 @@
     
     <ImageView
         android:id="@+id/imageView1"
-        android:layout_width="540dp"
-        android:layout_height="74dp"
+        android:layout_width="542dp"
+        android:layout_height="75dp"
         android:src="@drawable/header_fon" /> 
         
 <TextView
@@ -18,7 +18,7 @@
     android:layout_height="wrap_content"
     android:layout_centerHorizontal="true"
     android:gravity="center"
-    android:layout_marginTop="6dp"    
+    android:layout_marginTop="8dp"    
     android:text="Настройки"
     android:textSize="28dp" />     
     
