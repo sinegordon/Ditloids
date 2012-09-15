@@ -25,7 +25,6 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 	private HorizontalPager pager = null;
 	// Индекс текущего уровня на экране
 	private int checkedLevelIndex = -1;
-	private int totalDitloidsCount = 0;
 	private static Game game = null;
 	// Диалог
 	AlertDialog.Builder adb = null;
@@ -74,7 +73,7 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
         adb.setPositiveButton(R.string.yes, null);
         // Создаем диалог
         adb.create();
-        
+     // Выставляем правильные текст и картинки
         for(int i = 1; i < game.GetCountLevels() + 1; i++){
         	int id = getResources().getIdentifier("TextView" + Integer.toString(i), "id", getApplicationContext().getPackageName());
         	TextView countView = (TextView)findViewById(id);
@@ -85,7 +84,6 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
             	Button but = (Button)findViewById(idb);
             	but.setBackgroundResource(R.drawable.level_lock);
         	}
-        	totalDitloidsCount += game.GetLevel(i).GetDitloidsCount();
         };
     	for(int i = 1; i < game.GetCountLevels() + 1; i++){
     		int id = getResources().getIdentifier("level" + Integer.toString(i) +"button", "id", getApplicationContext().getPackageName());
@@ -160,6 +158,18 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
     protected void onResume() {
         super.onResume();
         game.SetPauseMusic(false);
+        // Выставляем правильные текст и картинки
+        for(int i = 1; i < game.GetCountLevels() + 1; i++){
+        	int id = getResources().getIdentifier("TextView" + Integer.toString(i), "id", getApplicationContext().getPackageName());
+        	TextView countView = (TextView)findViewById(id);
+        	countView.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Ukrainian-Play.ttf"));
+        	countView.setText(Integer.toString(game.AnswersCount(i)) + " из " + Integer.toString(game.GetLevel(i).GetDitloidsCount()));
+        	if(!game.GetLevelAccess(i)){
+            	int idb = getResources().getIdentifier("level" + Integer.toString(i) + "button", "id", getApplicationContext().getPackageName());
+            	Button but = (Button)findViewById(idb);
+            	but.setBackgroundResource(R.drawable.level_lock);
+        	}
+        };
     }
 
 	
