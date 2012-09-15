@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Ditloids</string>
+    <string name="app_name">Дитлойд</string>
     <string name="prefs_name">DitloidsSettings</string>
     <string name="arrow">Назад</string>
     <string name="start">Играть</string>
@@ -11,8 +11,8 @@
     <string name="countlv2">7</string>
     <string name="countlv3">18</string>
     <string name="countlv4">3</string>
-    <string name="reset_title">Сброс настроек</string>
-    <string name="reset_message">Сбросить все настройки?</string>
+    <string name="reset_title">Сброс прогресса</string>
+    <string name="reset_message">Сбросить прогресс?</string>
     <string name="yes">Да</string>
     <string name="cancel">Отмена</string>
     <string name="hint">Этот день бывает не каждый год, а лишь спустя определенный период времени</string>                 

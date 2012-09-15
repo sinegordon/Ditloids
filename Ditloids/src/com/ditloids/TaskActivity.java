@@ -133,7 +133,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 				if(game.GetCountRight() % game.GetHintsDivisor() == 0)
 					game.IncrementCountHints();
 				// На экран уровня
-		    	//startActivity(new Intent(TaskActivity.this, TasksActivity.class));
+		    	startActivity(new Intent(TaskActivity.this, TasksActivity.class));
 		    	finish();
 			}
 			else{
@@ -151,11 +151,21 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 
 	@Override
 	public boolean onKey(View v, int keyCode, KeyEvent event) {
-		/*
+		InputMethodManager imm = null;
 		// Если нажат Enter
-		if(keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN){
+		if(keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN) {
 			// Если ответ верный
 			if(game.GetCurrentLevel().Verify(game.GetCurrentDitloidIndex(), ((EditText)findViewById(R.id.editText1)).getText().toString())){
+				game.PlaySound(1);
+				// Перекрываем возможность редактирования поля ввода
+				((EditText)findViewById(R.id.editText1)).setKeyListener(null);
+				// Убираем клавиатуру
+				imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+				imm.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);
+				// Меняем фон кнопки
+				findViewById(R.id.buttonCheck).setBackgroundResource(R.drawable.check_right);
+				// Убираем реакцию на нажатие кнопки
+				findViewById(R.id.buttonCheck).setOnClickListener(null);
 				// Показываем сообщение что верный ответ
 				Toast.makeText(this, "Верно", Toast.LENGTH_LONG).show();
 				// Устанавливаем флаг верного ответа
@@ -163,27 +173,28 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 				// Повышаем количество верных ответов
 				game.IncrementCountRight();
 				// Если это верный ответ кратный трем повышаем количество доступных подсказок
-				if(game.GetCountRight() % game.GetDivisor() == 0)
+				if(game.GetCountRight() % game.GetHintsDivisor() == 0)
 					game.IncrementCountHints();
-				TasksActivity.SetGame(game);
 				// На экран уровня
 		    	startActivity(new Intent(TaskActivity.this, TasksActivity.class));
 		    	finish();
 			}
 			else{
-				// Показываем сообщение что неверный ответ
-				Toast.makeText(this, "Не верно", Toast.LENGTH_LONG).show();
+				game.PlaySound(2);
+				// Сохраняем последний неверный ответ
+				game.SetLastWrongAnswer(((EditText)findViewById(R.id.editText1)).getText().toString(), game.GetCurrentLevel().GetLevelIndex(), game.GetCurrentDitloidIndex());
+				// Меняем фон кнопки
+				findViewById(R.id.buttonCheck).setBackgroundResource(R.drawable.check_wrong);
 			};
-			return true;
+			return false;
 		};
-		*/
 		// Если нажата хардварная кнопка назад
 	    if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && event.getAction()==KeyEvent.ACTION_DOWN) {
 			// Убираем клавиатуру
-			InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+			imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
 			imm.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);
 	    	// На экран уровня
-	    	//startActivity(new Intent(TaskActivity.this, TasksActivity.class));
+	    	startActivity(new Intent(TaskActivity.this, TasksActivity.class));
 	    	finish();
 			return super.onKeyDown(keyCode, event);
 	    } else {
