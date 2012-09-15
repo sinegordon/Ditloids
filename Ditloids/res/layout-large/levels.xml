@@ -9,9 +9,9 @@
     
     <ImageView
         android:id="@+id/imageView1"
-        android:layout_width="480dp"
-        android:layout_height="66dp"
-        android:src="@drawable/header_fon" />  
+        android:layout_width="542dp"
+        android:layout_height="75dp"
+        android:src="@drawable/header_fon" /> 
         
 <TextView
     android:id="@+id/textView1"
@@ -19,7 +19,7 @@
     android:layout_height="wrap_content"
     android:layout_centerHorizontal="true"
     android:gravity="center"
-    android:layout_marginTop="6dp"    
+    android:layout_marginTop="8dp"    
     android:text="Выбор уровня"
     android:textSize="28dp" />      
     
@@ -46,7 +46,7 @@
 			android:background="@drawable/level1"
             android:layout_width="400dp"
             android:layout_height="400dp"
-    	    android:layout_marginTop="40dp"/>           
+    	    android:layout_marginTop="20dp"/>           
   	
    			<TextView		    
 			android:id="@+id/TextView1"
@@ -56,7 +56,7 @@
         	android:layout_height="wrap_content"
         	android:textSize="42dp"
 			android:textColor="#d3dae0"
-    	    android:layout_marginTop="340dp"
+    	    android:layout_marginTop="320dp"
     	    android:layout_marginLeft="130dp"/>
         </RelativeLayout>
         
@@ -69,7 +69,7 @@
 			android:background="@drawable/level2"
             android:layout_width="400dp"
             android:layout_height="400dp"
-    	    android:layout_marginTop="40dp"/> 	
+    	    android:layout_marginTop="20dp"/> 	
    			<TextView		    
 			android:id="@+id/TextView2"
    			android:gravity="center"
@@ -78,7 +78,7 @@
         	android:layout_height="wrap_content"
         	android:textSize="42dp"
 			android:textColor="#d3dae0"
-    	    android:layout_marginTop="340dp"
+    	    android:layout_marginTop="320dp"
     	    android:layout_marginLeft="130dp"/>  		
         </RelativeLayout>
         
@@ -91,7 +91,7 @@
 			android:background="@drawable/level3"
             android:layout_width="400dp"
             android:layout_height="400dp"
-    	    android:layout_marginTop="40dp"/>
+    	    android:layout_marginTop="20dp"/>
    			<TextView		    
 			android:id="@+id/TextView3"
    			android:gravity="center"
@@ -100,7 +100,7 @@
         	android:layout_height="wrap_content"
         	android:textSize="42dp"
 			android:textColor="#d3dae0"
-    	    android:layout_marginTop="340dp"
+    	    android:layout_marginTop="320dp"
     	    android:layout_marginLeft="130dp"/>   		
         </RelativeLayout>
         
@@ -113,7 +113,7 @@
 			android:background="@drawable/level4"
             android:layout_width="400dp"
             android:layout_height="400dp"
-    	    android:layout_marginTop="40dp"/>
+    	    android:layout_marginTop="20dp"/>
    			<TextView		    
 			android:id="@+id/TextView4"
    			android:gravity="center"
@@ -122,7 +122,7 @@
         	android:layout_height="wrap_content"
         	android:textSize="42dp"
 			android:textColor="#d3dae0"
-    	    android:layout_marginTop="340dp"
+    	    android:layout_marginTop="320dp"
     	    android:layout_marginLeft="130dp"/>   		
         </RelativeLayout>        
         
@@ -135,7 +135,7 @@
         android:orientation="horizontal"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"          
-   		android:layout_marginBottom="100dp">
+   		android:layout_marginBottom="50dp">
         <RadioButton           
             android:id="@+id/radio_btn_0"
             android:checked="true"

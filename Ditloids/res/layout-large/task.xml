@@ -9,9 +9,9 @@
  
     <ImageView
         android:id="@+id/imageView1"
-        android:layout_width="480dp"
-        android:layout_height="66dp"
-        android:src="@drawable/header_fon" />     
+        android:layout_width="542dp"
+        android:layout_height="75dp"
+        android:src="@drawable/header_fon" /> 
  			
     <Button
         android:id="@+id/arrowButton"
@@ -27,7 +27,7 @@
     android:layout_height="wrap_content"
     android:layout_centerHorizontal="true"
     android:gravity="center"
-    android:layout_marginTop="6dp"    
+    android:layout_marginTop="8dp"    
     android:text="Уровень 1"
     android:textSize="28dp" />
 
@@ -37,7 +37,7 @@
 	android:layout_alignParentRight="true"   
     android:gravity="center"
     android:textSize="14dp"    	 
-    android:layout_marginTop="17dp"
+    android:layout_marginTop="20dp"
     android:layout_marginRight="40dp"        
     android:text="Подсказки:" /> 
     
@@ -46,8 +46,8 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
 	android:layout_alignParentRight="true" 
-    android:layout_marginTop="15dp"
-    android:layout_marginRight="30dp"         
+    android:layout_marginTop="18dp"
+    android:layout_marginRight="28dp"         
     android:text="12"
     android:textSize="18dp" />  
     
@@ -55,7 +55,7 @@
 	android:id="@+id/mylist"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
-	android:layout_marginTop="50dp"
+	android:layout_marginTop="58dp"
 	android:cacheColorHint="#00000000"
 	android:divider="@drawable/divider">
 </ListView>
