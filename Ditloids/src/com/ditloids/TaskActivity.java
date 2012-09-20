@@ -133,7 +133,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 				if(game.GetCountRight() % game.GetHintsDivisor() == 0)
 					game.IncrementCountHints();
 				// На экран уровня
-		    	startActivity(new Intent(TaskActivity.this, TasksActivity.class));
+		    	//startActivity(new Intent(TaskActivity.this, TasksActivity.class));
 		    	finish();
 			}
 			else{
@@ -176,7 +176,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 				if(game.GetCountRight() % game.GetHintsDivisor() == 0)
 					game.IncrementCountHints();
 				// На экран уровня
-		    	startActivity(new Intent(TaskActivity.this, TasksActivity.class));
+		    	//startActivity(new Intent(TaskActivity.this, TasksActivity.class));
 		    	finish();
 			}
 			else{
@@ -185,6 +185,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 				game.SetLastWrongAnswer(((EditText)findViewById(R.id.editText1)).getText().toString().trim(), game.GetCurrentLevel().GetLevelIndex(), game.GetCurrentDitloidIndex());
 				// Меняем фон кнопки
 				findViewById(R.id.buttonCheck).setBackgroundResource(R.drawable.check_wrong);
+				((EditText)findViewById(R.id.editText1)).setText("");
 			};
 			return true;
 		};
