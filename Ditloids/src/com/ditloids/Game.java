@@ -282,7 +282,7 @@ public class Game {
         countRight = settings.getInt("right", 0);
         //isMuteSound = settings.getBoolean("isMuteSound", false);
         //isMuteMusic = settings.getBoolean("isMuteMusic", false);
-       	mediaPlayer.start();
+       	//mediaPlayer.start();
     }
     
     public void SetMuteSound(boolean isMute){

@@ -86,7 +86,7 @@ public class TasksActivity extends Activity implements OnClickListener, OnItemCl
 		game.SetCurrentDitloidIndex(ditloidIndexes[arg2].intValue());
 		// На экран ввода ответа
     	startActivity(new Intent(TasksActivity.this, TaskActivity.class));
-    	finish();
+    	//finish();
 	}
 
 	@Override
