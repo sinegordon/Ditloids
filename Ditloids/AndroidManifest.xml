@@ -37,11 +37,6 @@
         </activity>
         <activity 
             android:name="com.ditloids.OptionsActivity"
-            android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity 
-            android:name="com.ditloids.OptionsActivity"
             android:configChanges="keyboardHidden|orientation">
         </activity>
         <activity 

@@ -139,7 +139,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 			else{
 				game.PlaySound(2);
 				// Сохраняем последний неверный ответ
-				game.SetLastWrongAnswer(((EditText)findViewById(R.id.editText1)).getText().toString(), game.GetCurrentLevel().GetLevelIndex(), game.GetCurrentDitloidIndex());
+				game.SetLastWrongAnswer(((EditText)findViewById(R.id.editText1)).getText().toString().trim(), game.GetCurrentLevel().GetLevelIndex(), game.GetCurrentDitloidIndex());
 				// Меняем фон кнопки
 				findViewById(R.id.buttonCheck).setBackgroundResource(R.drawable.check_wrong);
 			};
@@ -155,7 +155,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 		// Если нажат Enter
 		if(keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN) {
 			// Если ответ верный
-			if(game.GetCurrentLevel().Verify(game.GetCurrentDitloidIndex(), ((EditText)findViewById(R.id.editText1)).getText().toString())){
+			if(game.GetCurrentLevel().Verify(game.GetCurrentDitloidIndex(), ((EditText)findViewById(R.id.editText1)).getText().toString().trim())){
 				game.PlaySound(1);
 				// Перекрываем возможность редактирования поля ввода
 				((EditText)findViewById(R.id.editText1)).setKeyListener(null);
@@ -182,11 +182,11 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 			else{
 				game.PlaySound(2);
 				// Сохраняем последний неверный ответ
-				game.SetLastWrongAnswer(((EditText)findViewById(R.id.editText1)).getText().toString(), game.GetCurrentLevel().GetLevelIndex(), game.GetCurrentDitloidIndex());
+				game.SetLastWrongAnswer(((EditText)findViewById(R.id.editText1)).getText().toString().trim(), game.GetCurrentLevel().GetLevelIndex(), game.GetCurrentDitloidIndex());
 				// Меняем фон кнопки
 				findViewById(R.id.buttonCheck).setBackgroundResource(R.drawable.check_wrong);
 			};
-			return false;
+			return true;
 		};
 		// Если нажата хардварная кнопка назад
 	    if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && event.getAction()==KeyEvent.ACTION_DOWN) {
@@ -196,7 +196,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 	    	// На экран уровня
 	    	startActivity(new Intent(TaskActivity.this, TasksActivity.class));
 	    	finish();
-			return super.onKeyDown(keyCode, event);
+			return true;
 	    } else {
 	        return false;
 	    }

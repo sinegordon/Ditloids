@@ -73,7 +73,7 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
         adb.setPositiveButton(R.string.yes, null);
         // Создаем диалог
         adb.create();
-     // Выставляем правильные текст и картинки
+        // Выставляем правильные текст и картинки
         for(int i = 1; i < game.GetCountLevels() + 1; i++){
         	int id = getResources().getIdentifier("TextView" + Integer.toString(i), "id", getApplicationContext().getPackageName());
         	TextView countView = (TextView)findViewById(id);
@@ -85,6 +85,7 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
             	but.setBackgroundResource(R.drawable.level_lock);
         	}
         };
+     // Выставляем обработчики событий
     	for(int i = 1; i < game.GetCountLevels() + 1; i++){
     		int id = getResources().getIdentifier("level" + Integer.toString(i) +"button", "id", getApplicationContext().getPackageName());
     		findViewById(id).setOnClickListener(this);
@@ -140,7 +141,7 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 	    	// На главный экран
 	    	//startActivity(new Intent(LevelsActivity.this, MainActivity.class));
 	    	finish();
-			return super.onKeyDown(keyCode, event);
+			return true;
 	    } else {
 	        return false;
 	    }

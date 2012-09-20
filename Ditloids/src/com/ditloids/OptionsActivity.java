@@ -44,12 +44,12 @@ public class OptionsActivity extends Activity implements OnClickListener, OnKeyL
 		    // положительная кнопка
 		    case Dialog.BUTTON_POSITIVE:
 		    	// Очищаем все настройки
-		    	game.ClearAllSettings();
+		    	game.ClearProgress();
 		    	// Устанавливаем фоны кнопок на экране
-		    	Button sfxButton = (Button)findViewById(R.id.sfxButton);
-		    	Button musicButton = (Button)findViewById(R.id.musicButton);
-		    	sfxButton.setBackgroundResource(R.drawable.sfx_off);
-		    	musicButton.setBackgroundResource(R.drawable.music_off);
+		    	// Button sfxButton = (Button)findViewById(R.id.sfxButton);
+		    	// Button musicButton = (Button)findViewById(R.id.musicButton);
+		    	// sfxButton.setBackgroundResource(R.drawable.sfx_off);
+		    	// musicButton.setBackgroundResource(R.drawable.music_off);
 		    	break;
 		    // нейтральная кнопка  
 		    case Dialog.BUTTON_NEUTRAL:
