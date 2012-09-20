@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/fon_test"
+    android:background="@drawable/fon"
     android:gravity="center_horizontal">
 
     <ImageView
