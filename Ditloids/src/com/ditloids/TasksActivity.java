@@ -30,7 +30,16 @@ public class TasksActivity extends Activity implements OnClickListener, OnItemCl
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.task);
+		ListView listView = (ListView) findViewById(R.id.mylist);
         this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
+		// Устанавливаем обработчики событий
+		findViewById(R.id.arrowButton).setOnClickListener(this);
+		listView.setOnItemClickListener(this);
+	}
+	
+	@Override
+	protected void onStart() {
+		super.onStart();
 		ListView listView = (ListView) findViewById(R.id.mylist);
 		// Узнаем текущий уровень
 		Level currentLevel = game.GetCurrentLevel();
@@ -60,9 +69,6 @@ public class TasksActivity extends Activity implements OnClickListener, OnItemCl
 		// Выставляем дитлоиды на экран
 		TaskArrayAdapter ansadapter = new TaskArrayAdapter(this, values, ditloidIndexes, game, notAnswered);
 		listView.setAdapter(ansadapter);
-		// Устанавливаем обработчики событий
-		findViewById(R.id.arrowButton).setOnClickListener(this);
-		listView.setOnItemClickListener(this);
 	}
 	
 	@Override
