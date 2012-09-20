@@ -28,6 +28,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.entertask);
+		((EditText)findViewById(R.id.editText1)).setSingleLine();
         this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
     	if(game.GetCountHints() == 0)
     		((Button)findViewById(R.id.buttonHint)).setEnabled(false);
@@ -185,7 +186,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 				game.SetLastWrongAnswer(((EditText)findViewById(R.id.editText1)).getText().toString().trim(), game.GetCurrentLevel().GetLevelIndex(), game.GetCurrentDitloidIndex());
 				// Меняем фон кнопки
 				findViewById(R.id.buttonCheck).setBackgroundResource(R.drawable.check_wrong);
-				((EditText)findViewById(R.id.editText1)).setText(((EditText)findViewById(R.id.editText1)).getText().toString().trim());
+				//((EditText)findViewById(R.id.editText1)).setText(((EditText)findViewById(R.id.editText1)).getText().toString().trim());
 			};
 			return super.onKeyDown(keyCode, event);
 		};
