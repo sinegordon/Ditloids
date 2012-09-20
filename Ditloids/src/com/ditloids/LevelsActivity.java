@@ -23,6 +23,10 @@ import android.widget.TextView;
 public class LevelsActivity extends Activity implements OnClickListener, OnKeyListener {
     private RadioGroup radioGroup = null;
 	private HorizontalPager pager = null;
+	// Массив текстовых полей уровней
+	private TextView[] countViews = null;
+	// Массив кнопок перехода на уровни
+	private Button[] countButtons = null;
 	// Индекс текущего уровня на экране
 	private int checkedLevelIndex = -1;
 	private static Game game = null;
@@ -73,19 +77,18 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
         adb.setPositiveButton(R.string.yes, null);
         // Создаем диалог
         adb.create();
-        // Выставляем правильные текст и картинки
+        countViews = new TextView[game.GetCountLevels()];
+        countButtons = new Button[game.GetCountLevels()];
+        // Заполняем массивы конпок уровней и надписей на уровнях
         for(int i = 1; i < game.GetCountLevels() + 1; i++){
         	int id = getResources().getIdentifier("TextView" + Integer.toString(i), "id", getApplicationContext().getPackageName());
         	TextView countView = (TextView)findViewById(id);
-        	countView.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Ukrainian-Play.ttf"));
-        	countView.setText(Integer.toString(game.AnswersCount(i)) + " из " + Integer.toString(game.GetLevel(i).GetDitloidsCount()));
-        	if(!game.GetLevelAccess(i)){
-            	int idb = getResources().getIdentifier("level" + Integer.toString(i) + "button", "id", getApplicationContext().getPackageName());
-            	Button but = (Button)findViewById(idb);
-            	but.setBackgroundResource(R.drawable.level_lock);
-        	}
+        	int idb = getResources().getIdentifier("level" + Integer.toString(i) + "button", "id", getApplicationContext().getPackageName());
+        	Button but = (Button)findViewById(idb);
+        	countViews[i-1] = countView;
+        	countButtons[i-1] = but;
         };
-     // Выставляем обработчики событий
+        // Выставляем обработчики событий
     	for(int i = 1; i < game.GetCountLevels() + 1; i++){
     		int id = getResources().getIdentifier("level" + Integer.toString(i) +"button", "id", getApplicationContext().getPackageName());
     		findViewById(id).setOnClickListener(this);
@@ -93,6 +96,7 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
         findViewById(R.id.arrowButton).setOnClickListener(this);
         findViewById(R.id.arrowButton).bringToFront();
     }
+    
     
 	@Override
 	public void onClick(View view) {
@@ -141,7 +145,7 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 	    	// На главный экран
 	    	//startActivity(new Intent(LevelsActivity.this, MainActivity.class));
 	    	finish();
-			return true;
+			return super.onKeyDown(keyCode, event);
 	    } else {
 	        return false;
 	    }
@@ -159,18 +163,20 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
     protected void onResume() {
         super.onResume();
         game.SetPauseMusic(false);
+    }
+    
+    // Обновление отображения информации об уровнях при возврате на активность 
+    @Override
+    protected void onStart() {
+    	super.onStart();
         // Выставляем правильные текст и картинки
         for(int i = 1; i < game.GetCountLevels() + 1; i++){
-        	int id = getResources().getIdentifier("TextView" + Integer.toString(i), "id", getApplicationContext().getPackageName());
-        	TextView countView = (TextView)findViewById(id);
-        	countView.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Ukrainian-Play.ttf"));
-        	countView.setText(Integer.toString(game.AnswersCount(i)) + " из " + Integer.toString(game.GetLevel(i).GetDitloidsCount()));
-        	if(!game.GetLevelAccess(i)){
-            	int idb = getResources().getIdentifier("level" + Integer.toString(i) + "button", "id", getApplicationContext().getPackageName());
-            	Button but = (Button)findViewById(idb);
-            	but.setBackgroundResource(R.drawable.level_lock);
+        	countViews[i-1].setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Ukrainian-Play.ttf"));
+        	countViews[i-1].setText(Integer.toString(game.AnswersCount(i)) + " из " + Integer.toString(game.GetLevel(i).GetDitloidsCount()));
+        	if(!game.GetLevelAccess(i)) {
+        		countButtons[i-1].setBackgroundResource(R.drawable.level_lock);
         	}
-        };
+        }
     }
 
 	

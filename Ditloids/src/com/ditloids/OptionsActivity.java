@@ -141,7 +141,7 @@ public class OptionsActivity extends Activity implements OnClickListener, OnKeyL
 	    	game.SaveMuteMusic();
 	    	//startActivity(new Intent(OptionsActivity.this, MainActivity.class));
 	    	finish();
-			return true;
+			return super.onKeyDown(keyCode, event);
 	    } else {
 	        return false;
 	    }

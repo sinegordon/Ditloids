@@ -185,9 +185,9 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 				game.SetLastWrongAnswer(((EditText)findViewById(R.id.editText1)).getText().toString().trim(), game.GetCurrentLevel().GetLevelIndex(), game.GetCurrentDitloidIndex());
 				// Меняем фон кнопки
 				findViewById(R.id.buttonCheck).setBackgroundResource(R.drawable.check_wrong);
-				((EditText)findViewById(R.id.editText1)).setText("");
+				((EditText)findViewById(R.id.editText1)).setText(((EditText)findViewById(R.id.editText1)).getText().toString().trim());
 			};
-			return true;
+			return super.onKeyDown(keyCode, event);
 		};
 		// Если нажата хардварная кнопка назад
 	    if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && event.getAction()==KeyEvent.ACTION_DOWN) {
@@ -197,7 +197,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 	    	// На экран уровня
 	    	startActivity(new Intent(TaskActivity.this, TasksActivity.class));
 	    	finish();
-			return true;
+			return super.onKeyDown(keyCode, event);
 	    } else {
 	        return false;
 	    }

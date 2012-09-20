@@ -50,7 +50,7 @@ public class FaqActivity extends Activity implements OnClickListener, OnKeyListe
 	    	// На главный экран
 	    	//startActivity(new Intent(FaqActivity.this, MainActivity.class));
 	    	finish();
-			return true;
+			return super.onKeyDown(keyCode, event);
 	    } else {
 	        return false;
 	    }

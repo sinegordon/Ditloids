@@ -98,7 +98,7 @@ public class TasksActivity extends Activity implements OnClickListener, OnItemCl
 	    	// На экран выбора уровня
 	    	//startActivity(new Intent(TasksActivity.this, LevelsActivity.class));
 	    	finish();
-	    	return true;
+	    	return super.onKeyDown(keyCode, event);
 	    } else {
 	        return false;
 	    }
