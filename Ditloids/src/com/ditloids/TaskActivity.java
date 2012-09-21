@@ -28,7 +28,10 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.entertask);
-		((EditText)findViewById(R.id.editText1)).setSingleLine();
+		//((EditText)findViewById(R.id.editText1)).setSingleLine();
+		//((EditText)findViewById(R.id.editText1)).setFocusable(true);
+		//((EditText)findViewById(R.id.editText1)).setFocusableInTouchMode(true);
+		((EditText)findViewById(R.id.editText1)).setLines(1);
         this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
     	if(game.GetCountHints() == 0)
     		((Button)findViewById(R.id.buttonHint)).setEnabled(false);
@@ -134,7 +137,6 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 				if(game.GetCountRight() % game.GetHintsDivisor() == 0)
 					game.IncrementCountHints();
 				// На экран уровня
-		    	//startActivity(new Intent(TaskActivity.this, TasksActivity.class));
 		    	finish();
 			}
 			else{
@@ -177,18 +179,29 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 				if(game.GetCountRight() % game.GetHintsDivisor() == 0)
 					game.IncrementCountHints();
 				// На экран уровня
-		    	//startActivity(new Intent(TaskActivity.this, TasksActivity.class));
 		    	finish();
 			}
 			else{
 				game.PlaySound(2);
+				String str = ((EditText)findViewById(R.id.editText1)).getText().toString().trim();
+				((EditText)findViewById(R.id.editText1)).setText("");
+				String strnew = "";
+				for(int i = 0; i < str.length(); i++)
+					strnew += str.charAt(i); 
 				// Сохраняем последний неверный ответ
-				game.SetLastWrongAnswer(((EditText)findViewById(R.id.editText1)).getText().toString().trim(), game.GetCurrentLevel().GetLevelIndex(), game.GetCurrentDitloidIndex());
+				game.SetLastWrongAnswer(strnew, game.GetCurrentLevel().GetLevelIndex(), game.GetCurrentDitloidIndex());
 				// Меняем фон кнопки
 				findViewById(R.id.buttonCheck).setBackgroundResource(R.drawable.check_wrong);
-				//((EditText)findViewById(R.id.editText1)).setText(((EditText)findViewById(R.id.editText1)).getText().toString().trim());
+				// Ставим неверный ответ
+				((EditText)findViewById(R.id.editText1)).setText(strnew);
+				//((EditText)findViewById(R.id.editText1)).setSelection(strnew.length());
+				// Показываем клавиатуру
+				//imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+				//imm.showSoftInput(findViewById(R.id.editText1), InputMethodManager.SHOW_FORCED);
+				//imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+
 			};
-			return super.onKeyDown(keyCode, event);
+			return false;
 		};
 		// Если нажата хардварная кнопка назад
 	    if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && event.getAction()==KeyEvent.ACTION_DOWN) {
@@ -196,7 +209,6 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 			imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
 			imm.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);
 	    	// На экран уровня
-	    	startActivity(new Intent(TaskActivity.this, TasksActivity.class));
 	    	finish();
 			return super.onKeyDown(keyCode, event);
 	    } else {
