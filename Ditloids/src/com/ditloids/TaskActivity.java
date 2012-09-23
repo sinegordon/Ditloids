@@ -194,14 +194,11 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 				findViewById(R.id.buttonCheck).setBackgroundResource(R.drawable.check_wrong);
 				// Ставим неверный ответ
 				((EditText)findViewById(R.id.editText1)).setText(strnew);
-				//((EditText)findViewById(R.id.editText1)).setSelection(strnew.length());
-				// Показываем клавиатуру
-				//imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-				//imm.showSoftInput(findViewById(R.id.editText1), InputMethodManager.SHOW_FORCED);
-				//imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+				// Ставим курсор в конец строки
+				((EditText)findViewById(R.id.editText1)).setSelection(strnew.length());
 
 			};
-			return false;
+			return true;
 		};
 		// Если нажата хардварная кнопка назад
 	    if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && event.getAction()==KeyEvent.ACTION_DOWN) {
