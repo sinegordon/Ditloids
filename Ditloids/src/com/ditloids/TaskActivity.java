@@ -207,7 +207,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 			imm.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);
 	    	// На экран уровня
 	    	finish();
-			return super.onKeyDown(keyCode, event);
+			return true;
 	    } else {
 	        return false;
 	    }
