@@ -22,7 +22,7 @@ public class TasksActivity extends Activity implements OnClickListener, OnItemCl
 	// Индексы отвеченных дитлоидов в порядке их расположения в списке
 	private Integer[] ditloidIndexes = null;
 	
-	static public void SetGame(Game _game){
+	static public void SetGame(Game _game) {
 		game = _game;
 	}
 	
@@ -101,7 +101,7 @@ public class TasksActivity extends Activity implements OnClickListener, OnItemCl
 	    	game.SaveLevel();
 	    	// На экран выбора уровня
 	    	finish();
-	    	return super.onKeyDown(keyCode, event);
+	    	return true;
 	    } else {
 	        return false;
 	    }

@@ -170,7 +170,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 				// Убираем реакцию на нажатие кнопки
 				findViewById(R.id.buttonCheck).setOnClickListener(null);
 				// Показываем сообщение что верный ответ
-				Toast.makeText(this, "Верно", Toast.LENGTH_LONG).show();
+				Toast.makeText(this, "Верно", Toast.LENGTH_SHORT).show();
 				// Устанавливаем флаг верного ответа
 				game.SetAnswer(game.GetCurrentDitloidIndex(), true);
 				// Повышаем количество верных ответов
