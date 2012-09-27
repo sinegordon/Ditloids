@@ -167,6 +167,8 @@ public class Game {
         SharedPreferences.Editor editor = settings.edit();
         editor.putString("level" + Integer.toString(currentLevel.GetLevelIndex()), ans);
         editor.putString("hints" + Integer.toString(currentLevel.GetLevelIndex()), hints_str);
+        editor.putInt("right", countRight);
+        editor.putInt("hints", countHints);
         editor.commit();
     }
     
@@ -180,17 +182,11 @@ public class Game {
 
     public void IncrementCountHints() {
     	countHints += 1;
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putInt("hints", countHints);
-        editor.commit();
     }
 
     public void DecrementCountHints() {
     	if(countHints > 0){
     		countHints -= 1;
-            SharedPreferences.Editor editor = settings.edit();
-            editor.putInt("hints", countHints);
-            editor.commit();
     	}
     }
 
@@ -228,15 +224,12 @@ public class Game {
     }
    
     
-    public int GetCountRight(){
+    public int GetCountRight() {
     	return countRight;
     }
     
-    public void IncrementCountRight(){
+    public void IncrementCountRight() {
     	countRight += 1;
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putInt("right", countRight);
-        editor.commit();
     }
     
     public int GetHintsDivisor(){

@@ -63,6 +63,7 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
     @Override
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        game.SetPauseMusic(false);
         setContentView(R.layout.levels);
         this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
         radioGroup = (RadioGroup) findViewById(R.id.tabs);
