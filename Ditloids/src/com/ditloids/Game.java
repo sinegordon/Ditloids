@@ -170,22 +170,22 @@ public class Game {
         editor.commit();
     }
     
-    public Level GetCurrentLevel(){
+    public Level GetCurrentLevel() {
     	return currentLevel;
     }
     
-    public int GetCountHints(){
+    public int GetCountHints() {
     	return countHints;
     }
 
-    public void IncrementCountHints(){
+    public void IncrementCountHints() {
     	countHints += 1;
         SharedPreferences.Editor editor = settings.edit();
         editor.putInt("hints", countHints);
         editor.commit();
     }
 
-    public void DecrementCountHints(){
+    public void DecrementCountHints() {
     	if(countHints > 0){
     		countHints -= 1;
             SharedPreferences.Editor editor = settings.edit();
@@ -320,7 +320,7 @@ public class Game {
     // Возвращаем доступен ли сейчас уровень с индексом levelIndex 
     // (напомним, что при использовании класса уровни нумеруются с единицы, а внутри класса с нуля)
     public boolean GetLevelAccess(int levelIndex){
-    	if(levelIndex < 0 || levelIndex >= levels.length)
+    	if(levelIndex < 1 || levelIndex > levels.length)
     		return false;
     	int i = countRight / levelsDivisor;
     	if(i >= (levelIndex - 1))

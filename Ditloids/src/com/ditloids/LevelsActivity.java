@@ -32,8 +32,6 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 	private static Game game = null;
 	// Диалог
 	private AlertDialog.Builder adb = null;
-	// Признак выполнения create
-	private boolean create = false;
 	
 	// Обработчик листания экрана
 	private final HorizontalPager.OnScreenSwitchListener onScreenSwitchListener =
@@ -169,12 +167,6 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
     @Override
     protected void onStart() {
     	super.onStart();
-    	if (!create) {
-    		create = true;
-    	}
-    	else {
-    		game.SaveLevel();
-    	}
         // Выставляем правильные текст и картинки
         for(int i = 1; i < game.GetCountLevels() + 1; i++){
         	countViews[i-1].setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Ukrainian-Play.ttf"));

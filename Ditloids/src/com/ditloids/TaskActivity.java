@@ -128,7 +128,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 				// Убираем реакцию на нажатие кнопки
 				findViewById(R.id.buttonCheck).setOnClickListener(null);
 				// Показываем сообщение что верный ответ
-				Toast.makeText(this, "Верно", Toast.LENGTH_LONG).show();
+				Toast.makeText(this, "Верно", Toast.LENGTH_SHORT).show();
 				// Устанавливаем флаг верного ответа
 				game.SetAnswer(game.GetCurrentDitloidIndex(), true);
 				// Повышаем количество верных ответов
@@ -136,6 +136,8 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 				// Если это верный ответ кратный трем повышаем количество доступных подсказок
 				if(game.GetCountRight() % game.GetHintsDivisor() == 0)
 					game.IncrementCountHints();
+				// Сохраняем уровень
+				game.SaveLevel();
 				// На экран уровня
 		    	finish();
 			}
@@ -178,6 +180,8 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 				// Если это верный ответ кратный трем повышаем количество доступных подсказок
 				if(game.GetCountRight() % game.GetHintsDivisor() == 0)
 					game.IncrementCountHints();
+				// Сохраняем уровень
+				game.SaveLevel();
 				// На экран уровня
 		    	finish();
 			}
@@ -201,7 +205,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 			return true;
 		};
 		// Если нажата хардварная кнопка назад
-	    if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && event.getAction()==KeyEvent.ACTION_DOWN) {
+	    if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
 			// Убираем клавиатуру
 			imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
 			imm.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);
