@@ -66,7 +66,7 @@ public class Game {
     private boolean isMuteMusic = false;
 
     // Конструктор
-    public Game(Context context, int countLevels) throws IllegalStateException, IOException{
+    public Game(Context context, int countLevels) throws IllegalStateException, IOException {
         Resources res = context.getResources();
         this.context = context;
         this.countLevels = countLevels;
@@ -98,12 +98,12 @@ public class Game {
     }
     
     // Возвращает количество уровней в игре
-    public int GetCountLevels(){
+    public int GetCountLevels() {
     	return countLevels;
     }
     
     // Количество правильных ответов на уровень levelIndex сохраненных в настройках
-    public int AnswersCount(int levelIndex){
+    public int AnswersCount(int levelIndex) {
     	if(levelIndex <= countLevels){
     		String ans_str = settings.getString("level" + Integer.toString(levelIndex), "");
     		if(ans_str.equals(""))
@@ -118,7 +118,7 @@ public class Game {
     }
 
     // Возвращаем уровень с индексом levelIndex    
-    public Level GetLevel(int levelIndex){
+    public Level GetLevel(int levelIndex) {
     	if(levelIndex > 0 && levelIndex <= countLevels && !levels.equals(null))
     		return levels[levelIndex-1];
     	else
@@ -126,7 +126,7 @@ public class Game {
     }
     
     // Загружаем уровень с индексом levelIndex
-    public void LoadLevel(int levelIndex){
+    public void LoadLevel(int levelIndex) {
         currentLevel = levels[levelIndex-1];
         answers = new boolean[currentLevel.GetDitloidsCount()];
         hints = new boolean[currentLevel.GetDitloidsCount()];
@@ -149,7 +149,7 @@ public class Game {
     }
 
     // Сохраняем текущий уровень
-    public void SaveLevel(){
+    public void SaveLevel() {
         String ans = "";
         for(int i=0; i < answers.length; i++){
             if(answers[i])
@@ -190,7 +190,7 @@ public class Game {
     	}
     }
 
-    public int GetCurrentDitloidIndex(){
+    public int GetCurrentDitloidIndex() {
     	return currentDitloidIndex;
     } 
     
@@ -232,11 +232,11 @@ public class Game {
     	countRight += 1;
     }
     
-    public int GetHintsDivisor(){
+    public int GetHintsDivisor() {
     	return hintsDivisor;
     }
 
-    public int GetLevelsDivisor(){
+    public int GetLevelsDivisor() {
     	return levelsDivisor;
     }
     

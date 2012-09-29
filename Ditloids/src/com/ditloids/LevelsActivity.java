@@ -157,29 +157,28 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
         game.SetPauseMusic(true);
     }
     
-    // —н€ть паузу медиа-плеера при разворачивании приложени€
+    // —н€ть паузу медиа-плеера при возврате на активность  
+    // ќбновить отображение информации об уровн€х при возврате на активность 
     @Override
     protected void onResume() {
-        super.onResume();
-        game.SetPauseMusic(false);
-    }
-    
-    // ќбновление отображени€ информации об уровн€х при возврате на активность 
-    @Override
-    protected void onStart() {
-    	super.onStart();
+    	super.onResume();
+    	game.SetPauseMusic(false);
         // ¬ыставл€ем правильные текст и картинки
-        for(int i = 1; i < game.GetCountLevels() + 1; i++){
+        for(int i = 1; i < game.GetCountLevels() + 1; i++) {
         	countViews[i-1].setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Ukrainian-Play.ttf"));
         	countViews[i-1].setText(Integer.toString(game.AnswersCount(i)) + " из " + Integer.toString(game.GetLevel(i).GetDitloidsCount()));
         	if(!game.GetLevelAccess(i)) {
         		countButtons[i-1].setBackgroundResource(R.drawable.level_lock);
         	}
+        	else {
+        		int drawableId = getResources().getIdentifier("level" + Integer.toString(i), "drawable", getApplicationContext().getPackageName());
+        		countButtons[i-1].setBackgroundResource(drawableId);
+        	}
         }
     }
 
 	
-	static public void SetGame(Game _game){
+	static public void SetGame(Game _game) {
 		game = _game;
 	}
 }

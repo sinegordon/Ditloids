@@ -49,16 +49,26 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 		// Если дитлоид не отгадан
 		if(!game.GetAnswer(game.GetCurrentDitloidIndex())){
 			// Заполняем поле дитлоида
-			((TextView)findViewById(R.id.textView3)).setText(currentLevel.GetDitloid(game.GetCurrentDitloidIndex()));
+			String dit = currentLevel.GetDitloid(game.GetCurrentDitloidIndex());
+			((TextView)findViewById(R.id.textView3)).setText(dit);
 			// Показываем клавиатуру
 			InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-			//imm.showSoftInput(findViewById(R.id.editText1), InputMethodManager.SHOW_IMPLICIT);
+			//imm.showSoftInput(findViewById(R.id.editText1), InputMethodManager.SHOW_FORCED);
 			imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
 			// Показываем последний неправильный ответ, если он есть (при этом еще меняется фон на неотвеченный)
 			String wrong_ans = game.GetLastWrongAnswer(game.GetCurrentLevel().GetLevelIndex(), game.GetCurrentDitloidIndex());
 			if(!wrong_ans.equals("")){
 				((EditText)findViewById(R.id.editText1)).setText(wrong_ans);
 				findViewById(R.id.buttonCheck).setBackgroundResource(R.drawable.check_wrong);
+				// Ставим курсор в конец строки
+				((EditText)findViewById(R.id.editText1)).setSelection(wrong_ans.length());
+			}
+			// Если не было неверных попыток, ставим начальную цифру дитлоида
+			else {
+				String[] dit_str = dit.split(" ");
+				((EditText)findViewById(R.id.editText1)).setText(dit_str[0] + " ");
+				// Ставим курсор в конец строки
+				((EditText)findViewById(R.id.editText1)).setSelection((dit_str[0] + " ").length());
 			}
 		}
 		else{
