@@ -67,10 +67,10 @@
 
 <TextView
     android:id="@+id/textHint"
-    android:layout_width="450dp"
+    android:layout_width="500dp"
     android:layout_height="wrap_content"
     android:gravity="center"
-    android:textSize="25dp"          
+    android:textSize="22dp"          
     android:layout_alignBottom="@+id/textView3"
     android:layout_centerHorizontal="true"
     android:layout_marginBottom="45dp"
