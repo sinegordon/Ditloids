@@ -8,9 +8,9 @@
     
     <ImageView
         android:id="@+id/imageView1"
-        android:layout_width="542dp"
-        android:layout_height="75dp"
-        android:src="@drawable/header_fon" /> 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/header_fon540" /> 
         
 <TextView
     android:id="@+id/textView1"
