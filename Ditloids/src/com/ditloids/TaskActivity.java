@@ -215,11 +215,11 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 			return true;
 		};
 		// Если нажата хардварная кнопка назад
-	    if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+	    /*if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
 	    	// На экран уровня
 	    	finish();
 			return true;
-	    } else {
+	    } else*/ {
 	        return false;
 	    }
 
@@ -231,14 +231,14 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
     	super.onConfigurationChanged(newConfig);  
 	}
     // При закрытии активности
-    @Override
+    /*@Override
 	public void onDestroy() {
     	super.onDestroy();
 		// Убираем клавиатуру
 		InputMethodManager imm = null;
 		imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
 		imm.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);    	
-    }
+    }*/
     
     // Пауза медиа-плеера при сворачивании приложения
     @Override

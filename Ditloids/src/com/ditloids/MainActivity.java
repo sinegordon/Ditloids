@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 
 public class MainActivity extends Activity implements OnClickListener {
@@ -81,10 +82,19 @@ public class MainActivity extends Activity implements OnClickListener {
     
     // Снять паузу медиа-плеера при разворачивании приложения
     @Override
-    protected void onResume() {
-    	
+    protected void onResume() {   	
         super.onResume();
         game.SetPauseMusic(false);
     }
+    
+    // При закрытии активности
+    /*@Override
+	public void onDestroy() {
+    	super.onDestroy();
+		// Убираем клавиатуру
+		InputMethodManager imm = null;
+		imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+		imm.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);    	
+    }*/
     
 }
