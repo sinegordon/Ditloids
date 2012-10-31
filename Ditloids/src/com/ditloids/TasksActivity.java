@@ -93,7 +93,7 @@ public class TasksActivity extends Activity implements OnClickListener, OnItemCl
     	startActivity(new Intent(TasksActivity.this, TaskActivity.class));
 	}
 
-	@Override
+	/*@Override
 	public boolean onKey(View v, int keyCode, KeyEvent event) {
 		// Если нажата хардварная кнопка назад
 	    if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && event.getAction()==KeyEvent.ACTION_DOWN) {
@@ -105,13 +105,13 @@ public class TasksActivity extends Activity implements OnClickListener, OnItemCl
 	    } else {
 	        return false;
 	    }
-	}
+	}*/
 	
 	// Запрет поворота экрана
-	@Override
+	/*@Override
 	public void onConfigurationChanged(Configuration newConfig) {  
     	super.onConfigurationChanged(newConfig);  
-	}
+	}*/
 	
     // Пауза медиа-плеера при сворачивании приложения
     @Override
@@ -126,5 +126,11 @@ public class TasksActivity extends Activity implements OnClickListener, OnItemCl
         super.onResume();
         game.SetPauseMusic(false);
     }
+
+	@Override
+	public boolean onKey(View v, int keyCode, KeyEvent event) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 }

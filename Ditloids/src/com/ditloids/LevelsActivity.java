@@ -1,5 +1,7 @@
 package com.ditloids;
 
+import java.io.IOException;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -63,8 +65,8 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
     @Override
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        game.SetPauseMusic(false);
         setContentView(R.layout.levels);
+        game.SetPauseMusic(false);
         this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
         radioGroup = (RadioGroup) findViewById(R.id.tabs);
         radioGroup.setOnCheckedChangeListener(onCheckedChangedListener);
@@ -80,7 +82,7 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
         adb.create();
         countViews = new TextView[game.GetCountLevels()];
         countButtons = new Button[game.GetCountLevels()];
-        // Заполняем массивы конпок уровней и надписей на уровнях
+        // Заполняем массивы кнопок уровней и надписей на уровнях
         for(int i = 1; i < game.GetCountLevels() + 1; i++){
         	int id = getResources().getIdentifier("TextView" + Integer.toString(i), "id", getApplicationContext().getPackageName());
         	TextView countView = (TextView)findViewById(id);
@@ -133,12 +135,12 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 	}
 	
 	// Запрет поворота экрана
-    @Override
+    /*@Override
 	public void onConfigurationChanged(Configuration newConfig) {  
     	super.onConfigurationChanged(newConfig);  
-	}
+	}*/
 
-	@Override
+	/*@Override
 	public boolean onKey(View v, int keyCode, KeyEvent event) {
 		// Если нажата хардварная кнопка назад
 	    if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && event.getAction()==KeyEvent.ACTION_DOWN) {
@@ -148,7 +150,7 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 	    } else {
 	        return false;
 	    }
-	}
+	}*/
 	
     // Пауза медиа-плеера при сворачивании приложения
     @Override
@@ -181,4 +183,12 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 	static public void SetGame(Game _game) {
 		game = _game;
 	}
+
+
+	@Override
+	public boolean onKey(View v, int keyCode, KeyEvent event) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

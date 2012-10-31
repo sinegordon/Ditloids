@@ -28,9 +28,6 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.entertask);
-		//((EditText)findViewById(R.id.editText1)).setSingleLine();
-		//((EditText)findViewById(R.id.editText1)).setFocusable(true);
-		//((EditText)findViewById(R.id.editText1)).setFocusableInTouchMode(true);
 		((EditText)findViewById(R.id.editText1)).setLines(1);
         this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
     	if(game.GetCountHints() == 0)
@@ -214,15 +211,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 			};
 			return true;
 		};
-		// Если нажата хардварная кнопка назад
-	    /*if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
-	    	// На экран уровня
-	    	finish();
-			return true;
-	    } else*/ {
-	        return false;
-	    }
-
+	    return false;
 	}
 
 	// Запрет поворота экрана
@@ -230,16 +219,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 	public void onConfigurationChanged(Configuration newConfig) {  
     	super.onConfigurationChanged(newConfig);  
 	}
-    // При закрытии активности
-    /*@Override
-	public void onDestroy() {
-    	super.onDestroy();
-		// Убираем клавиатуру
-		InputMethodManager imm = null;
-		imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-		imm.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);    	
-    }*/
-    
+
     // Пауза медиа-плеера при сворачивании приложения
     @Override
     protected void onPause() {

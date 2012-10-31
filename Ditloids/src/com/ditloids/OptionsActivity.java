@@ -97,19 +97,17 @@ public class OptionsActivity extends Activity implements OnClickListener, OnKeyL
 		switch (view.getId()) {
 	    case R.id.arrowButton:
 	    	// На главный экран
-	    	game.SaveMuteSound();
-	    	game.SaveMuteMusic();
-	    	//MainActivity.SetGame(game);
-	    	//startActivity(new Intent(OptionsActivity.this, MainActivity.class));
 	    	finish();
 	    	break;
 	    case R.id.sfxButton:
 	    	sfxButton = (Button)findViewById(R.id.sfxButton);
 	    	if(game.GetMuteSound()){
 	    		game.SetMuteSound(false);
+	    		game.SaveMuteSound();
 	    		sfxButton.setBackgroundResource(R.drawable.sfx_off);
 	    	}else{
 	    		game.SetMuteSound(true);
+	    		game.SaveMuteMusic();
 	    		sfxButton.setBackgroundResource(R.drawable.sfx_on);	    		
 	    	}
 	    	break;
@@ -131,27 +129,23 @@ public class OptionsActivity extends Activity implements OnClickListener, OnKeyL
 	    }
 	}
 		
-	@Override
+	/*@Override
 	public boolean onKey(View v, int keyCode, KeyEvent event) {
 		// Если нажата хардварная кнопка назад
 	    if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && event.getAction()==KeyEvent.ACTION_DOWN) {
 	    	// На главный экран
-	    	//MainActivity.SetGame(game);
-	    	game.SaveMuteSound();
-	    	game.SaveMuteMusic();
-	    	//startActivity(new Intent(OptionsActivity.this, MainActivity.class));
 	    	finish();
 			return super.onKeyDown(keyCode, event);
 	    } else {
 	        return false;
 	    }
-	}
+	}*/
 
 	// Запрет поворота экрана
-	@Override
+	/*@Override
     public void onConfigurationChanged(Configuration newConfig) {  
         super.onConfigurationChanged(newConfig); 
-   }
+   }*/
 	
     // Пауза медиа-плеера при сворачивании приложения
     @Override
@@ -166,6 +160,12 @@ public class OptionsActivity extends Activity implements OnClickListener, OnKeyL
         super.onResume();
         game.SetPauseMusic(false);
     }
+
+	@Override
+	public boolean onKey(View v, int keyCode, KeyEvent event) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 
 }

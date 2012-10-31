@@ -31,11 +31,9 @@ public class MainActivity extends Activity implements OnClickListener {
         if(game == null)
 	       	try {
 				game = new Game(getApplicationContext(), 4);
-			} catch (IllegalStateException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			};
         TasksActivity.SetGame(game);
         LevelsActivity.SetGame(game);
         OptionsActivity.SetGame(game);
@@ -68,10 +66,10 @@ public class MainActivity extends Activity implements OnClickListener {
 	}
 
 	// Запрет поворота экрана
-    @Override
+    /*@Override
      public void onConfigurationChanged(Configuration newConfig) {  
          super.onConfigurationChanged(newConfig); 
-    }
+    }*/
     
     // Пауза медиа-плеера при сворачивании приложения
     @Override
@@ -86,15 +84,4 @@ public class MainActivity extends Activity implements OnClickListener {
         super.onResume();
         game.SetPauseMusic(false);
     }
-    
-    // При закрытии активности
-    /*@Override
-	public void onDestroy() {
-    	super.onDestroy();
-		// Убираем клавиатуру
-		InputMethodManager imm = null;
-		imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-		imm.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);    	
-    }*/
-    
 }

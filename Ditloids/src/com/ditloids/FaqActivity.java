@@ -35,7 +35,6 @@ public class FaqActivity extends Activity implements OnClickListener, OnKeyListe
 		switch (view.getId()) {
 	    case R.id.arrowButton:
 	    	// На экран уровня
-	    	//startActivity(new Intent(FaqActivity.this, MainActivity.class));
 	    	finish();
 	    	break;
 	    default:
@@ -48,7 +47,6 @@ public class FaqActivity extends Activity implements OnClickListener, OnKeyListe
 		// Если нажата хардварная кнопка назад
 	    if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && event.getAction()==KeyEvent.ACTION_DOWN) {
 	    	// На главный экран
-	    	//startActivity(new Intent(FaqActivity.this, MainActivity.class));
 	    	finish();
 			return super.onKeyDown(keyCode, event);
 	    } else {
@@ -58,10 +56,10 @@ public class FaqActivity extends Activity implements OnClickListener, OnKeyListe
 
 	
     // Запрет поворота экрана
-    @Override
+    /*@Override
     public void onConfigurationChanged(Configuration newConfig) {  
         super.onConfigurationChanged(newConfig); 
-    }
+    }*/
     
     // Пауза медиа-плеера при сворачивании приложения
     @Override
