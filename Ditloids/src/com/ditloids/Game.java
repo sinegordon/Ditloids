@@ -66,7 +66,7 @@ public class Game {
     private boolean isMuteMusic = false;
 
     // Конструктор
-    public Game(Context context, int countLevels) throws IllegalStateException, IOException {
+    public Game(Context context, int countLevels) /*throws IllegalStateException, IOException*/ {
         Resources res = context.getResources();
         this.context = context;
         this.countLevels = countLevels;

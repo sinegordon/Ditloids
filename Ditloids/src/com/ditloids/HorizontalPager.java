@@ -21,6 +21,7 @@
 package com.ditloids;
 
 import android.content.Context;
+import android.graphics.Point;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.Display;
@@ -173,8 +174,9 @@ public final class HorizontalPager extends ViewGroup {
             Display display =
                     ((WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE))
                             .getDefaultDisplay();
-            int displayWidth = display.getWidth();
-
+            Point size = new Point();
+            display.getSize(size);
+            int displayWidth = size.x;
             mNextScreen = Math.max(0, Math.min(getCurrentScreen(), getChildCount() - 1));
             final int newX = mNextScreen * displayWidth;
             final int delta = newX - getScrollX();

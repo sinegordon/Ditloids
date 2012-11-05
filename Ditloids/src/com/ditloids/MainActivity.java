@@ -9,6 +9,7 @@ import android.media.AudioManager;
 import android.media.audiofx.AudioEffect.OnControlStatusChangeListener;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
@@ -28,12 +29,13 @@ public class MainActivity extends Activity implements OnClickListener {
         findViewById(R.id.StartButton).setOnClickListener(this);
         findViewById(R.id.RulesButton).setOnClickListener(this);
         findViewById(R.id.SettingsButton).setOnClickListener(this);
-        if(game == null)
+        game = new Game(getApplicationContext(), 4);
+        /*if(game == null)
 	       	try {
 				game = new Game(getApplicationContext(), 4);
 			} catch (Exception e) {
 				e.printStackTrace();
-			};
+			};*/
         TasksActivity.SetGame(game);
         LevelsActivity.SetGame(game);
         OptionsActivity.SetGame(game);
@@ -65,11 +67,11 @@ public class MainActivity extends Activity implements OnClickListener {
 	    }	
 	}
 
-	// Запрет поворота экрана
-    /*@Override
+	//Запрет поворота экрана
+    @Override
      public void onConfigurationChanged(Configuration newConfig) {  
          super.onConfigurationChanged(newConfig); 
-    }*/
+    }
     
     // Пауза медиа-плеера при сворачивании приложения
     @Override

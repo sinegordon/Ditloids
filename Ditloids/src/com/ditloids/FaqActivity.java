@@ -56,10 +56,10 @@ public class FaqActivity extends Activity implements OnClickListener, OnKeyListe
 
 	
     // Запрет поворота экрана
-    /*@Override
+    @Override
     public void onConfigurationChanged(Configuration newConfig) {  
         super.onConfigurationChanged(newConfig); 
-    }*/
+    }
     
     // Пауза медиа-плеера при сворачивании приложения
     @Override

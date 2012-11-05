@@ -142,10 +142,10 @@ public class OptionsActivity extends Activity implements OnClickListener, OnKeyL
 	}*/
 
 	// Запрет поворота экрана
-	/*@Override
+	@Override
     public void onConfigurationChanged(Configuration newConfig) {  
         super.onConfigurationChanged(newConfig); 
-   }*/
+    }
 	
     // Пауза медиа-плеера при сворачивании приложения
     @Override

@@ -1,6 +1,8 @@
 package com.ditloids;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -9,13 +11,21 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.media.AudioManager;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnKeyListener;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.widget.Button;
+import android.widget.HorizontalScrollView;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 
 /**
@@ -24,54 +34,48 @@ import android.widget.TextView;
  */
 public class LevelsActivity extends Activity implements OnClickListener, OnKeyListener {
     private RadioGroup radioGroup = null;
-	private HorizontalPager pager = null;
+    // "Листатель"
+	private android.support.v4.view.ViewPager pager = null;
 	// Массив текстовых полей уровней
 	private TextView[] countViews = null;
 	// Массив кнопок перехода на уровни
 	private Button[] countButtons = null;
 	// Индекс текущего уровня на экране
-	private int checkedLevelIndex = -1;
+	private int checkedLevelIndex = 0;
 	private static Game game = null;
 	// Диалог
 	private AlertDialog.Builder adb = null;
-	
-	// Обработчик листания экрана
-	private final HorizontalPager.OnScreenSwitchListener onScreenSwitchListener =
-            new HorizontalPager.OnScreenSwitchListener() {
-                @Override
-                public void onScreenSwitched(final int screen) {
-                	int id = getResources().getIdentifier("radio_btn_" + Integer.toString(screen), "id", getApplicationContext().getPackageName());
-                	radioGroup.check(id);
-                	checkedLevelIndex = screen + 1;
-                }
-            };
-    
-    // Обработчик клика по радиобуттонам
-    private final RadioGroup.OnCheckedChangeListener onCheckedChangedListener =
-            new RadioGroup.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(final RadioGroup group, final int checkedId) {
-                	for(int i = 0; i < game.GetCountLevels(); i++){
-                		int id = getResources().getIdentifier("radio_btn_" + Integer.toString(i), "id", getApplicationContext().getPackageName());
-                		if (id == checkedId){
-                			pager.setCurrentScreen(i, true);
-                			checkedLevelIndex = i + 1;
-                			break;
-                		}
-                	}
-                }
-            };
+	List<View> pages = null;
+	         
 
-    @Override
+	@Override
     public void onCreate(final Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.levels);
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.levels);
+		/*
+		LayoutInflater maininflater = LayoutInflater.from(this);
+		View levelspage = maininflater.inflate(R.layout.levels, null);
+        //setContentView(R.layout.levels);
+		LayoutInflater inflater = LayoutInflater.from(this);
+        pages = new ArrayList<View>();
+        View page = inflater.inflate(R.layout.pager_items, null);
+        for(int i = 1; i < game.GetCountLevels() + 1; i++){
+	    	int id = getResources().getIdentifier("rl" + Integer.toString(i), "id", getApplicationContext().getPackageName());
+	        RelativeLayout rl = (RelativeLayout) page.findViewById(id);
+	        pages.add(rl);
+        }
+        LevelsPagerAdapter pagerAdapter = new LevelsPagerAdapter(pages);
+        pager = new android.support.v4.view.ViewPager(getApplicationContext());
+        RelativeLayout rel = (RelativeLayout)findViewById(R.id.horizontal_pager);
+        rel.addView(pager);
+        pager.setAdapter(pagerAdapter);
+        pager.setCurrentItem(0);
+        */
+        
         game.SetPauseMusic(false);
         this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
-        radioGroup = (RadioGroup) findViewById(R.id.tabs);
-        radioGroup.setOnCheckedChangeListener(onCheckedChangedListener);
-        pager = (HorizontalPager) findViewById(R.id.horizontal_pager);
-        pager.setOnScreenSwitchListener(onScreenSwitchListener);
+        //radioGroup = (RadioGroup) findViewById(R.id.tabs);
+
         // Построение диалога
         adb = new AlertDialog.Builder(this);
         // Иконка диалога
@@ -82,23 +86,41 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
         adb.create();
         countViews = new TextView[game.GetCountLevels()];
         countButtons = new Button[game.GetCountLevels()];
+        
         // Заполняем массивы кнопок уровней и надписей на уровнях
-        for(int i = 1; i < game.GetCountLevels() + 1; i++){
+        for(int i = 1; i < game.GetCountLevels() + 1; i++) {
         	int id = getResources().getIdentifier("TextView" + Integer.toString(i), "id", getApplicationContext().getPackageName());
         	TextView countView = (TextView)findViewById(id);
         	int idb = getResources().getIdentifier("level" + Integer.toString(i) + "button", "id", getApplicationContext().getPackageName());
         	Button but = (Button)findViewById(idb);
         	countViews[i-1] = countView;
         	countButtons[i-1] = but;
+            // Выставляем обработчики событий кнопок
+        	countButtons[i-1].setOnClickListener(LevelsActivity.this);
         };
-        // Выставляем обработчики событий
-    	for(int i = 1; i < game.GetCountLevels() + 1; i++){
-    		int id = getResources().getIdentifier("level" + Integer.toString(i) +"button", "id", getApplicationContext().getPackageName());
-    		findViewById(id).setOnClickListener(this);
-    	}
+        // Выставляем обработчик события кнопки
         findViewById(R.id.arrowButton).setOnClickListener(this);
+        //radioGroup.setOnCheckedChangeListener(onCheckedChangedListener);
         findViewById(R.id.arrowButton).bringToFront();
     }
+	
+    // Обработчик клика по радиобуттонам
+    private final RadioGroup.OnCheckedChangeListener onCheckedChangedListener =
+            new RadioGroup.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(final RadioGroup group, final int checkedId) {
+                	for(int i = 0; i < game.GetCountLevels(); i++){
+                		int id = getResources().getIdentifier("radio_btn_" + Integer.toString(i), "id", getApplicationContext().getPackageName());
+                		if (id == checkedId) {
+                			//pager.setCurrentItem(i);
+                			RelativeLayout rel = (RelativeLayout)findViewById(R.id.horizontal_pager);
+                			rel.addView(pages.get(i));
+                			checkedLevelIndex = i + 1;
+                			break;
+                		}
+                	}
+                }
+            };
     
     
 	@Override
@@ -115,6 +137,7 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 	    		// Еcли нажата
 	    		if (id == view.getId()){
 	    			// Проверяем доступность уровня
+	    			checkedLevelIndex = i;
 	    	    	if(game.GetLevelAccess(i)){
 	    	    		// Если доступен - переходим
 	    		    	game.LoadLevel(i);
@@ -135,10 +158,10 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 	}
 	
 	// Запрет поворота экрана
-    /*@Override
+    @Override
 	public void onConfigurationChanged(Configuration newConfig) {  
     	super.onConfigurationChanged(newConfig);  
-	}*/
+	}
 
 	/*@Override
 	public boolean onKey(View v, int keyCode, KeyEvent event) {
