@@ -30,118 +30,29 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"        
         android:background="@drawable/arrow"/>
-     
-	<HorizontalScrollView
-	    android:id="@+id/horizontal_pager"
-	    android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="90dp"
-        android:layout_marginLeft="1dp"
-        android:layout_marginRight="1dp">
-	        <LinearLayout 
-	            android:orientation="horizontal"
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:layout_marginLeft="30dp">
-		        <RelativeLayout
-		            android:id="@+id/rl1"
-		            android:layout_width="fill_parent"
-		            android:layout_height="fill_parent"
-		            android:gravity="center"
-		            android:orientation="vertical">
-		            <Button                         
-		                android:id="@+id/level1button"          
-		                android:background="@drawable/level1"
-		                android:layout_width="230dp"
-		                android:layout_height="230dp"
-		                android:layout_marginTop="0dp"/>           
-		        
-		            <TextView           
-		                android:id="@+id/TextView1"
-		                android:gravity="center"
-		                android:text="@string/countlv1"
-		                android:layout_width="wrap_content"
-		                android:layout_height="wrap_content"
-		                android:textSize="22dp"
-		                android:textColor="#d3dae0"
-		                android:layout_marginTop="165dp"
-		                android:layout_marginLeft="75dp"/>
-		        </RelativeLayout>
-		        
-		        <RelativeLayout
-		            android:id="@+id/rl2"
-		            android:layout_width="fill_parent"
-		            android:layout_height="fill_parent"
-		            android:gravity="center"
-		            android:orientation="vertical">     
-		            <Button                 
-		                android:id="@+id/level2button"          
-		                android:background="@drawable/level2"
-		                android:layout_width="230dp"
-		                android:layout_height="230dp"
-		                android:layout_marginTop="0dp"/>    
-		            <TextView           
-		                android:id="@+id/TextView2"
-		                android:gravity="center"
-		                android:text="@string/countlv2"
-		                android:layout_width="wrap_content"
-		                android:layout_height="wrap_content"
-		                android:textSize="22dp"
-		                android:textColor="#d3dae0"
-		                android:layout_marginTop="165dp"
-		                android:layout_marginLeft="75dp"/>          
-		        </RelativeLayout>
-		        
-		        <RelativeLayout
-		            android:id="@+id/rl3"
-		            android:layout_width="fill_parent"
-		            android:layout_height="fill_parent"
-		            android:gravity="center"
-		            android:orientation="vertical">
-		            <Button             
-		                android:id="@+id/level3button"          
-		                android:background="@drawable/level3"
-		                android:layout_width="230dp"
-		                android:layout_height="230dp"
-		                android:layout_marginTop="0dp"/>
-		            <TextView           
-		                android:id="@+id/TextView3"
-		                android:gravity="center"
-		                android:text="@string/countlv3"
-		                android:layout_width="wrap_content"
-		                android:layout_height="wrap_content"
-		                android:textSize="22dp"
-		                android:textColor="#d3dae0"
-		                android:layout_marginTop="165dp"
-		                android:layout_marginLeft="75dp"/>          
-		        </RelativeLayout>
-		        
-		        <RelativeLayout
-		            android:id="@+id/rl4"
-		            android:layout_width="fill_parent"
-		            android:layout_height="fill_parent"
-		            android:gravity="center"
-		            android:orientation="vertical">
-		            <Button                 
-		                android:id="@+id/level4button"          
-		                android:background="@drawable/level4"
-		                android:layout_width="230dp"
-		                android:layout_height="230dp"
-		                android:layout_marginTop="0dp"/>
-		            <TextView           
-		                android:id="@+id/TextView4"
-		                android:gravity="center"
-		                android:text="@string/countlv4"
-		                android:layout_width="wrap_content"
-		                android:layout_height="wrap_content"
-		                android:textSize="22dp"
-		                android:textColor="#d3dae0"
-		                android:layout_marginTop="165dp"
-		                android:layout_marginLeft="75dp"/>          
-		        </RelativeLayout>      
-	        </LinearLayout>
-	    </HorizontalScrollView>
-   <!--
+	<RelativeLayout
+	        android:id="@+id/horizontal_pager"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent">
+            <Button                         
+                android:id="@+id/level_button"          
+                android:background="@drawable/level1"
+                android:layout_width="230dp"
+                android:layout_height="230dp"
+                android:layout_marginTop="0dp"/>           
+        
+            <TextView           
+                android:id="@+id/level_text_view"
+                android:gravity="center"
+                android:text="@string/countlv1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="22dp"
+                android:textColor="#d3dae0"
+                android:layout_marginTop="165dp"
+                android:layout_marginLeft="75dp"/>	
+	</RelativeLayout>    
+
     <RadioGroup
         android:id="@+id/tabs"
         android:layout_height="wrap_content"
@@ -151,22 +62,21 @@
         android:layout_alignParentBottom="true"          
         android:layout_marginBottom="50dp">
         <RadioButton           
-            android:id="@+id/radio_btn_0"
+            android:id="@+id/radio_btn_1"
             android:checked="true"
             android:width="2dp"
             android:height="2dp"  />
         <RadioButton              
-            android:id="@+id/radio_btn_1"
-            android:width="2dp"
-            android:height="2dp" />
-        <RadioButton              
             android:id="@+id/radio_btn_2"
             android:width="2dp"
             android:height="2dp" />
-        <RadioButton           
+        <RadioButton              
             android:id="@+id/radio_btn_3"
+            android:width="2dp"
+            android:height="2dp" />
+        <RadioButton           
+            android:id="@+id/radio_btn_4"
             android:width="2dp"
             android:height="2dp" />        
     </RadioGroup>  
-    -->   
 </RelativeLayout>
