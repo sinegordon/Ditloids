@@ -3,6 +3,9 @@ package com.ditloids;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +20,8 @@ import android.widget.TextView;
 
 public class FaqActivity extends Activity implements OnClickListener, OnKeyListener {
 	private static Game game = null;
+	BitmapDrawable bmd = null;
+	Bitmap bm = null;
 	
 	public static void SetGame(Game _game){
 		game = _game;
@@ -44,14 +49,7 @@ public class FaqActivity extends Activity implements OnClickListener, OnKeyListe
 	
 	@Override
 	public boolean onKey(View v, int keyCode, KeyEvent event) {
-		// Если нажата хардварная кнопка назад
-	    if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && event.getAction()==KeyEvent.ACTION_DOWN) {
-	    	// На главный экран
-	    	finish();
-			return super.onKeyDown(keyCode, event);
-	    } else {
-	        return false;
-	    }
+		return false;
 	}
 
 	
@@ -61,18 +59,30 @@ public class FaqActivity extends Activity implements OnClickListener, OnKeyListe
         super.onConfigurationChanged(newConfig); 
     }*/
     
-    // Пауза медиа-плеера при сворачивании приложения
+
+    // Сворачивание приложения
     @Override
     protected void onPause() {
         super.onPause();
         game.SetPauseMusic(true);
+        bm.recycle();
     }
     
-    // Снять паузу медиа-плеера при разворачивании приложения
+	// Прорисовка фона
+	public void Draw() {
+    	bm = BitmapFactory.decodeResource(getResources(), R.drawable.fon_header);
+    	//LayoutInflater inf = LayoutInflater.from(getApplicationContext());
+    	bmd = new BitmapDrawable(getResources(), bm);
+    	View v = findViewById(R.id.faqLayout);
+    	v.setBackgroundDrawable(bmd);
+    }
+    
+    // Разворачивание приложения
     @Override
     protected void onResume() {
         super.onResume();
         game.SetPauseMusic(false);
+        Draw();
     }
 
 }

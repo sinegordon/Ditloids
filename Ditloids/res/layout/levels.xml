@@ -3,8 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="fill_parent"
     android:layout_width="fill_parent"
-    android:background="@drawable/fon_header"
     android:gravity="top"
+    android:id="@+id/levelsLayout"
     android:orientation="vertical" >  
     
     <ImageView
@@ -43,7 +43,6 @@
    			android:gravity="center">
    		<Button   		     		    
      	  	android:id="@+id/level1button"			
-			android:background="@drawable/level1"
             android:layout_width="230dp"
             android:layout_height="230dp"
     	    android:layout_marginTop="0dp"/>           
@@ -51,7 +50,6 @@
    			<TextView		    
 			android:id="@+id/TextView1"
    			android:gravity="center"
-			android:text="@string/countlv1"
         	android:layout_width="wrap_content"
         	android:layout_height="wrap_content"
         	android:textSize="22dp"
@@ -66,7 +64,6 @@
    			android:gravity="center">     
    		<Button     		    
      	  	android:id="@+id/level2button"			
-			android:background="@drawable/level2"
             android:layout_width="230dp"
             android:layout_height="230dp"
     	    android:layout_marginTop="0dp"/> 	
@@ -88,7 +85,6 @@
    			android:gravity="center">
    		<Button    		    
      	  	android:id="@+id/level3button"			
-			android:background="@drawable/level3"
             android:layout_width="230dp"
             android:layout_height="230dp"
     	    android:layout_marginTop="0dp"/>
@@ -110,7 +106,6 @@
    			android:gravity="center">
    		<Button     		    
      	  	android:id="@+id/level4button"			
-			android:background="@drawable/level4"
             android:layout_width="230dp"
             android:layout_height="230dp"
     	    android:layout_marginTop="0dp"/>

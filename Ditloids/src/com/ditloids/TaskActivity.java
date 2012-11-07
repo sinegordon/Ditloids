@@ -3,6 +3,9 @@ package com.ditloids;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -19,6 +22,8 @@ import android.widget.Toast;
 public class TaskActivity extends Activity implements OnClickListener, OnKeyListener {
 	/** Called when the activity is first created. */
 	private static Game game = null;
+	BitmapDrawable bmd = null;
+	Bitmap bm = null;
 	
 	public static void SetGame(Game _game){
 		game = _game;
@@ -215,23 +220,34 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 	}
 
 	// Запрет поворота экрана
-    @Override
+    /*@Override
 	public void onConfigurationChanged(Configuration newConfig) {  
     	super.onConfigurationChanged(newConfig);  
-	}
+	}*/
 
-    // Пауза медиа-плеера при сворачивании приложения
+    // Сворачивание приложения
     @Override
     protected void onPause() {
         super.onPause();
         game.SetPauseMusic(true);
+        bm.recycle();
     }
     
-    // Снять паузу медиа-плеера при разворачивании приложения
+	// Прорисовка фона
+	public void Draw() {
+    	bm = BitmapFactory.decodeResource(getResources(), R.drawable.fon_header);
+    	//LayoutInflater inf = LayoutInflater.from(getApplicationContext());
+    	bmd = new BitmapDrawable(getResources(), bm);
+    	View v = findViewById(R.id.entertaskLayout);
+    	v.setBackgroundDrawable(bmd);
+    }
+    
+    // Разворачивание приложения
     @Override
     protected void onResume() {
         super.onResume();
         game.SetPauseMusic(false);
+        Draw();
     }
 
 }

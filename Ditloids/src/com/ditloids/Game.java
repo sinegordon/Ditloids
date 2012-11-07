@@ -80,12 +80,13 @@ public class Game {
         for (int i = 1; i <= countLevels; ++i) {
         	levels[i-1] = new Level(context, i);
         };
+        
         sounds = new SoundPool(countSounds, AudioManager.STREAM_MUSIC, 0);
         sounds.load(context, R.raw.right, 1);
         sounds.load(context, R.raw.wrong, 1);
         
         mediaPlayer = MediaPlayer.create(context, R.raw.music);
-//        mediaPlayer.prepare();
+        //mediaPlayer.prepare();
         if(!isMuteMusic)
         	mediaPlayer.start();
         mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
@@ -93,8 +94,7 @@ public class Game {
 			public void onCompletion(MediaPlayer mp) {
 				mp.start();				
 			}
-		});
-		
+		});	
     }
     
     // Возвращает количество уровней в игре

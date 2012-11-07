@@ -13,7 +13,10 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnKeyListener;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
+import android.graphics.drawable.BitmapDrawable;
 import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -34,6 +37,8 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 	private static Game game = null;
 	// Диалог
 	private AlertDialog.Builder adb = null;
+	BitmapDrawable bmd = null;
+	Bitmap bm = null;
 	
 	// Обработчик листания экрана
 	private final HorizontalPager.OnScreenSwitchListener onScreenSwitchListener =
@@ -152,11 +157,21 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 	    }
 	}*/
 	
-    // Пауза медиа-плеера при сворачивании приложения
+	// Прорисовка фона
+	public void Draw() {
+    	bm = BitmapFactory.decodeResource(getResources(), R.drawable.fon_header);
+    	//LayoutInflater inf = LayoutInflater.from(getApplicationContext());
+    	bmd = new BitmapDrawable(getResources(), bm);
+    	View v = findViewById(R.id.levelsLayout);
+    	v.setBackgroundDrawable(bmd);
+    }
+	
+    // Сворачивание приложения
     @Override
     protected void onPause() {
         super.onPause();
         game.SetPauseMusic(true);
+        bm.recycle();
     }
     
     // Снять паузу медиа-плеера при возврате на активность  
@@ -165,16 +180,18 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
     protected void onResume() {
     	super.onResume();
     	game.SetPauseMusic(false);
+    	Draw();
         // Выставляем правильные текст и картинки
         for(int i = 1; i < game.GetCountLevels() + 1; i++) {
         	countViews[i-1].setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Ukrainian-Play.ttf"));
-        	countViews[i-1].setText(Integer.toString(game.AnswersCount(i)) + " из " + Integer.toString(game.GetLevel(i).GetDitloidsCount()));
         	if(!game.GetLevelAccess(i)) {
         		countButtons[i-1].setBackgroundResource(R.drawable.level_lock);
+            	countViews[i-1].setText("Уровень " + Integer.toString(i));
         	}
         	else {
         		int drawableId = getResources().getIdentifier("level" + Integer.toString(i), "drawable", getApplicationContext().getPackageName());
         		countButtons[i-1].setBackgroundResource(drawableId);
+            	countViews[i-1].setText(Integer.toString(game.AnswersCount(i)) + " из " + Integer.toString(game.GetLevel(i).GetDitloidsCount()));
         	}
         }
     }
@@ -187,7 +204,6 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 
 	@Override
 	public boolean onKey(View v, int keyCode, KeyEvent event) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

@@ -7,6 +7,9 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -18,6 +21,8 @@ import android.widget.Button;
 public class OptionsActivity extends Activity implements OnClickListener, OnKeyListener {
 	// Секция диалога
 	final int DIALOG_EXIT = 1;
+	BitmapDrawable bmd = null;
+	Bitmap bm = null;
 	
 	protected Dialog onCreateDialog(int id) {
 	    if (id == DIALOG_EXIT) {
@@ -147,23 +152,33 @@ public class OptionsActivity extends Activity implements OnClickListener, OnKeyL
         super.onConfigurationChanged(newConfig); 
    }*/
 	
-    // Пауза медиа-плеера при сворачивании приложения
+    //Сворачивание приложения
     @Override
     protected void onPause() {
         super.onPause();
         game.SetPauseMusic(true);
+        bm.recycle();
     }
     
-    // Снять паузу медиа-плеера при разворачивании приложения
+	// Прорисовка фона
+	public void Draw() {
+    	bm = BitmapFactory.decodeResource(getResources(), R.drawable.fon_header);
+    	//LayoutInflater inf = LayoutInflater.from(getApplicationContext());
+    	bmd = new BitmapDrawable(getResources(), bm);
+    	View v = findViewById(R.id.optionsLayout);
+    	v.setBackgroundDrawable(bmd);
+    }
+    
+    // Разворачивание приложения
     @Override
     protected void onResume() {
         super.onResume();
         game.SetPauseMusic(false);
+        Draw();
     }
 
 	@Override
 	public boolean onKey(View v, int keyCode, KeyEvent event) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
