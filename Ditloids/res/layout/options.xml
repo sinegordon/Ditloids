@@ -6,22 +6,22 @@
     android:gravity="top"
     android:orientation="vertical">
     
-    <ImageView
+    <Button
         android:id="@+id/imageView1"
-        android:layout_width="320dp"
+        android:layout_width="fill_parent"
         android:layout_height="44dp"
-        android:src="@drawable/header_fon" /> 
+        android:background="@drawable/header_fon" /> 
         
-<TextView
-    android:id="@+id/textView1"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_centerHorizontal="true"
-    android:gravity="center"
-    android:layout_marginTop="4dp"    
-    android:text="Настройки"
-    android:textSize="20dp" />      
-    
+	<TextView
+	    android:id="@+id/textView1"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_centerHorizontal="true"
+	    android:gravity="center"
+	    android:layout_marginTop="4dp"    
+	    android:text="Настройки"
+	    android:textSize="20dp" />      
+	    
     <Button
         android:id="@+id/arrowButton"
         android:layout_width="25dp"

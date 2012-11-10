@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.media.AudioManager;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -19,6 +20,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -73,6 +75,12 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
         setContentView(R.layout.levels);
     	View v = findViewById(R.id.levelsLayout);
     	v.setBackgroundDrawable(bmd);
+    	
+    	//DisplayMetrics metrics = new DisplayMetrics();
+    	//getWindowManager().getDefaultDisplay().getMetrics(metrics);
+    	//ImageView v1 = (ImageView)findViewById(R.id.imageView1);
+    	//v1.setMaxWidth(metrics.widthPixels);
+    	
         game.SetPauseMusic(false);
         this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
         radioGroup = (RadioGroup) findViewById(R.id.tabs);

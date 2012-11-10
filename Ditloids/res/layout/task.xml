@@ -7,11 +7,11 @@
     android:id="@+id/tasksLayout"
     android:orientation="vertical" >
     
-    <ImageView
+    <Button
         android:id="@+id/imageView1"
-        android:layout_width="320dp"
+        android:layout_width="fill_parent"
         android:layout_height="44dp"
-        android:src="@drawable/header_fon" />     
+        android:background="@drawable/header_fon" />     
  			
     <Button
         android:id="@+id/arrowButton"
