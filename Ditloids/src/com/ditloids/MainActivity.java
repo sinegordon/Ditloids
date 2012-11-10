@@ -26,8 +26,8 @@ import android.app.ActivityManager;
 public class MainActivity extends Activity implements OnClickListener {
 	/** Called when the activity is first created. */
 	private static Game game = null;
-	BitmapDrawable bmd = null;
-	Bitmap bm = null;
+	private static BitmapDrawable bmd = null;
+	private static Bitmap bm = null;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,10 @@ public class MainActivity extends Activity implements OnClickListener {
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         setContentView(R.layout.main);
+    	bm = BitmapFactory.decodeResource(getResources(), R.drawable.fon);
+    	bmd = new BitmapDrawable(getResources(), bm);
+    	View v = findViewById(R.id.mainLayout);
+    	v.setBackgroundDrawable(bmd);
         this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
         findViewById(R.id.StartButton).setOnClickListener(this);
         findViewById(R.id.RulesButton).setOnClickListener(this);
@@ -50,6 +54,11 @@ public class MainActivity extends Activity implements OnClickListener {
         OptionsActivity.SetGame(game);
         TaskActivity.SetGame(game);
         FaqActivity.SetGame(game);
+    	TasksActivity.SetDrawable(bmd);
+    	LevelsActivity.SetDrawable(bmd);
+    	OptionsActivity.SetDrawable(bmd);
+    	TaskActivity.SetDrawable(bmd);
+    	FaqActivity.SetDrawable(bmd);
         int memoryClass = ((ActivityManager) getSystemService(Context.ACTIVITY_SERVICE)).getMemoryClass();
         Log.d("sinegordon", Integer.toString(memoryClass));
     }
@@ -84,20 +93,11 @@ public class MainActivity extends Activity implements OnClickListener {
          super.onConfigurationChanged(newConfig); 
     }*/
 	
-	public void Draw() {
-    	bm = BitmapFactory.decodeResource(getResources(), R.drawable.fon);
-    	//LayoutInflater inf = LayoutInflater.from(getApplicationContext());
-    	bmd = new BitmapDrawable(getResources(), bm);
-    	View v = findViewById(R.id.mainLayout);
-    	v.setBackgroundDrawable(bmd);
-    }
-	
     // Пауза медиа-плеера при сворачивании приложения
     @Override
     protected void onPause() {
    		super.onPause();
         game.SetPauseMusic(true);
-        bm.recycle();
     }
     
     // Снять паузу медиа-плеера при разворачивании приложения
@@ -105,6 +105,5 @@ public class MainActivity extends Activity implements OnClickListener {
     protected void onResume() {   	
         super.onResume();
         game.SetPauseMusic(false);
-        Draw();
     }
 }

@@ -12,6 +12,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.AudioManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -21,8 +22,6 @@ import android.widget.Button;
 public class OptionsActivity extends Activity implements OnClickListener, OnKeyListener {
 	// Секция диалога
 	final int DIALOG_EXIT = 1;
-	BitmapDrawable bmd = null;
-	Bitmap bm = null;
 	
 	protected Dialog onCreateDialog(int id) {
 	    if (id == DIALOG_EXIT) {
@@ -50,11 +49,6 @@ public class OptionsActivity extends Activity implements OnClickListener, OnKeyL
 		    case Dialog.BUTTON_POSITIVE:
 		    	// Очищаем все настройки
 		    	game.ClearProgress();
-		    	// Устанавливаем фоны кнопок на экране
-		    	// Button sfxButton = (Button)findViewById(R.id.sfxButton);
-		    	// Button musicButton = (Button)findViewById(R.id.musicButton);
-		    	// sfxButton.setBackgroundResource(R.drawable.sfx_off);
-		    	// musicButton.setBackgroundResource(R.drawable.music_off);
 		    	break;
 		    // нейтральная кнопка  
 		    case Dialog.BUTTON_NEUTRAL:
@@ -65,6 +59,7 @@ public class OptionsActivity extends Activity implements OnClickListener, OnKeyL
 	// Конец секции диалога
 	
 	private static Game game = null;
+	private static BitmapDrawable bmd = null;
 		
 	public static void SetGame(Game _game){
 		game = _game;
@@ -74,6 +69,8 @@ public class OptionsActivity extends Activity implements OnClickListener, OnKeyL
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.options);
+    	View v = findViewById(R.id.optionsLayout);
+    	v.setBackgroundDrawable(bmd);
         this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
         // Устанавливаем фоны кнопок на экране
     	Button sfxButton = (Button)findViewById(R.id.sfxButton);
@@ -157,16 +154,6 @@ public class OptionsActivity extends Activity implements OnClickListener, OnKeyL
     protected void onPause() {
         super.onPause();
         game.SetPauseMusic(true);
-        bm.recycle();
-    }
-    
-	// Прорисовка фона
-	public void Draw() {
-    	bm = BitmapFactory.decodeResource(getResources(), R.drawable.fon_header);
-    	//LayoutInflater inf = LayoutInflater.from(getApplicationContext());
-    	bmd = new BitmapDrawable(getResources(), bm);
-    	View v = findViewById(R.id.optionsLayout);
-    	v.setBackgroundDrawable(bmd);
     }
     
     // Разворачивание приложения
@@ -174,13 +161,15 @@ public class OptionsActivity extends Activity implements OnClickListener, OnKeyL
     protected void onResume() {
         super.onResume();
         game.SetPauseMusic(false);
-        Draw();
     }
 
 	@Override
 	public boolean onKey(View v, int keyCode, KeyEvent event) {
 		return false;
 	}
-
+	
+    public static void SetDrawable(BitmapDrawable _bmd){
+    	bmd = _bmd;
+    }
 
 }

@@ -20,8 +20,7 @@ import android.widget.TextView;
 
 public class FaqActivity extends Activity implements OnClickListener, OnKeyListener {
 	private static Game game = null;
-	BitmapDrawable bmd = null;
-	Bitmap bm = null;
+	private static BitmapDrawable bmd = null;
 	
 	public static void SetGame(Game _game){
 		game = _game;
@@ -31,6 +30,8 @@ public class FaqActivity extends Activity implements OnClickListener, OnKeyListe
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.faq);
+    	View v = findViewById(R.id.faqLayout);
+    	v.setBackgroundDrawable(bmd);
         this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
 		findViewById(R.id.arrowButton).setOnClickListener(this);
 	}
@@ -51,30 +52,12 @@ public class FaqActivity extends Activity implements OnClickListener, OnKeyListe
 	public boolean onKey(View v, int keyCode, KeyEvent event) {
 		return false;
 	}
-
-	
-    // Запрет поворота экрана
-    /*@Override
-    public void onConfigurationChanged(Configuration newConfig) {  
-        super.onConfigurationChanged(newConfig); 
-    }*/
-    
-
+   
     // Сворачивание приложения
     @Override
     protected void onPause() {
         super.onPause();
         game.SetPauseMusic(true);
-        bm.recycle();
-    }
-    
-	// Прорисовка фона
-	public void Draw() {
-    	bm = BitmapFactory.decodeResource(getResources(), R.drawable.fon_header);
-    	//LayoutInflater inf = LayoutInflater.from(getApplicationContext());
-    	bmd = new BitmapDrawable(getResources(), bm);
-    	View v = findViewById(R.id.faqLayout);
-    	v.setBackgroundDrawable(bmd);
     }
     
     // Разворачивание приложения
@@ -82,7 +65,10 @@ public class FaqActivity extends Activity implements OnClickListener, OnKeyListe
     protected void onResume() {
         super.onResume();
         game.SetPauseMusic(false);
-        Draw();
+    }
+    
+    public static void SetDrawable(BitmapDrawable _bmd){
+    	bmd = _bmd;
     }
 
 }

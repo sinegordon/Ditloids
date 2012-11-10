@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="fill_parent"
-    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
     android:gravity="top"
     android:id="@+id/levelsLayout"
     android:orientation="vertical" >  
@@ -13,15 +13,15 @@
         android:layout_height="44dp"
         android:src="@drawable/header_fon" /> 
         
-<TextView
-    android:id="@+id/textView1"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_centerHorizontal="true"
-    android:gravity="center"
-    android:layout_marginTop="4dp"    
-    android:text="Выбор уровня"
-    android:textSize="20dp" />         
+	<TextView
+	    android:id="@+id/textView1"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_centerHorizontal="true"
+	    android:gravity="center"
+	    android:layout_marginTop="4dp"    
+	    android:text="Выбор уровня"
+	    android:textSize="20dp" />         
     
     <Button
         android:id="@+id/arrowButton"
@@ -33,13 +33,13 @@
          
     <com.ditloids.HorizontalPager
         android:id="@+id/horizontal_pager"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_weight="1">
         
         <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
    			android:gravity="center">
    		<Button   		     		    
      	  	android:id="@+id/level1button"			
@@ -59,8 +59,8 @@
         </RelativeLayout>
         
         <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
    			android:gravity="center">     
    		<Button     		    
      	  	android:id="@+id/level2button"			
@@ -80,15 +80,15 @@
         </RelativeLayout>
         
         <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
    			android:gravity="center">
    		<Button    		    
      	  	android:id="@+id/level3button"			
             android:layout_width="230dp"
             android:layout_height="230dp"
     	    android:layout_marginTop="0dp"/>
-   			<TextView		    
+   	    <TextView		    
 			android:id="@+id/TextView3"
    			android:gravity="center"
 			android:text="@string/countlv3"
@@ -101,8 +101,8 @@
         </RelativeLayout>
         
         <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
    			android:gravity="center">
    		<Button     		    
      	  	android:id="@+id/level4button"			

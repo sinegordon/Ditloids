@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.media.AudioManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -37,8 +38,7 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 	private static Game game = null;
 	// Диалог
 	private AlertDialog.Builder adb = null;
-	BitmapDrawable bmd = null;
-	Bitmap bm = null;
+	private static BitmapDrawable bmd = null;
 	
 	// Обработчик листания экрана
 	private final HorizontalPager.OnScreenSwitchListener onScreenSwitchListener =
@@ -71,6 +71,8 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.levels);
+    	View v = findViewById(R.id.levelsLayout);
+    	v.setBackgroundDrawable(bmd);
         game.SetPauseMusic(false);
         this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
         radioGroup = (RadioGroup) findViewById(R.id.tabs);
@@ -139,48 +141,8 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 	    }
 	}
 	
-	// Запрет поворота экрана
-    /*@Override
-	public void onConfigurationChanged(Configuration newConfig) {  
-    	super.onConfigurationChanged(newConfig);  
-	}*/
-
-	/*@Override
-	public boolean onKey(View v, int keyCode, KeyEvent event) {
-		// Если нажата хардварная кнопка назад
-	    if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && event.getAction()==KeyEvent.ACTION_DOWN) {
-	    	// На главный экран
-	    	finish();
-			return true;
-	    } else {
-	        return false;
-	    }
-	}*/
-	
 	// Прорисовка фона
-	public void Draw() {
-    	bm = BitmapFactory.decodeResource(getResources(), R.drawable.fon_header);
-    	//LayoutInflater inf = LayoutInflater.from(getApplicationContext());
-    	bmd = new BitmapDrawable(getResources(), bm);
-    	View v = findViewById(R.id.levelsLayout);
-    	v.setBackgroundDrawable(bmd);
-    }
-	
-    // Сворачивание приложения
-    @Override
-    protected void onPause() {
-        super.onPause();
-        game.SetPauseMusic(true);
-        bm.recycle();
-    }
-    
-    // Снять паузу медиа-плеера при возврате на активность  
-    // Обновить отображение информации об уровнях при возврате на активность 
-    @Override
-    protected void onResume() {
-    	super.onResume();
-    	game.SetPauseMusic(false);
-    	Draw();
+	public void DrawLevelInfo() {
         // Выставляем правильные текст и картинки
         for(int i = 1; i < game.GetCountLevels() + 1; i++) {
         	countViews[i-1].setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Ukrainian-Play.ttf"));
@@ -195,16 +157,34 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
         	}
         }
     }
-
+	
+    // Сворачивание приложения
+    @Override
+    protected void onPause() {
+        super.onPause();
+        game.SetPauseMusic(true);       
+    }
+    
+    // Снять паузу медиа-плеера при возврате на активность  
+    // Обновить отображение информации об уровнях при возврате на активность 
+    @Override
+    protected void onResume() {
+    	super.onResume();
+    	game.SetPauseMusic(false);
+    	DrawLevelInfo();
+    }
 	
 	static public void SetGame(Game _game) {
 		game = _game;
 	}
 
-
 	@Override
 	public boolean onKey(View v, int keyCode, KeyEvent event) {
 		return false;
 	}
+	
+    public static void SetDrawable(BitmapDrawable _bmd){
+    	bmd = _bmd;
+    }
 
 }

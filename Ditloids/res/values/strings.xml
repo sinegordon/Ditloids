@@ -13,7 +13,10 @@
     <string name="countlv4">3</string>
     <string name="reset_title">Сброс прогресса</string>
     <string name="reset_message">Сбросить прогресс?</string>
+    <string name="hint_title">Покупка подсказки</string>
+    <string name="hint_message">У вас на данный момент нет ни одной подсказки. Хотите купить подсказку?</string>
     <string name="yes">Да</string>
+    <string name="no">Нет</string>
     <string name="cancel">Отмена</string>
     <string name="hint">Этот день бывает не каждый год, а лишь спустя определенный период времени</string>                 
 </resources>

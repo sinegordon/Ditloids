@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.AudioManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -22,8 +23,7 @@ import android.widget.TextView;
 public class TasksActivity extends Activity implements OnClickListener, OnItemClickListener, OnKeyListener {
 	/** Called when the activity is first created. */
 	static private Game game = null;
-	BitmapDrawable bmd = null;
-	Bitmap bm = null;
+	private static BitmapDrawable bmd = null;
 	// Индексы отвеченных дитлоидов в порядке их расположения в списке
 	private Integer[] ditloidIndexes = null;
 	
@@ -35,6 +35,8 @@ public class TasksActivity extends Activity implements OnClickListener, OnItemCl
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.task);
+    	View v = findViewById(R.id.tasksLayout);
+    	v.setBackgroundDrawable(bmd);
 		ListView listView = (ListView) findViewById(R.id.mylist);
         this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
 		// Устанавливаем обработчики событий
@@ -97,42 +99,12 @@ public class TasksActivity extends Activity implements OnClickListener, OnItemCl
 		// На экран ввода ответа
     	startActivity(new Intent(TasksActivity.this, TaskActivity.class));
 	}
-
-	/*@Override
-	public boolean onKey(View v, int keyCode, KeyEvent event) {
-		// Если нажата хардварная кнопка назад
-	    if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && event.getAction()==KeyEvent.ACTION_DOWN) {
-	    	// Сохраняем уровень
-	    	game.SaveLevel();
-	    	// На экран выбора уровня
-	    	finish();
-	    	return true;
-	    } else {
-	        return false;
-	    }
-	}*/
-	
-	// Запрет поворота экрана
-	/*@Override
-	public void onConfigurationChanged(Configuration newConfig) {  
-    	super.onConfigurationChanged(newConfig);  
-	}*/
 	
     // Сворачивание приложения
     @Override
     protected void onPause() {
         super.onPause();
         game.SetPauseMusic(true);
-        bm.recycle();
-    }
-    
-	// Прорисовка фона
-	public void Draw() {
-    	bm = BitmapFactory.decodeResource(getResources(), R.drawable.fon_header);
-    	//LayoutInflater inf = LayoutInflater.from(getApplicationContext());
-    	bmd = new BitmapDrawable(getResources(), bm);
-    	View v = findViewById(R.id.tasksLayout);
-    	v.setBackgroundDrawable(bmd);
     }
     
     // Разворачивание приложения
@@ -140,12 +112,15 @@ public class TasksActivity extends Activity implements OnClickListener, OnItemCl
     protected void onResume() {
         super.onResume();
         game.SetPauseMusic(false);
-        Draw();
     }
 
 	@Override
 	public boolean onKey(View v, int keyCode, KeyEvent event) {
 		return false;
 	}
+	
+    public static void SetDrawable(BitmapDrawable _bmd){
+    	bmd = _bmd;
+    }
 
 }

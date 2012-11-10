@@ -1,6 +1,8 @@
 package com.ditloids;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +16,7 @@ public class TaskArrayAdapter extends ArrayAdapter<String> {
     private final Integer[] ditloidIndexes;
     private final Game game;
     private final int notanscount;
-    
+   
 
     public TaskArrayAdapter(Context context, String[] values, Integer[] ditloidIndexes, Game game, int notanscount) {
         super(context, R.layout.task_item, values);
@@ -24,6 +26,7 @@ public class TaskArrayAdapter extends ArrayAdapter<String> {
         this.ditloidIndexes = ditloidIndexes;
         //  оличество еще не отвеченных на этом уровне
         this.notanscount = notanscount;
+        
     }
 
     @Override

@@ -8,19 +8,19 @@
 
     <ImageView
         android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/header_fon" />       
     
-<TextView
-    android:id="@+id/textView1"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_centerHorizontal="true"
-    android:gravity="center"
-    android:layout_marginTop="18dp"    
-    android:text="Выбор уровня"
-    android:textSize="40dp" />      
+	<TextView
+	    android:id="@+id/textView1"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_centerHorizontal="true"
+	    android:gravity="center"
+	    android:layout_marginTop="18dp"    
+	    android:text="Выбор уровня"
+	    android:textSize="40dp" />      
     
     <Button
         android:id="@+id/arrowButton"

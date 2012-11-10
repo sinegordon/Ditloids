@@ -1,6 +1,9 @@
 package com.ditloids;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
@@ -8,6 +11,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.AudioManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -20,11 +24,56 @@ import android.widget.Toast;
 //import android.widget.Toast;
 
 public class TaskActivity extends Activity implements OnClickListener, OnKeyListener {
-	/** Called when the activity is first created. */
-	private static Game game = null;
-	BitmapDrawable bmd = null;
-	Bitmap bm = null;
+	// Секция диалога
+	final int DIALOG_EXIT = 1;
 	
+	protected Dialog onCreateDialog(int id) {
+	    if (id == DIALOG_EXIT) {
+	      AlertDialog.Builder adb = new AlertDialog.Builder(this);
+	      // Заголовок
+	      adb.setTitle(R.string.hint_title);
+	      // Сообщение
+	      adb.setMessage(R.string.hint_message);
+	      // Иконка
+	      adb.setIcon(android.R.drawable.ic_dialog_info);
+	      // Кнопка положительного ответа
+	      adb.setPositiveButton(R.string.yes, dialogClickListener);
+	      // Кнопка нейтрального ответа
+	      adb.setNeutralButton(R.string.no, dialogClickListener);
+	      // Создаем диалог
+	      return adb.create();
+	   }
+	   return super.onCreateDialog(id);
+	}
+	
+	android.content.DialogInterface.OnClickListener dialogClickListener = new android.content.DialogInterface.OnClickListener(){
+		public void onClick(DialogInterface dialog, int which){
+			switch (which) {
+		    // положительная кнопка
+		    case Dialog.BUTTON_POSITIVE:
+		    	// Диалог
+		    	AlertDialog.Builder adb = null;		    	
+		        // Построение диалога
+		        adb = new AlertDialog.Builder(TaskActivity.this);
+		        // Иконка диалога
+		        adb.setIcon(android.R.drawable.ic_dialog_info);
+		        adb.setPositiveButton(R.string.yes, null);
+		        // Создаем диалог
+		        adb.create();
+	    		adb.setMessage("Сейчас эта возможность не работает. Следите за обновлениями программы.");
+		    	adb.show();
+		        break;
+		    // нейтральная кнопка  
+		    case Dialog.BUTTON_NEUTRAL:
+		    	break;
+		    }
+		}
+	};
+	// Конец секции диалога
+
+	private static Game game = null;
+	private static BitmapDrawable bmd = null;
+
 	public static void SetGame(Game _game){
 		game = _game;
 	}
@@ -33,30 +82,26 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.entertask);
+    	View v = findViewById(R.id.entertaskLayout);
+    	v.setBackgroundDrawable(bmd);
 		((EditText)findViewById(R.id.editText1)).setLines(1);
         this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
-    	if(game.GetCountHints() == 0)
-    		((Button)findViewById(R.id.buttonHint)).setEnabled(false);
 		// Узнаем текущий уровень
 		Level currentLevel = game.GetCurrentLevel();
 		// Выставляем номер уровня в надписи
 		((TextView)findViewById(R.id.textView1)).setText("Уровень "+Integer.toString(currentLevel.GetLevelIndex()));
 		// Вставляем количество подсказок в надписи
 		((TextView)findViewById(R.id.textView2)).setText(Integer.toString(game.GetCountHints()));
-		// Устанавливаем обработчики событий
-		findViewById(R.id.buttonCheck).setOnClickListener(this);
-		findViewById(R.id.arrowButton).setOnClickListener(this);
-		findViewById(R.id.buttonHint).setOnClickListener(this);
-		findViewById(R.id.editText1).setOnKeyListener(this);
+
 		// Если дитлоид не отгадан
 		if(!game.GetAnswer(game.GetCurrentDitloidIndex())){
 			// Заполняем поле дитлоида
 			String dit = currentLevel.GetDitloid(game.GetCurrentDitloidIndex());
 			((TextView)findViewById(R.id.textView3)).setText(dit);
 			// Показываем клавиатуру
-			InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+			//InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
 			//imm.showSoftInput(findViewById(R.id.editText1), InputMethodManager.SHOW_FORCED);
-			imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+			//imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
 			// Показываем последний неправильный ответ, если он есть (при этом еще меняется фон на неотвеченный)
 			String wrong_ans = game.GetLastWrongAnswer(game.GetCurrentLevel().GetLevelIndex(), game.GetCurrentDitloidIndex());
 			if(!wrong_ans.equals("")){
@@ -91,11 +136,16 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 	    	((Button)findViewById(R.id.buttonHint)).setVisibility(View.INVISIBLE);
 	    	((TextView)findViewById(R.id.textHint)).setVisibility(View.VISIBLE);
 	    	((TextView)findViewById(R.id.textHint)).setText(game.GetCurrentLevel().GetDitloidHint(game.GetCurrentDitloidIndex()));		
-		}else{
+		} else {
 			// Закрываем подсказку
 	    	((Button)findViewById(R.id.buttonHint)).setVisibility(View.VISIBLE);
 	    	((TextView)findViewById(R.id.textHint)).setVisibility(View.INVISIBLE);
 		};	
+		// Устанавливаем обработчики событий
+		findViewById(R.id.buttonCheck).setOnClickListener(this);
+		findViewById(R.id.arrowButton).setOnClickListener(this);
+		findViewById(R.id.buttonHint).setOnClickListener(this);
+		findViewById(R.id.editText1).setOnKeyListener(this);
 	}
 	
 	@Override
@@ -103,11 +153,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 		InputMethodManager imm = null;
 		switch (view.getId()) {
 	    case R.id.arrowButton:
-			// Убираем клавиатуру
-			imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-			imm.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);
 	    	// На экран уровня
-	    	startActivity(new Intent(TaskActivity.this, TasksActivity.class));
 	    	finish();
 	    	break;
 	    case R.id.buttonHint:
@@ -124,6 +170,9 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 		    	((TextView)findViewById(R.id.textHint)).setText(game.GetCurrentLevel().GetDitloidHint(game.GetCurrentDitloidIndex()));
 		    	// Показываем оставшееся количество подсказок
 				((TextView)findViewById(R.id.textView2)).setText(Integer.toString(game.GetCountHints()));
+	    	}
+	    	else {
+	    		showDialog(DIALOG_EXIT);
 	    	};
 	    	break;
 	    case R.id.buttonCheck:
@@ -219,27 +268,11 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 	    return false;
 	}
 
-	// Запрет поворота экрана
-    /*@Override
-	public void onConfigurationChanged(Configuration newConfig) {  
-    	super.onConfigurationChanged(newConfig);  
-	}*/
-
     // Сворачивание приложения
     @Override
     protected void onPause() {
         super.onPause();
         game.SetPauseMusic(true);
-        bm.recycle();
-    }
-    
-	// Прорисовка фона
-	public void Draw() {
-    	bm = BitmapFactory.decodeResource(getResources(), R.drawable.fon_header);
-    	//LayoutInflater inf = LayoutInflater.from(getApplicationContext());
-    	bmd = new BitmapDrawable(getResources(), bm);
-    	View v = findViewById(R.id.entertaskLayout);
-    	v.setBackgroundDrawable(bmd);
     }
     
     // Разворачивание приложения
@@ -247,7 +280,10 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
     protected void onResume() {
         super.onResume();
         game.SetPauseMusic(false);
-        Draw();
+    }
+    
+    public static void SetDrawable(BitmapDrawable _bmd){
+    	bmd = _bmd;
     }
 
 }
