@@ -39,20 +39,20 @@
     	android:layout_marginTop="50dp">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center_horizontal"
             android:layout_centerHorizontal="true" >
 
-    	<ImageView
-       		android:id="@+id/imageView1"
-            android:layout_width="wrap_content"
+    	<Button
+       		android:id="@+id/imageView2"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-       		 android:src="@drawable/faq" />
+            android:gravity="center_horizontal"
+       		android:background="@drawable/faq" />
 
-
-        </LinearLayout>
+    	</LinearLayout>
     </ScrollView>
         
 </RelativeLayout>
