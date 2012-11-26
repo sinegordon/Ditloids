@@ -18,5 +18,6 @@
     <string name="yes">Да</string>
     <string name="no">Нет</string>
     <string name="cancel">Отмена</string>
-    <string name="hint">Этот день бывает не каждый год, а лишь спустя определенный период времени</string>                 
+    <string name="hint">Этот день бывает не каждый год, а лишь спустя определенный период времени</string>     
+    <string name="admob_publisher_id">a150b3bec46ed3a</string>            
 </resources>
