@@ -1,6 +1,7 @@
 package com.ditloids;
 
 import java.util.ArrayDeque;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;

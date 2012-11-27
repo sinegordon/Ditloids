@@ -1,30 +1,22 @@
 package com.ditloids;
 
-import java.io.IOException;
-
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.AudioManager;
-import android.media.audiofx.AudioEffect.OnControlStatusChangeListener;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
+import android.util.AttributeSet;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.app.ActivityManager;
+import com.google.ads.*;
 
 public class MainActivity extends Activity implements OnClickListener {
-	/** Called when the activity is first created. */
 	private static Game game = null;
 	private static BitmapDrawable bmd = null;
 	private static Bitmap bm = null;
@@ -35,6 +27,20 @@ public class MainActivity extends Activity implements OnClickListener {
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         setContentView(R.layout.main);
+        // Блок рекламы
+        /*try{
+	        AdRequest adRequest = new AdRequest();
+	        adRequest.addTestDevice(AdRequest.TEST_EMULATOR);
+	        adRequest.addTestDevice("TEST_DEVICE_ID");
+	        AdView adView = new AdView(this, (AttributeSet) AdSize.BANNER, Integer.parseInt(getResources().getString(R.string.admob_publisher_id)));
+	        RelativeLayout layout = (RelativeLayout)findViewById(R.id.adLayout);
+	        layout.addView(adView);
+	        adView.loadAd(adRequest);
+        }
+        catch(Exception ex){
+        	Log.e("sinegordon", ex.getMessage());
+        }*/
+        // Конец блока рекламы
     	bm = BitmapFactory.decodeResource(getResources(), R.drawable.fon);
     	bmd = new BitmapDrawable(getResources(), bm);
     	View v = findViewById(R.id.mainLayout);
@@ -59,8 +65,8 @@ public class MainActivity extends Activity implements OnClickListener {
     	OptionsActivity.SetDrawable(bmd);
     	TaskActivity.SetDrawable(bmd);
     	FaqActivity.SetDrawable(bmd);
-        int memoryClass = ((ActivityManager) getSystemService(Context.ACTIVITY_SERVICE)).getMemoryClass();
-        Log.d("sinegordon", Integer.toString(memoryClass));
+        //int memoryClass = ((ActivityManager) getSystemService(Context.ACTIVITY_SERVICE)).getMemoryClass();
+        //Log.d("sinegordon", Integer.toString(memoryClass));
     }
 
 	@Override
