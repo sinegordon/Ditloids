@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry exported="true" kind="lib" path="C:/Users/user/android-sdks/extras/google/admob_ads_sdk/GoogleAdMobAdsSdk-6.2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Android/android-sdk/extras/google/admob_ads_sdk/GoogleAdMobAdsSdk-6.2.1.jar"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry kind="src" path="src"/>
