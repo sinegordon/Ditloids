@@ -343,7 +343,7 @@ public class Game {
     }
     
     // Установить состояние покупки отключения рекламы
-    public void Purchase() {
+    public void SetPurchase() {
     	purchase = true;
         SharedPreferences.Editor editor = settings.edit();
         editor.putBoolean("purchase", purchase);

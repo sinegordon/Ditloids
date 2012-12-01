@@ -14,18 +14,19 @@
  * limitations under the License.
  */
 
-package com.example.dungeons;
+package com.ditloids;
 
 import com.android.vending.billing.IMarketBillingService;
+import com.ditloids.Consts.PurchaseState;
+import com.ditloids.Consts.ResponseCode;
+import com.ditloids.Security.VerifiedPurchase;
 
-import com.example.dungeons.Consts.PurchaseState;
-import com.example.dungeons.Consts.ResponseCode;
-import com.example.dungeons.Security.VerifiedPurchase;
 
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
@@ -403,7 +404,7 @@ public class BillingService extends Service implements ServiceConnection {
     public BillingService() {
         super();
     }
-
+   
     public void setContext(Context context) {
         attachBaseContext(context);
     }
@@ -414,6 +415,22 @@ public class BillingService extends Service implements ServiceConnection {
     @Override
     public IBinder onBind(Intent intent) {
         return null;
+    }
+    
+    @Override
+    public void onCreate(){
+    	try {
+			boolean bindResult = getApplicationContext().bindService(
+    		    new Intent("com.android.vending.billing.MarketBillingService.BIND"), this,
+    		    Context.BIND_AUTO_CREATE);
+    		  if (bindResult) {
+    		    Log.i(TAG, "Service bind successful.");
+    		  } else {
+    		    Log.e(TAG, "Could not bind to the MarketBillingService.");
+    		  }
+    		} catch (SecurityException e) {
+    		  Log.e(TAG, "Security exception: " + e);
+    		}
     }
 
     @Override

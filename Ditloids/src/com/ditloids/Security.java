@@ -1,10 +1,8 @@
 // Copyright 2010 Google Inc. All Rights Reserved.
 
-package com.example.dungeons;
+package com.ditloids;
 
-import com.example.dungeons.Consts.PurchaseState;
-import com.example.dungeons.util.Base64;
-import com.example.dungeons.util.Base64DecoderException;
+import com.ditloids.Consts.PurchaseState;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,6 +38,8 @@ public class Security {
     private static final String KEY_FACTORY_ALGORITHM = "RSA";
     private static final String SIGNATURE_ALGORITHM = "SHA1withRSA";
     private static final SecureRandom RANDOM = new SecureRandom();
+    
+    private String base64EncodedPublicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmGd2Egk8V/L2bq/aXRUfD+0AVKsaSJe3IDY81wJ6xP7HkkgrxC6Z7zJMFLdSABBjeCL2gIJqwOZ4g50JX6nPwYWoEviEgPtRHOSrrtz58RUEtZhgW4qtzMJbdYY+XXUe28O37xHyyse00e1KMpN6LSlK47r+K9IrOGRGZnUZY3YRegnY/nTXzNpAjI5aTRiG0ZqqziHIraxYihF2K4F4ZI08kjnhl1HjBIyaKfnlSOuLC9FXDC1I8r+OPyV7E83fWk2SW+MHX5dnYQBMQNfmrLULZ3qB/7m2IEFLMD/S6Rh4dsR+iN7yDuOmGswTEKaJrsfhXtSwgnLj1ktRvUzdwwIDAQAB";
 
     /**
      * This keeps track of the nonces that we generated and sent to the

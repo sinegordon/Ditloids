@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.example.dungeons;
+package com.ditloids;
 
-import com.example.dungeons.Consts.ResponseCode;
+import com.ditloids.Consts.ResponseCode;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

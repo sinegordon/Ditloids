@@ -19,5 +19,12 @@
     <string name="no">Нет</string>
     <string name="cancel">Отмена</string>
     <string name="hint">Этот день бывает не каждый год, а лишь спустя определенный период времени</string>     
-    <string name="admob_publisher_id">a150b3bec46ed3a</string>            
+    <string name="admob_publisher_id">a150b3bec46ed3a</string>
+    <string name="no_ads">Убрать рекламу</string>
+    <string name="cannot_connect_title">Нет соединения</string>
+    <string name="cannot_connect_message">Не могу соединиться с сервером</string>
+    <string name="billing_not_supported_title">Покупки не поддерживаются</string>
+    <string name="billing_not_supported_message">Для данного приложения покупки не поддерживаются</string>
+    <string name="subscriptions_not_supported_title">Подписки не поддерживаются</string>
+    <string name="subscriptions_not_supported_message">Для данного приложения подписки не поддерживаются</string>
 </resources>

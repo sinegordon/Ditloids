@@ -55,5 +55,15 @@
         <activity
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:name="com.google.ads.AdActivity" />
+        
+        <service android:name="BillingService" />
+
+	    <receiver android:name="BillingReceiver">
+	      <intent-filter>
+	        <action android:name="com.android.vending.billing.IN_APP_NOTIFY" />
+	        <action android:name="com.android.vending.billing.RESPONSE_CODE" />
+	        <action android:name="com.android.vending.billing.PURCHASE_STATE_CHANGED" />
+	      </intent-filter>
+	    </receiver>
     </application>
 </manifest>
