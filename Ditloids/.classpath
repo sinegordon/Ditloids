@@ -5,5 +5,7 @@
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="lib" path="C:/Users/user/workspace/AndroidBillingLibrary/AndroidBillingLibrary/src"/>
+	<classpathentry kind="lib" path="C:/Users/user/workspace/AndroidBillingLibrary/AndroidBillingLibrary/bin/classes/net"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

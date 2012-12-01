@@ -28,13 +28,15 @@
         android:layout_marginBottom="15dp"		
         android:background="@drawable/opt_btn" />
     
-    <Button android:id="@+id/RulesButton"
+    <Button 
+        android:id="@+id/RulesButton"
         android:layout_height="36dp" 
         android:layout_width="167dp" 
         android:layout_marginBottom="15dp"		
         android:background="@drawable/rules_btn"  /> 
         
     <Button
+        android:id="@+id/NoAdsButton"
         android:layout_height="36dp" 
         android:layout_width="167dp" 
         android:layout_marginBottom="85dp"		

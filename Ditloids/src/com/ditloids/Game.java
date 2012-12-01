@@ -64,6 +64,9 @@ public class Game {
     
     // Есть ли музыка в игре
     private boolean isMuteMusic = false;
+    
+    // Куплено ли отключение рекламы
+    private boolean purchase = false;
 
     // Конструктор
     public Game(Context context, int countLevels) throws IllegalStateException, IOException {
@@ -80,6 +83,8 @@ public class Game {
         for (int i = 1; i <= countLevels; ++i) {
         	levels[i-1] = new Level(context, i);
         };
+        
+        purchase = settings.getBoolean("purchase", false);
         
         sounds = new SoundPool(countSounds, AudioManager.STREAM_MUSIC, 0);
         sounds.load(context, R.raw.right, 1);
@@ -330,6 +335,19 @@ public class Game {
     		mediaPlayer.pause();
     	if(!isPause)
     		mediaPlayer.start();
+    }
+    
+    // Куплено ли отключение рекламы
+    public boolean IsPurchase(){
+    	return purchase;
+    }
+    
+    // Установить состояние покупки отключения рекламы
+    public void Purchase() {
+    	purchase = true;
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putBoolean("purchase", purchase);
+        editor.commit();  
     }
     
 }
