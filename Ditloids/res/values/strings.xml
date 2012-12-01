@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Дитлоид</string>
+    <string name="app_name">DITLOID</string>
     <string name="prefs_name">DitloidsSettings</string>
-    <string name="arrow">Назад</string>
-    <string name="start">Играть</string>
-    <string name="settings">Настройки</string>
-    <string name="rules">Как играть?</string> 
-    <string name="level2">Уровень 2</string>
+    <string name="arrow">Back</string>
+    <string name="start">Play</string>
+    <string name="settings">Settings</string>
+    <string name="rules">How to play?</string> 
+    <string name="level2">Level 2</string>
     <string name="countlv1">13</string>
     <string name="countlv2">7</string>
     <string name="countlv3">18</string>
     <string name="countlv4">3</string>
-    <string name="reset_title">Сброс прогресса</string>
-    <string name="reset_message">Сбросить прогресс?</string>
-    <string name="hint_title">Покупка подсказки</string>
+    <string name="reset_title">Reset game progress</string>
+    <string name="reset_message">Want to reset game process?</string>
+    <string name="hint_title">Buy hints</string>
     <string name="hint_message">У вас на данный момент нет ни одной подсказки. Хотите купить подсказку?</string>
-    <string name="yes">Да</string>
-    <string name="no">Нет</string>
-    <string name="cancel">Отмена</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="cancel">Cancel</string>
     <string name="hint">Этот день бывает не каждый год, а лишь спустя определенный период времени</string>     
     <string name="admob_publisher_id">a150b3bec46ed3a</string>            
 </resources>

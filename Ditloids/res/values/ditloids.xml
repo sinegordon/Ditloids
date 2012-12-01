@@ -1,85 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="levels">
-		<item>0 без Палочки_1</item>
-		<item>1 Глаз у Циклопа_1</item>
-		<item>1 Нога Здесь Другая Там_1</item>
-		<item>3 Стороны в Треугольнике_1</item>
-		<item>4 Времени Года_1</item>
-		<item>4 Стороны Света_1</item>
-		<item>5 Органов Чувств у Человека_1</item>
-		<item>7 Дней в Неделе_1</item>
-		<item>8 Ног у Осьминога_1</item>
-		<item>9 Кругов Ада_1</item>
-        <item>9 Планет Солнечной Системы_1</item>		
-		<item>10 Пальцев на Руках_1</item>
-		<item>12 Знаков Зодиака_1</item>
-		<item>14 Строк в Сонете_1</item>
-		<item>24 Часа в Сутках_1</item>
-		<item>29 Дней в Феврале в Високосном Году_1</item>
-		<item>52 Карты в Колоде_1</item>
-		<item>60 Минут в Часе_1</item>
-		<item>90 Градусов в Прямом Угле_1</item>
-		<item>1917 Великая Октябрьская Революция_1</item>
-		<item>1 Раз в Год Сады Цветут_2</item>
-		<item>4 Океана_2</item>
-		<item>5 Пальцев на Руке_2</item>
-		<item>7 Цветов Радуги_2</item>
-		<item>9 Муз_2</item>
-		<item>11 Игроков в Футбольной Команде_2</item>
-		<item>10 Заповедей_2</item>
-		<item>12 Подвигов Геракла_2</item>
-		<item>13 Лунных Месяцев в Году_2</item>
-		<item>20 Пальцев на Руках и Ногах_2</item>
-		<item>24 Часовых Пояса_2</item>
-		<item>26 Букв в Английском Алфавите_2</item>
-		<item>33 Буквы в Русском Алфавите_2</item>
-		<item>60 Секунд в Минуте_2</item>
-		<item>64 Клетки на Шахматной Доске_2</item>
-		<item>88 Клавиш на Фортепиано_2</item>
-		<item>100 Копеек в Рубле_2</item>
-		<item>206 Костей в Человеческом Теле_2</item>
-		<item>1440 Минут в Сутках_2</item>
-		<item>1980 Олимпиада в Москве_2</item>
-        <item>1 Дома_3</item>
-        <item>3 Тополя на Плющихе_3</item>
-        <item>3-е в Лодке не Считая Собаки_3</item>
-        <item>3 Мушкетера и Дартаньян_3</item>
-        <item>4 Танкиста и Собака_3</item>
-        <item>6-е Чувство_3</item>
-        <item>9 с Половиной Недель_3</item>
-        <item>10 Негритят_3</item>
-        <item>11 Друзей Оушена_3</item>
-        <item>12 Стульев_3</item>
-        <item>12 Разгневанных Мужчин_3</item>
-        <item>17 Мгновений Весны_3</item>
-        <item>26 Бакинских Комиссаров_3</item>
-        <item>28 Недель Спустя_3</item>
-        <item>33 Коровы_3</item>
-        <item>50 Первых Поцелуев_3</item>
-        <item>101 Далматинец_3</item>
-        <item>300 Спартанцев_3</item>
-        <item>1000 и 1 Ночь_3</item>
-        <item>20000 Лье под Водой_3</item>
-        <item>1 в Поле не Воин_4</item>
-        <item>1 Голова на Плечах_4</item>
-        <item>1-й Блин Всегда Комом_4</item>
-        <item>1 за Всех и Все за Одного_4</item>
-        <item>1 Раз в Год и Палка Стреляет_4</item>
-        <item>1 Голова Хорошо а Две Лучше_4</item>
-        <item>2 Сапога Пара_4</item>
-        <item>2 Медведя в Одной Берлоге не Живут_4</item>
-        <item>2-е Пашут а Семеро Руками Машут_4</item>
-        <item>2-м Смертям не Бывать а Одной не Миновать_4</item>
-        <item>3 Бабы Базар а 7 Ярмарка_4</item>
-        <item>4 Страны Света на Четырех Морях Положены_4</item>
-        <item>4 Черненьких Чумазеньких Чертенка Чертили Черными Чернилами Чертеж_4</item>
-        <item>7 Бед Один Ответ_4</item>
-        <item>7 Пятниц на Неделе_4</item>
-        <item>7 Раз Отмерь 1 Раз Отрежь_4</item>
-        <item>7-ро с Ложкой 1 с Сошкой_4</item>
-        <item>7 Раз Поели за Столом не Сидели_4</item>
-        <item>45 Баба Ягодка Опять_4</item>
-        <item>100 Голов 100 Умов_4</item>
+    
+    
+		<item>1 Eye on a Cyclops_1</item>
+		<item>2 Sides to a Coin_1</item>
+		<item>3 Sides in a Triangle_1</item>
+		<item>4 Points on a Compass_1</item>
+		<item>4 Seasons in a Year_1</item>
+		<item>4 Years in an Olympiad_1</item>
+		<item>5 Fingers on a Hand_1</item>
+		<item>7 Colours of the Rainbow_1</item>
+		<item>8 Tentacles on an Octopus_1</item>
+		<item>8 Planets in the Solar System_1</item>
+    <item>9 Lives of a Cat_1</item>		
+		<item>11 Players in a Football Team_1</item>
+		<item>29 Days in February in a Leap Year_1</item>
+		<item>32 Permanent Teeth in an Adult_1</item>
+		<item>52 Cards in a Deck_1</item>
+		<item>90 Degrees in a Right Angle_1</item>
+		<item>100 Cents in a Dollar_1</item>
+		<item>100 Kilograms in a Centner_1</item>
+		<item>180 Degrees in a Triangle_1</item>
+		<item>366 Days in a Leap Year_1</item>
+		
+		
+		<item>3 Legs in a Tripod_2</item>
+		<item>4 Leaves on a Lucky Clover_2</item>
+		<item>4 Oceans of the World_2</item>
+		<item>5 Rings form the Olympic Symbol_2</item>
+		<item>6 Players on an Ice Hockey Team_2</item>
+		<item>007 James Bond_2</item>
+		<item>8 Musicians in an Octet_2</item>		
+		<item>9 Months to have a Baby_2</item>
+		<item>9 Symphonies by Beethoven_2</item>
+		<item>10 Years in a Decade_2</item>
+		<item>13 Unlucky For Some_2</item>
+		<item>21 Perfect Score in Blackjack_2</item>
+		<item>24 Carats in Solid Gold_2</item>
+		<item>36 Black Keys on a Piano_2</item>
+		<item>50 Stars on the American Flag_2</item>
+		<item>64 Squares on a Chess Board_2</item>
+		<item>360 Degrees in a Circle_2</item>
+		<item>373 Boiling Point of Water in Kelvin_2</item>
+		<item>1440 Minutes in a Day_2</item>
+		<item>1969 Neil Armstrong Walked on the Moon_2</item>
+		
+		
+        <item>2 Blank Tiles in Scrabble_3</item>
+        <item>4 Chambers in the Human Heart_3</item>
+        <item>4 Horsemen of the Apocalypse_3</item>
+        <item>5 Sides in a Pentagon_3</item>
+        <item>6 Sides of a Cube_3</item>
+        <item>7 Hills of Rome_3</item>
+        <item>8 Legs on a Spider_3</item>
+        <item>10 Frames in Bowling_3</item>
+        <item>12 Apostles at the Last Supper_3</item>
+        <item>13 Stripes on the American Flag_3</item>
+        <item>14 Lines in a Sonnett_3</item>
+        <item>15 Players in a Rugby Team_3</item>
+        <item>16 Moons of Jupite_3</item>
+        <item>18 Holes on a Golf Course_3</item>
+        <item>24 Letters in the Greek Alphabet_3</item>
+        <item>88 Keys on a Piano_3</item>
+        <item>102 Floors in the Empire State Building_3</item>
+        <item>118 Elements in the Periodic Table_3</item>
+        <item>200 Dollars for Passing Go in Monopoly_3</item>
+        <item>1912 Sinking of the Titanic_3</item>
+        
+        
+        <item>2 Times the Postman Always Rings_4</item>
+        <item>2 Families in Romeo and Juliet_4</item>
+        <item>3 Little Pigsм_4</item>
+        <item>3 Books in Lord of the Rings_4</item>
+        <item>5 Stars in the Southern Cross_4</item>
+        <item>7 Dwarves in Snow White_4</item>
+        <item>7 Years of Bad Luck for Breaking a Mirror_4</item>
+        <item>7 Pillars of Wisdom_4</item>
+        <item>9 Reindeers in Santa's Sleigh_4</item>
+        <item>10 Provinces in Canada_4</item>
+        <item>12 Angry Men_4</item>
+        <item>13 Lunar Months in a Year_4</item>
+        <item>15 Men on a Dead Man's Chest_4</item>
+        <item>37 Natural Body Temperature Degrees Centigrade_4</item>
+        <item>40 Years in the Desert for the Israelites_4</item>
+        <item>42 Answer to the Ultimate Question (Douglas Adams)_4</item>
+        <item>95 Martin Luther's Theses_4</item>
+        <item>147 Maximum Break in Snooker_4</item>
+        <item>180 Degrees to Reverse Direction_4</item>
+        <item>206 Bones in the Human Body_4</item>
     </string-array>
 </resources>

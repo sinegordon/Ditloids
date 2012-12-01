@@ -21,7 +21,7 @@
 	    android:layout_centerHorizontal="true"
 	    android:gravity="center"
 	    android:layout_marginTop="4dp"    
-	    android:text="Описание игры"
+	    android:text="How to play?"
 	    android:textSize="20dp" />        
         
     <Button
@@ -55,6 +55,10 @@
 
     	</LinearLayout>
     </ScrollView>
+<RelativeLayout 
+  		android:layout_width="match_parent"
+    	android:layout_height="match_parent"
+    	android:gravity="bottom">          
     <com.google.ads.AdView 
         android:id="@+id/ad"
         android:layout_width="wrap_content"
@@ -62,5 +66,6 @@
         ads:adSize="BANNER"
         ads:adUnitId="@string/admob_publisher_id"
         ads:testDevices="TEST_EMULATOR,TEST_DEVICE_ID_GOES_HERE"
-        ads:loadAdOnCreate="true"/>       
+        ads:loadAdOnCreate="true"/>
+</RelativeLayout>       
 </RelativeLayout>
