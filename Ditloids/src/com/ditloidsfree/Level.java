@@ -1,10 +1,9 @@
-package com.ditloids;
+package com.ditloidsfree;
 
-import android.content.SharedPreferences;
-import android.content.res.Resources;
+import java.util.ArrayList;
+
 import android.content.Context;
-
-import java.util.*;
+import android.content.res.Resources;
 
 public class Level {
 

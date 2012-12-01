@@ -1,4 +1,4 @@
-package com.ditloids;
+package com.ditloidsfree;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -54,13 +54,15 @@ public class MainActivity extends Activity implements OnClickListener {
     	FaqActivity.SetDrawable(bmd);
         //int memoryClass = ((ActivityManager) getSystemService(Context.ACTIVITY_SERVICE)).getMemoryClass();
         //Log.d("sinegordon", Integer.toString(memoryClass));
-    	// Создаем сервис покупки
-        billingService  = new BillingService();
-        billingService.setContext(this);
+    	// Создаем сервис покупки, если покупки не было
         if(game.IsPurchase()) {
         	LinearLayout mainLayout = (LinearLayout) findViewById(R.id.mainLayout);
 	    	Button noadsButton = (Button)findViewById(R.id.NoAdsButton);
 	    	mainLayout.removeView(noadsButton);
+        }
+        else {
+            billingService  = new BillingService();
+            billingService.setContext(this);
         }
     }
 
@@ -102,7 +104,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	    	startActivity(intent);
 	    	break;
 	    case R.id.NoAdsButton:
-            if ( billingService.requestPurchase("", Consts.ITEM_TYPE_INAPP, null) ) {
+            if (billingService.requestPurchase("no_ads", Consts.ITEM_TYPE_INAPP, null)) {
             	game.SetPurchase();
             	LinearLayout mainLayout = (LinearLayout) findViewById(R.id.mainLayout);
             	Button noadsButton = (Button)findViewById(R.id.NoAdsButton);

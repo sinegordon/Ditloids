@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.ditloids;
+package com.ditloidsfree;
 
-import com.ditloids.Consts.ResponseCode;
+import com.ditloidsfree.Consts.ResponseCode;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

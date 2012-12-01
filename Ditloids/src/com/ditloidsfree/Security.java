@@ -1,8 +1,8 @@
 // Copyright 2010 Google Inc. All Rights Reserved.
 
-package com.ditloids;
+package com.ditloidsfree;
 
-import com.ditloids.Consts.PurchaseState;
+import com.ditloidsfree.Consts.PurchaseState;
 
 import org.json.JSONArray;
 import org.json.JSONException;

@@ -40,14 +40,14 @@
         android:layout_height="36dp" 
         android:layout_width="167dp" 
         android:layout_marginBottom="85dp"		
-        android:background="@drawable/no_ads"  />
+        android:background="@drawable/no_ads" />
     
-    <com.google.ads.AdView 
+	<com.google.ads.AdView 
         android:id="@+id/ad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         ads:adSize="BANNER"
         ads:adUnitId="@string/admob_publisher_id"
-        ads:testDevices="TEST_EMULATOR,TEST_DEVICE_ID_GOES_HERE"
-        ads:loadAdOnCreate="true"/> 	  
+        ads:testDevices="TEST_EMULATOR, TEST_DEVICE_ID_GOES_HERE"
+        ads:loadAdOnCreate="true"/> 
 </LinearLayout>

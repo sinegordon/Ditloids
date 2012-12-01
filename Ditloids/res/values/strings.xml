@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Дитлоид</string>
+    <string name="app_name">Дитлоид Free</string>
     <string name="prefs_name">DitloidsSettings</string>
     <string name="arrow">Назад</string>
     <string name="start">Играть</string>

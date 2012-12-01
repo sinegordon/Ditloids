@@ -64,7 +64,7 @@
 <RelativeLayout 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="bottom">     
+    android:gravity="center">     
     <com.google.ads.AdView 
         android:id="@+id/ad"
         android:layout_width="wrap_content"

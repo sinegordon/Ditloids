@@ -14,19 +14,16 @@
  * limitations under the License.
  */
 
-package com.ditloids;
+package com.ditloidsfree;
 
-import com.android.vending.billing.IMarketBillingService;
-import com.ditloids.Consts.PurchaseState;
-import com.ditloids.Consts.ResponseCode;
-import com.ditloids.Security.VerifiedPurchase;
-
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
 
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
@@ -34,9 +31,10 @@ import android.os.IBinder;
 import android.os.RemoteException;
 import android.util.Log;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
+import com.android.vending.billing.IMarketBillingService;
+import com.ditloidsfree.Consts.PurchaseState;
+import com.ditloidsfree.Consts.ResponseCode;
+import com.ditloidsfree.Security.VerifiedPurchase;
 
 
 /**
