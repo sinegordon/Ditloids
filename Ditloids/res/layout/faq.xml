@@ -54,13 +54,5 @@
        		android:background="@drawable/faq" />
 
     	</LinearLayout>
-    </ScrollView>
-    <com.google.ads.AdView 
-        android:id="@+id/ad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/admob_publisher_id"
-        ads:testDevices="TEST_EMULATOR,TEST_DEVICE_ID_GOES_HERE"
-        ads:loadAdOnCreate="true"/>       
+    </ScrollView>     
 </RelativeLayout>
