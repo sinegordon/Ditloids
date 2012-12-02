@@ -1,25 +1,20 @@
-package com.ditloids;
+package com.ditloidseng;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.res.Configuration;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.AudioManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnKeyListener;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.TextView;
-import android.widget.EditText;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 //import android.widget.Toast;
 
@@ -39,7 +34,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 	      // Кнопка положительного ответа
 	      adb.setPositiveButton(R.string.yes, dialogClickListener);
 	      // Кнопка нейтрального ответа
-	      adb.setNeutralButton(R.string.no, dialogClickListener);
+	      // adb.setNeutralButton(R.string.no, dialogClickListener);
 	      // Создаем диалог
 	      return adb.create();
 	   }
@@ -50,7 +45,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 		public void onClick(DialogInterface dialog, int which){
 			switch (which) {
 		    // положительная кнопка
-		    case Dialog.BUTTON_POSITIVE:
+		    case Dialog.BUTTON_POSITIVE:/*
 		    	// Диалог
 		    	AlertDialog.Builder adb = null;		    	
 		        // Построение диалога
@@ -62,6 +57,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 		        adb.create();
 	    		adb.setMessage("Сейчас эта возможность не работает. Следите за обновлениями программы.");
 		    	adb.show();
+		    	*/
 		        break;
 		    // нейтральная кнопка  
 		    case Dialog.BUTTON_NEUTRAL:
@@ -89,7 +85,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 		// Узнаем текущий уровень
 		Level currentLevel = game.GetCurrentLevel();
 		// Выставляем номер уровня в надписи
-		((TextView)findViewById(R.id.textView1)).setText("Уровень "+Integer.toString(currentLevel.GetLevelIndex()));
+		((TextView)findViewById(R.id.textView1)).setText("Level "+Integer.toString(currentLevel.GetLevelIndex()));
 		// Вставляем количество подсказок в надписи
 		((TextView)findViewById(R.id.textView2)).setText(Integer.toString(game.GetCountHints()));
 
@@ -189,7 +185,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 				// Убираем реакцию на нажатие кнопки
 				findViewById(R.id.buttonCheck).setOnClickListener(null);
 				// Показываем сообщение что верный ответ
-				Toast.makeText(this, "Верно", Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, "Right", Toast.LENGTH_SHORT).show();
 				// Устанавливаем флаг верного ответа
 				game.SetAnswer(game.GetCurrentDitloidIndex(), true);
 				// Повышаем количество верных ответов
@@ -233,7 +229,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 				// Убираем реакцию на нажатие кнопки
 				findViewById(R.id.buttonCheck).setOnClickListener(null);
 				// Показываем сообщение что верный ответ
-				Toast.makeText(this, "Верно", Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, "Right", Toast.LENGTH_SHORT).show();
 				// Устанавливаем флаг верного ответа
 				game.SetAnswer(game.GetCurrentDitloidIndex(), true);
 				// Повышаем количество верных ответов

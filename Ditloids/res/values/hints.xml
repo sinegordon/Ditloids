@@ -1,91 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="hints">
-        <item>1 E_e on a C__l_p__1</item>
-        <item>2 Si__s to a C_i__1</item>
-        <item> S_d__ in a Tr__n_l__1</item>
-        <item>4 P_i_t_ on a Co__a_s  _1</item>
-        <item>4 S_a___s in a Y_a__1</item>
-        <item>4 Ye_r_ in an O_y__i___1</item>
-        <item>5 Fi_g___ on a H__d_1</item>
-        <item>7 c__o_r_ of the Ra___o__1</item>
-        <item>8 T_n_a___s on an O__o_u__1</item>
-        <item>8 Pl__e__ in the S___r S__t__ _1</item>
-        <item>9 L_v__ of a Ca_  _1</item>
-        <item>11 P_a__r_ in a Fo___a_l_1</item>
-        <item>29 D__s in F__ru___ in a L__p Y_a__1</item>
-        <item>32 Pe__a__n_ T_e__ in an A__l__1</item>
-        <item>52 C__d_ in a De___1</item>
-        <item>90 D_eg___s in a R___t A_g___1</item>
-        <item>100 C__t_ in a D__l___1</item>
-        <item>100 K_l__r___ in a Ce__n___1</item>
-        <item>180 D__r__s in a T_ia__l__1</item>
-        <item>366 in a L_a_ Y__r_1</item>
+        <item>1 E*e on a C**l*p\'*_1</item>
+        <item>2 Si**s to a C*i*_1</item>
+        <item> S*d** in a Tr**n*l*_1</item>
+        <item>4 P*i*t* on a Co**a*s_1</item>
+        <item>4 S*a***s in a Y*a*_1</item>
+        <item>4 Ye*r* in an O*y**i**_1</item>
+        <item>5 Fi*g*** on a H**d_1</item>
+        <item>7 c**o*r* of the Ra***o*_1</item>
+        <item>8 T*n*a***s on an O**o*u*_1</item>
+        <item>8 Pl**e** in the S***r S**t**_1</item>
+        <item>9 L*v** of a Ca*_1</item>
+        <item>11 P*a**r* in a Fo***a*l_1</item>
+        <item>29 D**s in F**ru*** in a L**p Y*a*_1</item>
+        <item>32 Pe**a**n* T*e** in an A**l*_1</item>
+        <item>52 C**d* in a De**_1</item>
+        <item>90 D*eg***s in a R***t A*g**_1</item>
+        <item>100 C**t* in a D**l**_1</item>
+        <item>100 K*l**r*** in a Ce**n**_1</item>
+        <item>180 D**r**s in a T*ia**l*_1</item>
+        <item>366 in a L*a* Y**r_1</item>
         
         
-        <item>3 L_g_ in a T__i_o__2</item>
-        <item>4 Le___s on a L__k_ C_o__r_2</item>
-        <item>4 O__a__ of the W_r___2</item>
-        <item>5 Ri___ form the O_y__i_ Sy__o__2</item>
-        <item>6 P_a_e__ on an I_e H_c__y T_a__2</item>
-        <item>007 J__s_ B__d_2</item>
-        <item>8 Mu__c_a__ in an O_t___2</item>
-        <item>9 M_n_h_ to have a B__y_2</item>
-        <item>9 S_m__on____2</item>
-        <item>10 Y_a__ in a De___e_2</item>
-        <item>13 U_l__k_ F_r S__e_2</item>
-        <item>21 P_r__c_ S___e in B_a___a___2</item>
-        <item>24 C__a__ in S__i_ Go___2</item>
-        <item>36 B__c_ K_y_ on a P_a___2</item>
-        <item>50 S_a__ on the A_e_i___ F_a__2</item>
-        <item>64 S_u__e_ on a C__s_ B_a___2</item>
-        <item>360 D__re__ in a Ci___e_2</item>
-        <item>373 B_i_i__ P_i__ of Wa___ in K___i__2</item>
-        <item>1440 Mi_u___ in a D___2</item>
-        <item>1969 N_i_ Ar___r_o__ W__k__ on the M_o__2</item> 
+        <item>3 L*g* in a T**i*o*_2</item>
+        <item>4 Le***s on a L**k* C*o**r_2</item>
+        <item>4 O**a** of the W*r**_2</item>
+        <item>5 Ri*** form the O*y**i* Sy**o*_2</item>
+        <item>6 P*a*e** on an I*e H*c**y T*a*_2</item>
+        <item>007 J**s* B**d_2</item>
+        <item>8 Mu**c*a** in an O*t**_2</item>
+        <item>9 M*n*h* to have a B**y_2</item>
+        <item>9 S*m**on***_2</item>
+        <item>10 Y*a** in a De***e_2</item>
+        <item>13 U*l**k* F*r S**e_2</item>
+        <item>21 P*r**c* S***e in B*a***a**_2</item>
+        <item>24 C**a** in S**i* Go**_2</item>
+        <item>36 B**c* K*y* on a P*a**_2</item>
+        <item>50 S*a** on the A*e*i*** F*a*_2</item>
+        <item>64 S*u**e* on a C**s* B*a**_2</item>
+        <item>360 D**re** in a Ci***e_2</item>
+        <item>373 B*i*i** P*i** of Wa*** in K***i*_2</item>
+        <item>1440 Mi*u*** in a D**_2</item>
+        <item>1969 N*i* Ar***r*o** W**k** on the M*o*_2</item> 
         
         
-        <item>2 Bl__k T__e_ in S_r__b___3</item>
-        <item>4 C_a__r__ in the H_m__ H__r__3</item>
-        <item>4 H__s__e_ of the A_o__l___e_3</item>
-        <item>5 S__e_ in a Pe__a____3</item>
-        <item>6 S___s of a C__e_3</item>
-        <item>7 H__l_ of R__e_3</item>
-        <item>8 L_g_ on a S_i____3</item>
-        <item>10 F_a_e_ in B_w___g_3</item>
-        <item>12 A__s_l__ at the La__ S__p___3</item>
-        <item>13 S__i_e_ on the A_e___a_ F_a__3</item>
-        <item>14 Li__s in a S__n_е__3</item>
-        <item>15 P_ay___ in a R__b_ T_a__3</item>
-        <item>16 M_o__ of J__i_e_ _3</item>
-        <item>18 H_l__ on a G_l_ C_u____3</item>
-        <item>24 L__t_r_ in the G__e_ A_p___e__3</item>
-        <item>88 K_y_ on a Pi____3</item>
-        <item>102 F__o__ in the E_p__e S_a__ B_i___i___3</item>
-        <item>188 E_e_e___ in the P__i__i_ T_b___3</item>
-        <item>200 D__l_r_ for P__s_n_ G_ in M__o_o___3</item>
-        <item>1912 S__k_n_ of the T__a____3</item>   
+        <item>2 Bl**k T**e* in S*r**b**_3</item>
+        <item>4 C*a**r** in the H*m** H**r*_3</item>
+        <item>4 H**s**e* of the A*o**l***e_3</item>
+        <item>5 S**e* in a Pe**a***_3</item>
+        <item>6 S***s of a C**e_3</item>
+        <item>7 H**l* of R**e_3</item>
+        <item>8 L*g* on a S*i***_3</item>
+        <item>10 F*a*e* in B*w***g_3</item>
+        <item>12 A**s*l** at the La** S**p**_3</item>
+        <item>13 S**i*e* on the A*e***a* F*a*_3</item>
+        <item>14 Li**s in a S**n*е*_3</item>
+        <item>15 P*ay*** in a R**b* T*a*_3</item>
+        <item>16 M*o** of J**i*e* _3</item>
+        <item>18 H*l** on a G*l* C*u***_3</item>
+        <item>24 L**t*r* in the G**e* A*p***e*_3</item>
+        <item>88 K*y* on a Pi***_3</item>
+        <item>102 F**o** in the E*p**e S*a** B*i***i**_3</item>
+        <item>188 E*e*e*** in the P**i**i* T*b**_3</item>
+        <item>200 D**l*r* for P**s*n* G* in M**o*o**_3</item>
+        <item>1912 S**k*n* of the T**a***_3</item>   
         
         
-        <item>2 T_m__ the P_s__a_ A__a__ R__g__4</item>
-        <item>2 F__i_i__ in R_m__ and J__i___4</item>
-        <item>3 L__t__ P_g__4</item>
-        <item>3 Books in Lord of the Rings = 3 B_o__ in L_r_ of the R___s_4</item>
-        <item>5 S_a__ in the S_u__e__ C_o___4</item>
-        <item>7 D_a__e_ in S_o_ W_i___4</item>
-        <item>7 Y_a__ of B__ Lu__ for B_e_i__ a Mi__o__4</item>
-        <item>7 P__l_r_ of W__d___4</item>
-        <item>9 R_i___e__ in S__t_\'s S__i___4</item>
-        <item>10 P__vi__e_ in C__a___4</item>
-        <item>12 A__r_ M___4</item>
-        <item>13 L_n__ M__th_ in a Y_a__4</item>
-        <item>15 M__ on a D_a_ M__\'s C_e___4</item>
-        <item>37 N_t__a_ B__y T__p__a___e D__r_e_ C___i__a___4</item>
-        <item>40 Y_a__ in the D__e__ for the I__a__i____4</item>
-        <item>42 A__w__ to the U__i__t_ Q___t___ (D__g_a_ A_a__)_4</item>
-        <item>95 M__t__ L__h__\'s T_e_e__4</item>
-        <item>147 M__i___ in S__o_e__4</item>
-        <item>180 D_g__e_ to R__e__e D__ec__o__4</item>
-        <item>206 B_n__ in the H__a_ B_d__4</item>
+        <item>2 T*m** the P*s**a* A**a** R**g*_4</item>
+        <item>2 F**i*i** in R*m** and J**i**_4</item>
+        <item>3 L**t** P*g*_4</item>
+        <item>3 B*o** in L*r* of the R***s_4</item>
+        <item>5 S*a** in the S*u**e** C*o**_4</item>
+        <item>7 D*a**e* in S*o* W*i**_4</item>
+        <item>7 Y*a** of B** Lu** for B*e*i** a Mi**o*_4</item>
+        <item>7 P**l*r* of W**d**_4</item>
+        <item>9 R*i***e** in S**t*\'s S**i**_4</item>
+        <item>10 P**vi**e* in C**a**_4</item>
+        <item>12 A**r* M**_4</item>
+        <item>13 L*n** M**th* in a Y*a*_4</item>
+        <item>15 M** on a D*a* M**\'s C*e**_4</item>
+        <item>37 N*t**a* B**y T**p**a***e D**r*e* C***i**a**_4</item>
+        <item>40 Y*a** in the D**e** for the I**a**i***_4</item>
+        <item>42 A**w** to the U**i**t* Q***t*** (D**g*a* A*a**)_4</item>
+        <item>95 M**t** L**h**\'s T*e*e*_4</item>
+        <item>147 M**i*** in S**o*e*_4</item>
+        <item>180 D*g**e* to R**e**e D**ec**o*_4</item>
+        <item>206 B*n** in the H**a* B*d*_4</item>
     </string-array>
 </resources>

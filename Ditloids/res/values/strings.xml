@@ -13,8 +13,8 @@
     <string name="countlv4">3</string>
     <string name="reset_title">Reset game progress</string>
     <string name="reset_message">Want to reset game process?</string>
-    <string name="hint_title">Buy hints</string>
-    <string name="hint_message">You currently do not have any hint. Want to buy a hint?</string>
+    <string name="hint_title">Wow!</string>
+    <string name="hint_message">You currently do not have any hint.</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="cancel">Cancel</string>

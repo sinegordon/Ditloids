@@ -32,7 +32,7 @@
         android:layout_marginLeft="10dp"        
         android:background="@drawable/arrow"/>
          
-    <com.ditloids.HorizontalPager
+    <com.ditloidseng.HorizontalPager
         android:id="@+id/horizontal_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -122,7 +122,7 @@
     	    android:layout_marginLeft="75dp"/>   		
         </RelativeLayout>        
         
-    </com.ditloids.HorizontalPager>
+    </com.ditloidseng.HorizontalPager>
     
     <RadioGroup
         android:id="@+id/tabs"

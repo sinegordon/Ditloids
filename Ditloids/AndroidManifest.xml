@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ditloids"
+    package="com.ditloidseng"
     android:installLocation="preferExternal"
     android:versionCode="5"
     android:versionName="1.0.5" >
@@ -19,7 +19,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name">
         <activity
-            android:name="com.ditloids.MainActivity"
+            android:name="com.ditloidseng.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -28,24 +28,24 @@
             </intent-filter>
         </activity>
         <activity 
-            android:name="com.ditloids.LevelsActivity"
+            android:name="com.ditloidseng.LevelsActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity 
-            android:name="com.ditloids.TasksActivity"
+            android:name="com.ditloidseng.TasksActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity 
-            android:name="com.ditloids.TaskActivity"
+            android:name="com.ditloidseng.TaskActivity"
             android:windowSoftInputMode="stateVisible"
             android:screenOrientation="portrait">
         </activity>
         <activity 
-            android:name="com.ditloids.OptionsActivity"
+            android:name="com.ditloidseng.OptionsActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity 
-            android:name="com.ditloids.FaqActivity"
+            android:name="com.ditloidseng.FaqActivity"
             android:screenOrientation="portrait">
         </activity>
     </application>

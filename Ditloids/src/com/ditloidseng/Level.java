@@ -1,10 +1,9 @@
-package com.ditloids;
+package com.ditloidseng;
 
-import android.content.SharedPreferences;
-import android.content.res.Resources;
+import java.util.ArrayList;
+
 import android.content.Context;
-
-import java.util.*;
+import android.content.res.Resources;
 
 public class Level {
 
@@ -67,13 +66,13 @@ public class Level {
 
     // Получить ответ на дитлоид с индексом ditloidIndex, если он уже отгадан (иначе белиберда)
     public String GetDitloidAnswer(int ditloidIndex){
-        if(ditloidIndex > ditloids.size() || ditloidIndex < 0) return "Подсказка пока не определена";
+        if(ditloidIndex > ditloids.size() || ditloidIndex < 0) return "Not hint!";
         return ditloids.get(ditloidIndex);
     }
 
     // Получить подсказку на дитлоид с индексом ditloidIndex, если он уже отгадан (иначе пустая строка)
     public String GetDitloidHint(int ditloidIndex){
-        if(ditloidIndex > hints.size() || ditloidIndex < 0 || hints == null) return "Подсказка где-то рядом ;)";
+        if(ditloidIndex > hints.size() || ditloidIndex < 0 || hints == null) return "Hint somwere ;)";
         return hints.get(ditloidIndex);
     }
 

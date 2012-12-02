@@ -1,26 +1,17 @@
-package com.ditloids;
-
-import java.io.IOException;
+package com.ditloidseng;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Intent;
-import android.content.res.Configuration;
+import android.graphics.Typeface;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.AudioManager;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnKeyListener;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Typeface;
-import android.graphics.drawable.BitmapDrawable;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -139,8 +130,8 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 	    	    	}
 	    	    	else{
 	    	    		// ≈сли недоступен - сообщаем пользователю сколько нужно еще решить дл€ его открыти€
-	    	    		adb.setMessage("ƒл€ доступа к этому уровню осталось ответить на " + 
-	    			    		  Integer.toString(game.GetLevelsDivisor()*(checkedLevelIndex - 1) - game.GetCountRight()) + " дитлоид(а,ов).");
+	    	    		adb.setMessage("To gain access to this level remains to answer " + 
+	    			    		  Integer.toString(game.GetLevelsDivisor()*(checkedLevelIndex - 1) - game.GetCountRight()) + " ditloid(s).");
 	    		    	adb.show();
 	    	    	}
 	    		}
@@ -156,7 +147,7 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
         	countViews[i-1].setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Ukrainian-Play.ttf"));
         	if(!game.GetLevelAccess(i)) {
         		countButtons[i-1].setBackgroundResource(R.drawable.level_lock);
-            	countViews[i-1].setText("”ровень " + Integer.toString(i));
+            	countViews[i-1].setText("Level " + Integer.toString(i));
         	}
         	else {
         		int drawableId = getResources().getIdentifier("level" + Integer.toString(i), "drawable", getApplicationContext().getPackageName());

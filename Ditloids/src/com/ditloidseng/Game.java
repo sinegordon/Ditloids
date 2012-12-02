@@ -1,4 +1,4 @@
-package com.ditloids;
+package com.ditloidseng;
 
 import java.io.IOException;
 
@@ -8,8 +8,6 @@ import android.content.res.Resources;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
-import android.os.Bundle;
-import android.content.Intent;
 
 
 public class Game {
@@ -23,13 +21,13 @@ public class Game {
     // Текущий уровень
     private Level currentLevel = null;
     
-    // Индекс текущего дитлоида на текущем уровне
+    // �?ндекс текущего дитлоида на текущем уровне
     private int currentDitloidIndex = -1;
 
     // Массив флагов отвеченных дитлоидов на текущий уровень
     private boolean[] answers = null;
     
-    // Имеющееся количество подсказок
+    // �?меющееся количество подсказок
     private int countHints = 0;
 
     // Массив флагов взятых подсказок на текущий уровень

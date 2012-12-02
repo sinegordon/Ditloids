@@ -1,4 +1,4 @@
-package com.ditloids;
+package com.ditloidseng;
 
 import android.app.Activity;
 import android.content.Intent;

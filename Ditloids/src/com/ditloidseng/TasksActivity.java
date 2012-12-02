@@ -1,16 +1,11 @@
-package com.ditloids;
+package com.ditloidseng;
 
 import java.util.ArrayDeque;
-
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.AudioManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -52,7 +47,7 @@ public class TasksActivity extends Activity implements OnClickListener, OnItemCl
 		// Узнаем текущий уровень
 		Level currentLevel = game.GetCurrentLevel();
 		// Выставляем номер уровня в надписи
-		((TextView)findViewById(R.id.textView1)).setText("Уровень "+Integer.toString(currentLevel.GetLevelIndex()));
+		((TextView)findViewById(R.id.textView1)).setText("Level "+Integer.toString(currentLevel.GetLevelIndex()));
 		// Вставляем количество подсказок в надписи
 		((TextView)findViewById(R.id.textView2)).setText(Integer.toString(game.GetCountHints()));
 		// Заполняем массив дитлоидов и массив их индексов (в порядке "сначала неотвеченные - потом отвеченные")
