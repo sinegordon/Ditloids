@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"    
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"    
     android:layout_height="fill_parent"
     android:layout_width="fill_parent"
     android:id="@+id/faqLayout"
@@ -21,7 +21,7 @@
 	    android:layout_centerHorizontal="true"
 	    android:gravity="center"
 	    android:layout_marginTop="4dp"    
-	    android:text="Описание игры"
+	    android:text="How to play?"
 	    android:textSize="20dp" />        
         
     <Button

@@ -20,7 +20,7 @@
 	    android:layout_centerHorizontal="true"
 	    android:gravity="center"
 	    android:layout_marginTop="4dp"    
-	    android:text="Настройки"
+	    android:text="Settings"
 	    android:textSize="20dp" />      
 	    
     <Button
@@ -49,6 +49,5 @@
         android:layout_height="38dp" 
         android:layout_width="222dp" 
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="220dp" 
-        android:background="@drawable/reset"/>   
+        android:layout_marginTop="220dp" />
 </RelativeLayout>
