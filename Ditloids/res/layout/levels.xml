@@ -71,13 +71,13 @@
    			<TextView		    
 			android:id="@+id/TextView2"
    			android:gravity="center"
-			android:text="@string/countlv2"
+			android:text="@string/countlv2"		
         	android:layout_width="wrap_content"
         	android:layout_height="wrap_content"
         	android:textSize="22dp"
 			android:textColor="#d3dae0"
     	    android:layout_marginTop="165dp"
-    	    android:layout_marginLeft="75dp"/>  		
+    	    android:layout_marginLeft="90dp"/>  		
         </RelativeLayout>
         
         <RelativeLayout
@@ -98,7 +98,7 @@
         	android:textSize="22dp"
 			android:textColor="#d3dae0"
     	    android:layout_marginTop="165dp"
-    	    android:layout_marginLeft="75dp"/>   		
+    	    android:layout_marginLeft="90dp"/>   		
         </RelativeLayout>
         
         <RelativeLayout
@@ -119,7 +119,7 @@
         	android:textSize="22dp"
 			android:textColor="#d3dae0"
     	    android:layout_marginTop="165dp"
-    	    android:layout_marginLeft="75dp"/>   		
+    	    android:layout_marginLeft="90dp"/>   		
         </RelativeLayout>        
         
     </com.ditloidseng.HorizontalPager>
