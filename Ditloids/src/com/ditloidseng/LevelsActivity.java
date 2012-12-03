@@ -152,7 +152,7 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
         	else {
         		int drawableId = getResources().getIdentifier("level" + Integer.toString(i), "drawable", getApplicationContext().getPackageName());
         		countButtons[i-1].setBackgroundResource(drawableId);
-            	countViews[i-1].setText(Integer.toString(game.AnswersCount(i)) + " из " + Integer.toString(game.GetLevel(i).GetDitloidsCount()));
+            	countViews[i-1].setText(Integer.toString(game.AnswersCount(i)) + " from " + Integer.toString(game.GetLevel(i).GetDitloidsCount()));
         	}
         }
     }
