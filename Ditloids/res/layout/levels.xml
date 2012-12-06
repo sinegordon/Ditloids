@@ -56,7 +56,7 @@
         	android:textSize="22dp"
 			android:textColor="#d3dae0"
     	    android:layout_marginTop="165dp"
-    	    android:layout_marginLeft="75dp"/>
+    	    android:layout_marginLeft="60dp"/>
         </RelativeLayout>
         
         <RelativeLayout
