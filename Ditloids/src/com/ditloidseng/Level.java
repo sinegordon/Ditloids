@@ -54,7 +54,7 @@ public class Level {
         if(ditloidIndex < ditloids.size() && ditloidIndex > -1){
             String[] str = ditloids.get(ditloidIndex).trim().split(" ");
             for(int i=0; i<str.length; i++)
-            	if(str[i].trim().substring(0, 1).matches("[0-9]"))
+            	if(str[i].trim().substring(0, 1).matches("[0-9]") || Character.isLowerCase(str[i].trim().substring(0, 1).charAt(0)))
             		ditloid = ditloid + " " + str[i].trim();
             	else
             		ditloid = ditloid + " " + str[i].trim().substring(0,1);
